@@ -1,87 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
+import { portfolioItems, featuredItems, awardItems } from "@/data/portfolio-data";
 
-const featuredProjects = [
-  {
-    title: "道隐无名",
-    slug: "dao-yin-wu-ming",
-    type: "文化民宿 / 空间改造",
-    tags: ["道家文化", "静修空间", "木石光影"],
-    summary:
-      "以道家天人合一为精神原型，将木、石、水与光影转化为静修型文化民宿空间，回应现代人对精神疗愈与文化体验的需求。",
-    value:
-      "强调文化母题转译与精神场域营造，适合作为体现空间气质与概念表达能力的代表项目。",
-    image: "/projects/dao-yin-wu-ming/cover.webp",
-    imageAlt: "道隐无名项目封面",
-    previewImages: [
-      "/projects/dao-yin-wu-ming/cover.webp",
-      "/projects/dao-yin-wu-ming/detail-1.webp",
-      "/projects/dao-yin-wu-ming/detail-2.webp",
-    ],
-  },
-  {
-    title: "尘埃之上",
-    slug: "chen-ai-zhi-shang",
-    type: "未来生态 / 概念居住",
-    tags: ["异星居住", "四季系统", "精神缓冲带"],
-    summary:
-      "面向火星极端环境构想自给自足的生态居住系统，以地球四季意象构建兼具生存技术与心理慰藉的异星生活场景。",
-    value:
-      "承担首页第一视觉记忆点，集中体现概念叙事、未来想象与系统化表达能力。",
-    image: "/projects/chen-ai-zhi-shang/cover.webp",
-    imageAlt: "尘埃之上项目封面",
-    previewImages: [
-      "/projects/chen-ai-zhi-shang/cover.webp",
-      "/projects/chen-ai-zhi-shang/detail-1.png",
-      "/projects/chen-ai-zhi-shang/detail-2.png",
-    ],
-  },
-  {
-    title: "觅踪",
-    slug: "mi-zong",
-    type: "零售体验 / 主题空间",
-    tags: ["丝路转译", "二次元零售", "文化体验"],
-    summary:
-      "以丝路文脉与二次元消费文化为双重线索，通过文化转译与体验重构，打造可探索、可停留、可交流的青年零售空间。",
-    value:
-      "展示文化叙事与青年消费体验结合的能力，强化商业与体验兼具的项目维度。",
-    image: "/projects/mi-zong/cover.webp",
-    imageAlt: "觅踪项目封面",
-    previewImages: [
-      "/projects/mi-zong/cover.webp",
-      "/projects/mi-zong/detail-1.webp",
-      "/projects/mi-zong/detail-2.webp",
-    ],
-  },
-  {
-    title: "燃梦立方",
-    slug: "ran-meng-li-fang",
-    type: "共享办公 / 商业空间",
-    tags: ["校园创业", "立方秩序", "红色焦点"],
-    summary:
-      "以校园创业办公场景为背景，通过红色立方元素组织接待、洽谈、办公与展示空间，建立开放互助的共享办公秩序。",
-    value:
-      "突出功能组织、视觉焦点和商业办公逻辑，补齐作品集的现实场景表达。",
-    image: "/projects/ran-meng-li-fang/cover.webp",
-    imageAlt: "燃梦立方项目封面",
-    previewImages: [
-      "/projects/ran-meng-li-fang/cover.webp",
-      "/projects/ran-meng-li-fang/detail-1.webp",
-      "/projects/ran-meng-li-fang/detail-2.webp",
-    ],
-  },
-];
-
-const allProjects = [
-  { title: "道隐无名", href: "/projects/dao-yin-wu-ming", active: true, status: "已上线详情" },
-  { title: "尘埃之上", href: "/projects/chen-ai-zhi-shang", active: true, status: "已上线详情" },
-  { title: "觅踪", href: "/projects/mi-zong", active: true, status: "已上线详情" },
-  { title: "燃梦立方", href: "/projects/ran-meng-li-fang", active: true, status: "已上线详情" },
-  { title: "秦土旧腔", href: "/projects/qin-tu-jiu-qiang", active: true, status: "已上线详情" },
-  { title: "岐黄养生轩", href: "/projects/qi-huang-yang-sheng-xuan", active: true, status: "已上线详情" },
-  { title: "娱乐空间", href: "/projects/yu-le-kong-jian", active: true, status: "已上线详情" },
-  { title: "家具设计", href: "/projects/jia-ju-she-ji", active: true, status: "已上线详情" },
-];
+const allProjects = portfolioItems.map(item => ({
+  title: item.title,
+  href: item.detailHref,
+  active: true,
+  status: "已上线详情",
+}));
 
 const capabilities = [
   {
@@ -92,7 +18,7 @@ const capabilities = [
   {
     title: "文化转译",
     description: "将道家、丝路、戏曲、中医等文化母题转化为空间语言，强调精神意象、材料气质与场景体验的统一。",
-    evidence: "重点体现在“道隐无名”“觅踪”等项目中，避免文化符号化和表面化。",
+    evidence: "重点体现在「道隐无名」「觅踪」等项目中，避免文化符号化和表面化。",
   },
   {
     title: "视觉表达",
@@ -103,25 +29,6 @@ const capabilities = [
     title: "AI 工作流",
     description: "在概念发散、风格测试、图像生成与表达迭代中引入 AIGC 与 ComfyUI，提高创意探索与方案调整效率。",
     evidence: "帮助项目在早期发散和后期润色阶段都保持更高的迭代速度。",
-  },
-];
-
-const awards = [
-  {
-    title: "全国大学生数字媒体科技作品及创意竞赛",
-    level: "国赛三等奖",
-    project: "燃梦立方",
-    note: "证明项目具备完整概念表达与可展示成果质量。",
-  },
-  {
-    title: "东方设计奖全国高校创新设计大赛",
-    level: "国赛三等奖",
-    note: "后续将在独立简历页继续补充赛事时间、证书与参赛项目。",
-  },
-  {
-    title: "“华夏奖”文化艺术设计大赛",
-    level: "优秀奖",
-    note: "作为首页可信度支撑，后续承接完整荣誉信息与图片材料。",
   },
 ];
 
@@ -191,8 +98,8 @@ const browseGuide = [
 
 
 const profileStats = [
-  { value: "8", label: "作品方向储备" },
-  { value: "4", label: "已上线项目" },
+  { value: String(portfolioItems.length), label: "作品方向储备" },
+  { value: String(featuredItems.length), label: "精选项目" },
   { value: "3", label: "核心竞赛成果" },
   { value: "2026", label: "预计毕业时间" },
 ];
@@ -333,7 +240,7 @@ export default function Home() {
                 </div>
               </dl>
               <div className="rounded-[1.5rem] border border-white/10 bg-black/22 p-4 text-sm leading-7 text-white/74">
-                它承担首页的第一视觉记忆点，也代表我在“概念构建—图像表达—项目叙述”三方面的综合能力。
+                它承担首页的第一视觉记忆点，也代表我在"概念构建—图像表达—项目叙述"三方面的综合能力。
               </div>
               <Link href="/projects/chen-ai-zhi-shang" className="ui-button-secondary w-full sm:w-fit text-white">
                 查看项目
@@ -368,13 +275,13 @@ export default function Home() {
           </div>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {featuredProjects.map((project) => (
+            {featuredItems.map((project) => (
               <article
                 key={project.title}
                 className="ui-card group flex h-full flex-col overflow-hidden rounded-[1.9rem]"
               >
                 <div className="grid gap-2 border-b border-[var(--color-line)] bg-[var(--color-muted)]/30 p-3">
-                  {project.previewImages.map((previewImage, index) => (
+                  {[project.heroImage, ...project.gallery.slice(0, 2)].map((previewImage, index) => (
                     <Link
                       key={previewImage}
                       href={`/projects/${project.slug}`}
@@ -437,7 +344,7 @@ export default function Home() {
               <p className="section-kicker">个人方法</p>
               <h2 className="section-title">我更关注项目如何被阅读，而不只是最后呈现出一张效果图</h2>
               <p className="section-copy">
-                在环境设计学习与项目表达中，我更重视“概念如何建立、空间如何组织、图像如何传达”这一整条链路。网站首页因此不仅展示结果，也刻意说明方法，帮助浏览者理解每个作品背后的判断逻辑。
+                在环境设计学习与项目表达中，我更重视"概念如何建立、空间如何组织、图像如何传达"这一整条链路。网站首页因此不仅展示结果，也刻意说明方法，帮助浏览者理解每个作品背后的判断逻辑。
               </p>
             </div>
             <div className="grid gap-4 md:grid-cols-3">
@@ -484,7 +391,7 @@ export default function Home() {
               <h2 className="font-serif-display text-4xl font-semibold leading-tight text-[var(--color-ink)]">当前网站重点服务于环境设计与室内设计方向的求职展示</h2>
             </div>
             <p className="text-sm leading-8 text-[var(--color-copy)] sm:text-base">
-              首页的任务不是替代完整作品集，而是先帮助招聘方在较短时间内完成“判断方向、筛选项目、确认沟通意愿”三步。后续更深入的项目内容，会在各个详情页里逐步展开。
+              首页的任务不是替代完整作品集，而是先帮助招聘方在较短时间内完成"判断方向、筛选项目、确认沟通意愿"三步。后续更深入的项目内容，会在各个详情页里逐步展开。
             </p>
           </div>
         </div>
@@ -505,7 +412,7 @@ export default function Home() {
         </div>
 
         <div className="grid gap-5 xl:grid-cols-3">
-          {awards.map((award) => (
+          {awardItems.map((award) => (
             <article
               key={award.title}
               className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_36px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_rgba(26,24,21,0.08)]"
@@ -580,7 +487,7 @@ export default function Home() {
         <div className="mb-10 grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/28 p-6 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="space-y-3">
             <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">浏览引导</p>
-            <h3 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">推荐按照“首页判断 → 项目深入 → 联系确认”的顺序浏览</h3>
+            <h3 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">推荐按照"首页判断 → 项目深入 → 联系确认"的顺序浏览</h3>
           </div>
           <div className="grid gap-3">
             {browseGuide.map((item, index) => (
@@ -641,7 +548,7 @@ export default function Home() {
               <p className="section-kicker">Contact</p>
               <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">让作品、简历与联系路径在同一网站中闭环</h2>
               <p className="max-w-2xl text-sm leading-8 text-[var(--color-copy)] sm:text-base">
-                当前首页的目标，是让浏览者可以在一个页面中完成“认识你、浏览代表项目、判断能力方向、查看求职摘要、建立联系”这一整条基本路径。
+                当前首页的目标，是让浏览者可以在一个页面中完成"认识你、浏览代表项目、判断能力方向、查看求职摘要、建立联系"这一整条基本路径。
               </p>
               <div className="grid gap-3 pt-2">
                 {closingNotes.map((item) => (

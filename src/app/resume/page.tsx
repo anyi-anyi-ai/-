@@ -1,4 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
+import { featuredItems } from "@/data/portfolio-data";
+import SubpageNav from "@/components/SubpageNav";
 
 const education = {
   school: "烟台大学",
@@ -60,18 +63,17 @@ const awards = [
     note: "体现项目创意表达与视觉完成度已具备竞赛成果支撑。",
   },
   {
-    title: "“华夏奖”文化艺术设计大赛",
+    title: "「华夏奖」文化艺术设计大赛",
     level: "优秀奖",
     note: "作为作品集可信度补充，后续将在荣誉页继续补充对应证明材料。",
   },
 ];
 
-const projectLinks = [
-  { label: "道隐无名", href: "/projects/dao-yin-wu-ming" },
-  { label: "尘埃之上", href: "/projects/chen-ai-zhi-shang" },
-  { label: "觅踪", href: "/projects/mi-zong" },
-  { label: "燃梦立方", href: "/projects/ran-meng-li-fang" },
-];
+const projectLinks = featuredItems.map(item => ({
+  label: item.title,
+  href: item.detailHref,
+  heroImage: item.heroImage,
+}));
 
 const contactItems = [
   { label: "邮箱", value: "ay1839628583@outlook.com", href: "mailto:ay1839628583@outlook.com" },
@@ -82,27 +84,14 @@ const contactItems = [
 export default function ResumePage() {
   return (
     <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <section className="border-b border-[var(--color-line)] bg-white/80 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
-          <Link href="/" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75">
-            ← 返回首页
-          </Link>
-          <nav className="flex flex-wrap gap-4 text-xs tracking-[0.18em] text-[var(--color-muted-ink)] uppercase sm:text-sm">
-            <Link href="/portfolio" className="transition hover:text-[var(--color-accent-deep)]">
-              总作品集
-            </Link>
-            <Link href="/projects" className="transition hover:text-[var(--color-accent-deep)]">
-              项目总览
-            </Link>
-            <Link href="/awards" className="transition hover:text-[var(--color-accent-deep)]">
-              荣誉证明
-            </Link>
-            <a href="#contact" className="transition hover:text-[var(--color-accent-deep)]">
-              联系方式
-            </a>
-          </nav>
-        </div>
-      </section>
+      <SubpageNav
+        links={[
+          { label: "总作品集", href: "/portfolio" },
+          { label: "项目总览", href: "/projects" },
+          { label: "荣誉证明", href: "/awards" },
+          { label: "联系方式", href: "#contact" },
+        ]}
+      />
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
         <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
@@ -110,7 +99,7 @@ export default function ResumePage() {
             <p className="section-kicker">Resume</p>
             <h1 className="section-title">用网页化方式集中呈现教育背景、技能结构、实践经验与求职方向</h1>
             <p className="section-copy">
-              这一页承接首页中的简历摘要，把关键信息从“可快速浏览”扩展为“可正式判断”，帮助招聘方更高效地建立对我的背景、能力与项目方向的整体认知。
+              这一页承接首页中的简历摘要，把关键信息从「可快速浏览」扩展为「可正式判断」，帮助招聘方更高效地建立对我的背景、能力与项目方向的整体认知。
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -218,6 +207,19 @@ export default function ResumePage() {
                   className="rounded-full border border-[var(--color-line)] bg-[var(--color-muted)]/35 px-4 py-2 text-sm text-[var(--color-copy)] transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
                 >
                   {item.label}
+                </Link>
+              ))}
+            </div>
+            <div className="mt-6 grid grid-cols-2 gap-3">
+              {projectLinks.map((item) => (
+                <Link key={item.label} href={item.href} className="project-preview-frame relative overflow-hidden rounded-[1.2rem] border border-[var(--color-line)] bg-[var(--color-muted)]">
+                  <Image
+                    src={item.heroImage}
+                    alt={`${item.label}缩略图`}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 25vw"
+                    className="object-contain p-2"
+                  />
                 </Link>
               ))}
             </div>

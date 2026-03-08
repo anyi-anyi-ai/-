@@ -1,75 +1,22 @@
 import Link from "next/link";
+import Image from "next/image";
+import { portfolioItems } from "@/data/portfolio-data";
+import SubpageNav from "@/components/SubpageNav";
+import SubpageFooter from "@/components/SubpageFooter";
 
 const projectGroups = [
   {
     title: "已上线详情",
     description: "这部分项目已经接入独立详情页，适合从总览页继续深入浏览。",
-    items: [
-      {
-        title: "道隐无名",
-        href: "/projects/dao-yin-wu-ming",
-        portfolioHref: "/portfolio/dao-yin-wu-ming",
-        type: "文化民宿 / 空间改造",
-        summary: "以道家文化为母题，将精神疗愈、静修体验与自然材料语言转化为文化民宿空间。",
-        status: "已上线详情页",
-      },
-      {
-        title: "尘埃之上",
-        href: "/projects/chen-ai-zhi-shang",
-        portfolioHref: "/portfolio/chen-ai-zhi-shang",
-        type: "未来生态 / 概念居住",
-        summary: "面向火星极端环境构建生态居住原型，用四季系统回应技术与心理双重命题。",
-        status: "已上线详情页",
-      },
-      {
-        title: "觅踪",
-        href: "/projects/mi-zong",
-        portfolioHref: "/portfolio/mi-zong",
-        type: "零售体验 / 主题空间",
-        summary: "将丝路文化与二次元消费体验结合，组织可探索、可停留、可交流的青年零售场景。",
-        status: "已上线详情页",
-      },
-      {
-        title: "燃梦立方",
-        href: "/projects/ran-meng-li-fang",
-        portfolioHref: "/portfolio/ran-meng-li-fang",
-        type: "共享办公 / 商业空间",
-        summary: "通过红色立方构成接待、办公、洽谈与展示秩序，强调商业办公逻辑和空间焦点。",
-        status: "已上线详情页",
-      },
-      {
-        title: "家具设计",
-        href: "/projects/jia-ju-she-ji",
-        portfolioHref: "/portfolio/jia-ju-she-ji",
-        type: "家具单体 / 结构表达",
-        summary: "作为空间之外的单体设计补充，有助于展示尺度把控和细节推敲能力。",
-        status: "已上线详情页",
-      },
-      {
-        title: "岐黄养生轩",
-        href: "/projects/qi-huang-yang-sheng-xuan",
-        portfolioHref: "/portfolio/qi-huang-yang-sheng-xuan",
-        type: "主题餐饮 / 中医文化",
-        summary: "以中医养生理念为基础组织主题餐厅空间，体现文化符号与商业体验结合能力。",
-        status: "已上线详情页",
-      },
-      {
-        title: "秦土旧腔",
-        href: "/projects/qin-tu-jiu-qiang",
-        portfolioHref: "/portfolio/qin-tu-jiu-qiang",
-        type: "文化展示 / 戏曲主题",
-        summary: "围绕地方戏曲意象与文化记忆展开空间转译，适合进一步强化文化叙事线索。",
-        status: "已上线详情页",
-      },
-      {
-        title: "娱乐空间",
-        href: "/projects/yu-le-kong-jian",
-        portfolioHref: "/portfolio/yu-le-kong-jian",
-        type: "公共娱乐 / 场景体验",
-        summary: "偏向真实功能场景与体验表达，可补充项目类型的现实应用维度。",
-        status: "已上线详情页",
-      },
-    ],
+    items: portfolioItems.map(item => ({
+      title: item.title,
+      href: item.detailHref,
+      portfolioHref: item.portfolioHref,
+      type: item.type,
+      summary: item.summary,
+      status: "已上线详情页",
+      heroImage: item.heroImage,
+    })),
   },
 ];
 
@@ -82,27 +29,14 @@ const browsingSuggestions = [
 export default function ProjectsPage() {
   return (
     <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <section className="border-b border-[var(--color-line)] bg-white/80 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
-          <Link href="/" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75">
-            ← 返回首页
-          </Link>
-          <nav className="flex flex-wrap gap-4 text-xs tracking-[0.18em] text-[var(--color-muted-ink)] uppercase sm:text-sm">
-            <Link href="/portfolio" className="transition hover:text-[var(--color-accent-deep)]">
-              总作品集
-            </Link>
-            <Link href="/resume" className="transition hover:text-[var(--color-accent-deep)]">
-              简历页
-            </Link>
-            <Link href="/awards" className="transition hover:text-[var(--color-accent-deep)]">
-              荣誉页
-            </Link>
-            <a href="#project-groups" className="transition hover:text-[var(--color-accent-deep)]">
-              项目分组
-            </a>
-          </nav>
-        </div>
-      </section>
+      <SubpageNav
+        links={[
+          { label: "总作品集", href: "/portfolio" },
+          { label: "简历页", href: "/resume" },
+          { label: "荣誉页", href: "/awards" },
+          { label: "项目分组", href: "#project-groups" },
+        ]}
+      />
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
         <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
@@ -116,8 +50,8 @@ export default function ProjectsPage() {
           <div className="grid gap-4 sm:grid-cols-3">
             <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5">
               <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">详情页数量</p>
-              <h2 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">8 个</h2>
-              <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">8 个作品方向现在都已经具备正式项目详情入口。</p>
+              <h2 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{portfolioItems.length} 个</h2>
+              <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{portfolioItems.length} 个作品方向现在都已经具备正式项目详情入口。</p>
             </div>
             <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5">
               <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">页面分工</p>
@@ -138,7 +72,7 @@ export default function ProjectsPage() {
           <div className="grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-white p-6 lg:grid-cols-[0.9fr_1.1fr]">
             <div className="space-y-3">
               <p className="section-kicker">浏览方式</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">建议按“作品集判断 → 项目详情比较”的方式浏览</h2>
+              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">建议按"作品集判断 → 项目详情比较"的方式浏览</h2>
             </div>
             <div className="grid gap-3">
               {browsingSuggestions.map((item, index) => (
@@ -167,6 +101,15 @@ export default function ProjectsPage() {
                     key={project.title}
                     className="ui-card rounded-[1.9rem] p-6"
                   >
+                    <div className="project-preview-frame relative mb-4 overflow-hidden rounded-[1.2rem] border border-[var(--color-line)] bg-[var(--color-muted)]">
+                      <Image
+                        src={project.heroImage}
+                        alt={`${project.title}缩略图`}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
+                        className="object-contain p-2"
+                      />
+                    </div>
                     <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{project.status}</p>
                     <h3 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{project.title}</h3>
                     <p className="mt-3 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase">{project.type}</p>
@@ -187,36 +130,14 @@ export default function ProjectsPage() {
         </div>
       </section>
 
-      <section className="border-t border-[var(--color-line)] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
-          <div className="grid gap-6 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/22 p-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="space-y-4">
-              <p className="section-kicker">继续浏览</p>
-              <h2 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">可以继续查看总作品集页、简历页与荣誉页，完成对项目之外信息的整体判断</h2>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Link
-                href="/portfolio"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-              >
-                查看总作品集
-              </Link>
-              <Link
-                href="/resume"
-                className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-              >
-                查看简历页
-              </Link>
-              <Link
-                href="/awards"
-                className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-charcoal)] uppercase transition hover:brightness-105"
-              >
-                查看荣誉页
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
+      <SubpageFooter
+        heading="可以继续查看总作品集页、简历页与荣誉页，完成对项目之外信息的整体判断"
+        links={[
+          { label: "查看总作品集", href: "/portfolio" },
+          { label: "查看简历页", href: "/resume" },
+          { label: "查看荣誉页", href: "/awards", primary: true },
+        ]}
+      />
     </main>
   );
 }

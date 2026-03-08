@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { portfolioItems, portfolioMap } from "@/data/portfolio-data";
+import SubpageNav from "@/components/SubpageNav";
+import SubpageFooter from "@/components/SubpageFooter";
 
 export function generateStaticParams() {
   return portfolioItems.map((item) => ({ slug: item.slug }));
@@ -23,24 +25,15 @@ export default async function PortfolioDetailPage({
 
   return (
     <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <section className="border-b border-[var(--color-line)] bg-white/80 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
-          <Link href="/portfolio" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75">
-            ← 返回总作品集页
-          </Link>
-          <nav className="flex flex-wrap gap-4 text-xs tracking-[0.18em] text-[var(--color-muted-ink)] uppercase sm:text-sm">
-            <Link href="/projects" className="transition hover:text-[var(--color-accent-deep)]">
-              项目总览
-            </Link>
-            <Link href="/resume" className="transition hover:text-[var(--color-accent-deep)]">
-              简历页
-            </Link>
-            <Link href="/awards" className="transition hover:text-[var(--color-accent-deep)]">
-              荣誉页
-            </Link>
-          </nav>
-        </div>
-      </section>
+      <SubpageNav
+        backLabel="← 返回总作品集页"
+        backHref="/portfolio"
+        links={[
+          { label: "项目总览", href: "/projects" },
+          { label: "简历页", href: "/resume" },
+          { label: "荣誉页", href: "/awards" },
+        ]}
+      />
 
       <section className="mx-auto max-w-7xl px-6 py-14 sm:px-10 lg:px-16 lg:py-18">
         <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
@@ -84,7 +77,7 @@ export default async function PortfolioDetailPage({
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-18 sm:px-10 lg:grid-cols-[0.76fr_1.24fr] lg:px-16">
           <div className="space-y-4">
             <p className="section-kicker">重点说明</p>
-            <h2 className="section-title">这一页负责把单个作品集从“入口卡片”展开成可以独立阅读的内容页</h2>
+            <h2 className="section-title">这一页负责把单个作品集从"入口卡片"展开成可以独立阅读的内容页</h2>
           </div>
           <div className="grid gap-4">
             {portfolio.highlights.map((highlight) => (
@@ -96,6 +89,15 @@ export default async function PortfolioDetailPage({
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
+        <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
+          <p className="section-kicker">设计说明</p>
+          <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">来自作者的设计理念阐述</h2>
+          <div className="editorial-divider mt-6 mb-6" />
+          <p className="text-sm leading-8 text-[var(--color-copy)]">{portfolio.designStatement}</p>
         </div>
       </section>
 
@@ -133,6 +135,27 @@ export default async function PortfolioDetailPage({
           </div>
         </div>
       </section>
+
+      {portfolio.videoSrc ? (
+        <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
+          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
+            <div className="mb-6 space-y-4">
+              <p className="section-kicker">项目视频</p>
+              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">通过动态影像进一步感受项目的空间氛围</h2>
+            </div>
+            <video
+              controls
+              preload="metadata"
+              playsInline
+              className="w-full rounded-[1.4rem]"
+              poster={portfolio.heroImage}
+            >
+              <source src={portfolio.videoSrc} type="video/mp4" />
+              您的浏览器不支持视频播放。
+            </video>
+          </div>
+        </section>
+      ) : null}
 
       <section className="border-y border-[var(--color-line)] bg-[var(--color-muted)]/28">
         <div className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
