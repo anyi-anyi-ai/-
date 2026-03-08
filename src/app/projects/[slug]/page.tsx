@@ -6,6 +6,7 @@ const projects = {
   "dao-yin-wu-ming": {
     title: "道隐无名",
     subtitle: "文化民宿 / 空间改造",
+    portfolioHref: "/portfolio/dao-yin-wu-ming",
     keywords: ["道家文化", "静修空间", "木石光影"],
     heroImage: "/projects/dao-yin-wu-ming/cover.webp",
     overview:
@@ -24,6 +25,7 @@ const projects = {
   "chen-ai-zhi-shang": {
     title: "尘埃之上",
     subtitle: "未来生态 / 概念居住",
+    portfolioHref: "/portfolio/chen-ai-zhi-shang",
     keywords: ["异星居住", "四季系统", "精神缓冲带"],
     heroImage: "/projects/chen-ai-zhi-shang/cover.webp",
     overview:
@@ -42,6 +44,7 @@ const projects = {
   "mi-zong": {
     title: "觅踪",
     subtitle: "零售体验 / 主题空间",
+    portfolioHref: "/portfolio/mi-zong",
     keywords: ["丝路转译", "二次元零售", "文化体验"],
     heroImage: "/projects/mi-zong/cover.webp",
     overview:
@@ -60,6 +63,7 @@ const projects = {
   "ran-meng-li-fang": {
     title: "燃梦立方",
     subtitle: "共享办公 / 商业空间",
+    portfolioHref: "/portfolio/ran-meng-li-fang",
     keywords: ["校园创业", "立方秩序", "红色焦点"],
     heroImage: "/projects/ran-meng-li-fang/cover.webp",
     overview:
@@ -73,6 +77,82 @@ const projects = {
       "/projects/ran-meng-li-fang/cover.webp",
       "/projects/ran-meng-li-fang/detail-1.webp",
       "/projects/ran-meng-li-fang/detail-2.webp",
+    ],
+  },
+  "jia-ju-she-ji": {
+    title: "家具设计",
+    subtitle: "家具单体 / 结构表达",
+    portfolioHref: "/portfolio/jia-ju-she-ji",
+    keywords: ["家具单体", "结构表达", "细节推敲"],
+    heroImage: "/projects/jia-ju-she-ji/cover.jpg",
+    overview:
+      "《家具设计》作为空间项目之外的重要补充，重点展示单体家具在尺度、结构、细节与图像呈现方面的表达能力。通过真实图像接入，这一页开始承担从单体成果到设计逻辑说明的过渡作用。",
+    highlights: [
+      "通过单体家具设计补足空间项目之外的设计维度。",
+      "强调结构关系、细部节点与尺度控制能力。",
+      "适合作为网站中体现基础设计素养与细节推敲能力的补充案例。",
+    ],
+    gallery: [
+      "/projects/jia-ju-she-ji/cover.jpg",
+      "/projects/jia-ju-she-ji/detail-1.jpg",
+      "/projects/jia-ju-she-ji/detail-2.png",
+    ],
+  },
+  "qi-huang-yang-sheng-xuan": {
+    title: "岐黄养生轩",
+    subtitle: "主题餐饮 / 中医文化",
+    portfolioHref: "/portfolio/qi-huang-yang-sheng-xuan",
+    keywords: ["中医文化", "养生主题", "餐饮空间"],
+    heroImage: "/projects/qi-huang-yang-sheng-xuan/cover.webp",
+    overview:
+      "《岐黄养生轩》围绕中医养生理念与主题餐饮空间体验展开，尝试在文化识别、商业功能与场景氛围之间建立平衡。当前详情页先承接核心图像与主题说明，后续将继续深化功能组织与设计推演内容。",
+    highlights: [
+      "以中医养生文化为主题线索，强化空间中的精神识别与场景气质。",
+      "兼顾餐饮空间的现实功能与文化主题表达。",
+      "适合作为文化主题与商业空间结合方向的重要补充案例。",
+    ],
+    gallery: [
+      "/projects/qi-huang-yang-sheng-xuan/cover.webp",
+      "/projects/qi-huang-yang-sheng-xuan/detail-1.webp",
+      "/projects/qi-huang-yang-sheng-xuan/detail-2.webp",
+    ],
+  },
+  "qin-tu-jiu-qiang": {
+    title: "秦土旧腔",
+    subtitle: "文化展示 / 戏曲主题",
+    portfolioHref: "/portfolio/qin-tu-jiu-qiang",
+    keywords: ["戏曲主题", "文化展示", "地方记忆"],
+    heroImage: "/projects/qin-tu-jiu-qiang/cover.webp",
+    overview:
+      "《秦土旧腔》围绕地方戏曲文化、舞台感与地域记忆展开设计表达，通过更具情绪与戏剧性的画面组织空间叙事。当前页面先承接真实图像与主题说明，后续将继续深化展陈逻辑与文化母题分析。",
+    highlights: [
+      "强调地方戏曲文化与空间氛围塑造之间的关系。",
+      "通过舞台感、视觉母题与文化记忆强化叙事张力。",
+      "适合作为文化展示类作品在网站中的重要补充。",
+    ],
+    gallery: [
+      "/projects/qin-tu-jiu-qiang/cover.webp",
+      "/projects/qin-tu-jiu-qiang/detail-1.webp",
+      "/projects/qin-tu-jiu-qiang/detail-2.webp",
+    ],
+  },
+  "yu-le-kong-jian": {
+    title: "娱乐空间",
+    subtitle: "公共娱乐 / 场景体验",
+    portfolioHref: "/portfolio/yu-le-kong-jian",
+    keywords: ["公共娱乐", "体验场景", "空间功能"],
+    heroImage: "/projects/yu-le-kong-jian/cover.jpg",
+    overview:
+      "《娱乐空间》聚焦更贴近现实使用场景的公共娱乐类空间表达，用于补充作品集中相对更强调功能应用与体验组织的方向。当前页面已承接真实图像，并可继续作为后续深化场景逻辑的重要基础。",
+    highlights: [
+      "补足现实娱乐与公共体验类场景方向。",
+      "强调功能组织、体验节奏与场景应用的结合。",
+      "适合作为现实感更强的空间案例补充网站结构。",
+    ],
+    gallery: [
+      "/projects/yu-le-kong-jian/cover.jpg",
+      "/projects/yu-le-kong-jian/detail-1.jpg",
+      "/projects/yu-le-kong-jian/detail-2.jpg",
     ],
   },
 } as const;
@@ -108,8 +188,10 @@ export default async function ProjectDetail({
 
       <section className="mx-auto max-w-7xl px-6 py-14 sm:px-10 lg:px-16 lg:py-18">
         <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-          <div className="relative aspect-[16/10] overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)] shadow-[0_24px_80px_rgba(26,24,21,0.12)]">
-            <Image src={project.heroImage} alt={`${project.title}主图`} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-cover" />
+          <div className="overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)] p-4 shadow-[0_24px_80px_rgba(26,24,21,0.12)]">
+            <div className="project-hero-frame relative">
+              <Image src={project.heroImage} alt={`${project.title}主图`} fill sizes="(max-width: 1024px) 100vw, 60vw" className="object-contain p-2" />
+            </div>
           </div>
           <div className="space-y-6">
             <div className="space-y-3">
@@ -118,6 +200,15 @@ export default async function ProjectDetail({
               <p className="text-lg text-[var(--color-accent-deep)]">{project.subtitle}</p>
             </div>
             <p className="text-base leading-8 text-[var(--color-copy)]">{project.overview}</p>
+            {project.portfolioHref ? (
+              <Link
+                href={project.portfolioHref}
+                className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
+              >
+                返回所属作品集
+                <span aria-hidden="true">→</span>
+              </Link>
+            ) : null}
             <div className="flex flex-wrap gap-2">
               {project.keywords.map((keyword) => (
                 <span
@@ -158,18 +249,20 @@ export default async function ProjectDetail({
         </div>
         <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {project.gallery.map((image, index) => (
-            <div
+            <figure
               key={image}
-              className="relative aspect-[4/3] overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-[var(--color-muted)] shadow-[0_18px_44px_rgba(26,24,21,0.08)]"
+              className="overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-[var(--color-muted)] p-3 shadow-[0_18px_44px_rgba(26,24,21,0.08)]"
             >
-              <Image
-                src={image}
-                alt={`${project.title}图像 ${index + 1}`}
-                fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                className="object-cover"
-              />
-            </div>
+              <div className="project-gallery-frame relative">
+                <Image
+                  src={image}
+                  alt={`${project.title}图像 ${index + 1}`}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
+                  className="object-contain p-2"
+                />
+              </div>
+            </figure>
           ))}
         </div>
       </section>
@@ -179,21 +272,27 @@ export default async function ProjectDetail({
           <div className="space-y-3">
             <p className="section-kicker">继续浏览</p>
             <p className="max-w-2xl text-sm leading-7 text-[var(--color-copy)]">
-              当前项目详情页为第一轮接入版本，后续将继续补充更多过程图、展板资料与项目总结内容。
+              当前项目详情页已经覆盖 8 个作品方向，并将继续在过程图、展板资料与项目总结说明层面逐步深化内容。
             </p>
           </div>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/"
+              href="/portfolio"
               className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
             >
-              返回首页
+              返回总作品集页
             </Link>
             <Link
-              href="/#projects"
+              href="/projects"
+              className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
+            >
+              查看项目总览
+            </Link>
+            <Link
+              href="/resume"
               className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-charcoal)] uppercase transition hover:brightness-105"
             >
-              查看更多项目
+              查看简历页
             </Link>
           </div>
         </div>

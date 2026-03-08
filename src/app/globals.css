@@ -72,3 +72,22 @@ body {
 a {
   text-decoration: none;
 }
+
+.project-preview-frame {
+  position: relative;
+  min-height: 11rem;
+}
+
+.project-preview-frame--primary {
+  min-height: 15rem;
+}
+
+.project-hero-frame {
+  position: relative;
+  min-height: clamp(20rem, 55vw, 38rem);
+}
+
+.project-gallery-frame {
+  position: relative;
+  min-height: clamp(15rem, 36vw, 28rem);
+}
