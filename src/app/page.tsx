@@ -1,65 +1,337 @@
-import Image from "next/image";
+const featuredProjects = [
+  {
+    title: "道隐无名",
+    type: "文化民宿 / 空间改造",
+    tags: ["道家文化", "静修空间", "木石光影"],
+    summary:
+      "以道家“天人合一”为精神原型，通过木、石、水、光影构建具有静修气质的文化民宿空间。",
+  },
+  {
+    title: "尘埃之上",
+    type: "未来生态 / 概念居住",
+    tags: ["异星居住", "四季系统", "精神缓冲带"],
+    summary:
+      "面向火星极端环境的生态居住系统构想，关注生存技术、心理慰藉与长期社区发展的复合命题。",
+  },
+  {
+    title: "觅踪",
+    type: "零售体验 / 主题空间",
+    tags: ["丝路转译", "二次元零售", "文化体验"],
+    summary:
+      "以“丝路新生，次元织梦”为主题，将地方文脉与青年消费文化转译为空间体验路径。",
+  },
+  {
+    title: "燃梦立方",
+    type: "共享办公 / 商业空间",
+    tags: ["校园创业", "立方秩序", "红色焦点"],
+    summary:
+      "围绕共享办公场景建立开放、互助、交流并存的空间秩序，以立方元素形成统一视觉语言。",
+  },
+];
+
+const allProjects = [
+  "道隐无名",
+  "尘埃之上",
+  "觅踪",
+  "燃梦立方",
+  "秦土旧腔",
+  "岐黄养生轩",
+  "娱乐空间",
+  "家具设计",
+];
+
+const capabilities = [
+  {
+    title: "空间叙事",
+    description: "从概念原型、情绪氛围到空间路径，建立完整的阅读和体验逻辑。",
+  },
+  {
+    title: "文化转译",
+    description: "将道家、丝路、戏曲、中医等文化母题转化为空间语言，而不是停留在符号层面。",
+  },
+  {
+    title: "视觉表达",
+    description: "结合 3ds Max、V-Ray、Blender、PS 等工具完成高质量效果图与空间表达。",
+  },
+  {
+    title: "AI 工作流",
+    description: "在概念发散、风格测试和表达迭代中引入 AIGC 与 ComfyUI，提升创意效率。",
+  },
+];
+
+const awards = [
+  {
+    title: "全国大学生数字媒体科技作品及创意竞赛",
+    level: "国赛三等奖",
+    project: "燃梦立方",
+  },
+  {
+    title: "东方设计奖全国高校创新设计大赛",
+    level: "国赛三等奖",
+    project: "秦土旧腔",
+  },
+  {
+    title: "“华夏奖”文化艺术设计大赛",
+    level: "优秀奖",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+    <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
+      <section className="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top,#2a241e_0%,#151311_42%,#0d0c0b_100%)] text-white">
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,10,10,0.86)_0%,rgba(10,10,10,0.58)_35%,rgba(10,10,10,0.22)_65%,rgba(10,10,10,0.1)_100%)]" />
+        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-between px-6 py-8 sm:px-10 lg:px-16">
+          <header className="flex flex-col gap-4 border-b border-white/10 pb-4 text-sm tracking-[0.22em] text-white/72 uppercase sm:flex-row sm:items-center sm:justify-between">
+            <span className="font-medium">安翌</span>
+            <nav className="flex flex-wrap gap-x-4 gap-y-2 text-xs sm:gap-6 sm:text-sm">
+              <a href="#projects" className="transition hover:text-white">
+                作品
+              </a>
+              <a href="#about" className="transition hover:text-white">
+                关于
+              </a>
+              <a href="#resume" className="transition hover:text-white">
+                简历
+              </a>
+              <a href="#contact" className="transition hover:text-white">
+                联系
+              </a>
+            </nav>
+          </header>
+
+          <div className="grid gap-12 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:py-20">
+            <div className="max-w-3xl space-y-8">
+              <div className="space-y-4">
+                <p className="text-sm tracking-[0.28em] text-[var(--color-accent)] uppercase">
+                  环境设计作品集
+                </p>
+                <h1 className="font-serif-display max-w-4xl text-5xl leading-[1.08] font-semibold tracking-[0.02em] sm:text-6xl lg:text-7xl">
+                  安翌｜环境设计作品集
+                </h1>
+                <p className="max-w-2xl text-base leading-8 text-white/76 sm:text-lg">
+                  聚焦空间叙事、文化主题转译与 AI 辅助设计表达，围绕求职导向构建一套兼具视觉冲击、专业逻辑与信息清晰度的个人作品网站。
+                </p>
+              </div>
+
+              <div className="flex flex-col gap-4 sm:flex-row">
+                <a
+                  href="#projects"
+                  className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium tracking-[0.18em] text-[var(--color-charcoal)] uppercase transition hover:brightness-105"
+                >
+                  查看作品
+                </a>
+                <a
+                  href="#resume"
+                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium tracking-[0.18em] text-white uppercase transition hover:border-white/45 hover:bg-white/6"
+                >
+                  查看简历
+                </a>
+              </div>
+            </div>
+
+            <div className="space-y-6 rounded-[2rem] border border-white/10 bg-white/6 p-6 backdrop-blur-sm">
+              <div className="space-y-2 border-b border-white/10 pb-5">
+                <p className="text-xs tracking-[0.24em] text-white/56 uppercase">主打项目</p>
+                <h2 className="font-serif-display text-3xl font-semibold">尘埃之上</h2>
+              </div>
+              <p className="text-sm leading-7 text-white/74">
+                该项目从火星极端环境切入，讨论生态居住、自给系统与异星生活中的精神缓冲机制。它非常适合作为首页主视觉，用来建立你的辨识度与世界观表达能力。
+              </p>
+              <dl className="grid gap-4 text-sm text-white/74 sm:grid-cols-3">
+                <div>
+                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">项目方向</dt>
+                  <dd>未来生态</dd>
+                </div>
+                <div>
+                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">核心关键词</dt>
+                  <dd>四季系统</dd>
+                </div>
+                <div>
+                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">项目定位</dt>
+                  <dd>概念居住</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
+        <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl space-y-4">
+            <p className="section-kicker">精选项目</p>
+            <h2 className="section-title">以项目为核心，建立你的专业形象与求职记忆点</h2>
+            <p className="section-copy">
+              第一版首页优先展示最能代表你能力结构的四个项目，分别对应文化转译、概念叙事、体验空间与商业办公逻辑。
+            </p>
+          </div>
+          <a href="#contact" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-80">
+            联系我
+          </a>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          {featuredProjects.map((project) => (
+            <article
+              key={project.title}
+              className="group flex h-full flex-col rounded-[1.8rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_24px_70px_rgba(26,24,21,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_84px_rgba(26,24,21,0.1)]"
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+              <div className="mb-6 aspect-[4/3] rounded-[1.35rem] bg-[linear-gradient(135deg,#f2ece2_0%,#d1b17b_35%,#463a2b_100%)]" />
+              <div className="space-y-4">
+                <div>
+                  <p className="mb-2 text-xs tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">{project.type}</p>
+                  <h3 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{project.title}</h3>
+                </div>
+                <p className="text-sm leading-7 text-[var(--color-copy)]">{project.summary}</p>
+                <div className="flex flex-wrap gap-2 pt-2">
+                  {project.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded-full border border-[var(--color-line)] bg-[var(--color-muted)] px-3 py-1 text-[11px] tracking-[0.16em] text-[var(--color-muted-ink)] uppercase"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section id="about" className="border-y border-[var(--color-line)] bg-[var(--color-muted)]/50">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-24 sm:px-10 lg:grid-cols-[0.75fr_1.25fr] lg:px-16">
+          <div className="space-y-4">
+            <p className="section-kicker">能力摘要</p>
+            <h2 className="section-title">用结构化方式说明你会什么，而不是把首页做成简历截图</h2>
+            <p className="section-copy">
+              这一模块用于快速建立你的方法感与能力边界，让招聘方在看图之外，也能迅速判断你的工作方式和表达强项。
+            </p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {capabilities.map((item) => (
+              <article
+                key={item.title}
+                className="rounded-[1.65rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_40px_rgba(26,24,21,0.04)]"
+              >
+                <p className="mb-4 text-xs tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">能力方向</p>
+                <h3 className="font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
+                <p className="mt-4 text-sm leading-7 text-[var(--color-copy)]">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
+        <div className="mb-12 max-w-2xl space-y-4">
+          <p className="section-kicker">荣誉摘要</p>
+          <h2 className="section-title">让奖项与项目建立关联，强化可信度，而不打断整体审美节奏</h2>
+          <p className="section-copy">
+            首页仅展示核心荣誉摘要，详细证书与完整简历内容将在后续的 Resume 页面与荣誉详情中承接。
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+        <div className="grid gap-5 xl:grid-cols-3">
+          {awards.map((award) => (
+            <article
+              key={award.title}
+              className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_36px_rgba(26,24,21,0.04)]"
+            >
+              <p className="mb-4 text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">荣誉奖项</p>
+              <h3 className="font-serif-display text-2xl font-semibold leading-tight text-[var(--color-ink)]">
+                {award.title}
+              </h3>
+              <div className="mt-6 space-y-3 text-sm text-[var(--color-copy)]">
+                <p>
+                  <span className="text-[var(--color-muted-ink)]">获奖级别：</span>
+                  {award.level}
+                </p>
+                {award.project ? (
+                  <p>
+                    <span className="text-[var(--color-muted-ink)]">对应项目：</span>
+                    {award.project}
+                  </p>
+                ) : null}
+              </div>
+            </article>
+          ))}
         </div>
-      </main>
-    </div>
+      </section>
+
+      <section id="resume" className="bg-[var(--color-charcoal)] text-[var(--color-paper)]">
+        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-24 sm:px-10 lg:grid-cols-[0.82fr_1.18fr] lg:px-16">
+          <div className="space-y-5">
+            <p className="text-xs tracking-[0.26em] text-[var(--color-accent)] uppercase">简历预览</p>
+            <h2 className="font-serif-display text-4xl leading-tight font-semibold sm:text-5xl">
+              简历页面将采用网页化结构，而不是整张图片平铺。
+            </h2>
+            <p className="text-sm leading-8 text-white/74 sm:text-base">
+              第一版将把教育背景、技能矩阵、实践经历、荣誉奖项与联系方式结构化展示，底部再保留原始简历预览与下载入口，兼顾专业度与阅读效率。
+            </p>
+          </div>
+
+          <div className="grid gap-5 rounded-[2rem] border border-white/10 bg-white/6 p-6 sm:grid-cols-2">
+            <div className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5">
+              <p className="text-xs tracking-[0.2em] text-white/54 uppercase">教育背景</p>
+              <h3 className="font-serif-display text-2xl font-semibold">烟台大学｜环境设计</h3>
+              <p className="text-sm leading-7 text-white/72">本科，预计 2026 年 7 月毕业，聚焦室内空间、商业空间与文化主题表达。</p>
+            </div>
+            <div className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5">
+              <p className="text-xs tracking-[0.2em] text-white/54 uppercase">技能矩阵</p>
+              <h3 className="font-serif-display text-2xl font-semibold">设计与 AI 工作流</h3>
+              <p className="text-sm leading-7 text-white/72">3ds Max、V-Ray、Blender、CAD、PS、AI、AIGC、ComfyUI。</p>
+            </div>
+            <div className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5">
+              <p className="text-xs tracking-[0.2em] text-white/54 uppercase">实践经历</p>
+              <h3 className="font-serif-display text-2xl font-semibold">项目与实践经历</h3>
+              <p className="text-sm leading-7 text-white/72">参与社区美育项目与演唱会布展工作，逐步积累面向真实场景的执行经验。</p>
+            </div>
+            <div className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5">
+              <p className="text-xs tracking-[0.2em] text-white/54 uppercase">后续计划</p>
+              <h3 className="font-serif-display text-2xl font-semibold">下一步接入</h3>
+              <p className="text-sm leading-7 text-white/72">后续将继续补入完整 Resume 页面、证书预览、原始简历图和 PDF 下载入口。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
+        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+          <div className="space-y-4">
+            <p className="section-kicker">全部项目</p>
+            <h2 className="section-title">完整作品目录将作为后续项目详情页入口继续展开</h2>
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {allProjects.map((project) => (
+            <span
+              key={project}
+              className="rounded-full border border-[var(--color-line)] bg-white px-4 py-2 text-sm text-[var(--color-copy)] shadow-[0_8px_18px_rgba(26,24,21,0.04)]"
+            >
+              {project}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <footer id="contact" className="border-t border-[var(--color-line)] bg-white">
+        <div className="mx-auto flex max-w-7xl flex-col gap-8 px-6 py-16 sm:px-10 lg:flex-row lg:items-end lg:justify-between lg:px-16">
+          <div className="space-y-4">
+            <p className="section-kicker">Contact</p>
+            <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">让作品、简历与联系路径在同一网站中闭环</h2>
+            <p className="max-w-2xl text-sm leading-8 text-[var(--color-copy)] sm:text-base">
+              下一阶段将继续接入独立的 Projects、About、Resume、Contact 页面，以及项目详情、证书预览和移动端优化，随后部署至 Vercel。
+            </p>
+          </div>
+          <div className="space-y-3 text-sm text-[var(--color-copy)]">
+            <p>邮箱：ay1839628583@outlook.com</p>
+            <p>电话：19712029262</p>
+            <p>方向：环境设计 / 室内设计 / 实习求职</p>
+          </div>
+        </div>
+      </footer>
+    </main>
   );
 }

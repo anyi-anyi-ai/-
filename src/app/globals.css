@@ -1,8 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #f5f0e7;
+  --color-muted: #ece5d8;
+  --color-line: rgba(90, 72, 48, 0.14);
+  --color-ink: #1e1a16;
+  --color-copy: #5a5147;
+  --color-muted-ink: #7a6a57;
+  --color-charcoal: #171412;
+  --color-accent: #d0af76;
+  --color-accent-deep: #8f6d39;
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
 @theme inline {
@@ -10,17 +19,56 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-serif-display: Georgia, "Times New Roman", "Source Han Serif SC", "Songti SC", serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
+  margin: 0;
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+::selection {
+  background: rgba(208, 175, 118, 0.32);
+  color: var(--color-ink);
+}
+
+.font-serif-display {
+  font-family: var(--font-serif-display);
+}
+
+.section-kicker {
+  color: var(--color-accent-deep);
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.section-title {
+  max-width: 48rem;
+  font-family: var(--font-serif-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.14;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+.section-copy {
+  max-width: 42rem;
+  font-size: 0.98rem;
+  line-height: 1.95;
+  color: var(--color-copy);
+}
+
+a {
+  text-decoration: none;
 }
