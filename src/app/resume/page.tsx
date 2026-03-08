@@ -105,7 +105,7 @@ export default function ResumePage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
-        <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_70px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="space-y-5">
             <p className="section-kicker">Resume</p>
             <h1 className="section-title">用网页化方式集中呈现教育背景、技能结构、实践经验与求职方向</h1>
@@ -159,7 +159,7 @@ export default function ResumePage() {
           {skillGroups.map((group) => (
             <article
               key={group.title}
-              className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_16px_36px_rgba(26,24,21,0.04)]"
+              className="ui-card rounded-[1.9rem] p-6"
             >
               <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">技能模块</p>
               <h3 className="mt-4 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{group.title}</h3>
@@ -204,7 +204,7 @@ export default function ResumePage() {
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
         <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
+          <div className="ui-card rounded-[2.2rem] bg-white p-8">
             <p className="section-kicker">代表项目</p>
             <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">让简历信息与真实项目互相支撑</h2>
             <p className="mt-4 text-sm leading-8 text-[var(--color-copy)]">
@@ -235,13 +235,21 @@ export default function ResumePage() {
                 </article>
               ))}
             </div>
-            <Link
-              href="/awards"
-              className="mt-6 inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
-            >
-              查看完整荣誉页面
-              <span aria-hidden="true">→</span>
-            </Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Link
+                href="/awards"
+                className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
+              >
+                查看完整荣誉页面
+                <span aria-hidden="true">→</span>
+              </Link>
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-muted-ink)] uppercase transition hover:text-[var(--color-accent-deep)]"
+              >
+                继续浏览作品集
+              </Link>
+            </div>
           </div>
         </div>
       </section>

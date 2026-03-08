@@ -36,7 +36,7 @@ export default function PortfolioIndexPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
-        <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_70px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="space-y-5">
             <p className="section-kicker">Portfolio Hub</p>
             <h1 className="section-title">总作品集分页负责统一分发 8 个作品集入口，而不是只展示零散项目链接</h1>
@@ -90,7 +90,7 @@ export default function PortfolioIndexPage() {
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           {pageRoles.map((item, index) => (
-            <article key={item} className="rounded-[1.6rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_16px_36px_rgba(26,24,21,0.04)]">
+            <article key={item} className="ui-card rounded-[1.8rem] p-6">
               <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">分工 0{index + 1}</p>
               <p className="mt-4 text-sm leading-8 text-[var(--color-copy)]">{item}</p>
             </article>
@@ -109,7 +109,7 @@ export default function PortfolioIndexPage() {
               <Link
                 key={item.slug}
                 href={`/portfolio/${item.slug}`}
-                className="group rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_16px_36px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(26,24,21,0.08)]"
+                className="ui-card group rounded-[1.9rem] p-6"
               >
                 <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{item.status}</p>
                 <h3 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{item.title}</h3>

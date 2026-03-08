@@ -105,7 +105,7 @@ export default function ProjectsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
-        <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_70px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="space-y-5">
             <p className="section-kicker">Projects</p>
             <h1 className="section-title">项目总览页用于集中查看已接入详情页的作品，而总作品集页负责作品范围分发</h1>
@@ -165,24 +165,17 @@ export default function ProjectsPage() {
                 {group.items.map((project) => (
                   <article
                     key={project.title}
-                    className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_14px_32px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_42px_rgba(26,24,21,0.08)]"
+                    className="ui-card rounded-[1.9rem] p-6"
                   >
                     <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{project.status}</p>
                     <h3 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{project.title}</h3>
                     <p className="mt-3 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase">{project.type}</p>
                     <p className="mt-4 text-sm leading-7 text-[var(--color-copy)]">{project.summary}</p>
                     <div className="mt-5 flex flex-wrap gap-3">
-                      <Link
-                        href={project.href}
-                        className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
-                      >
+                      <Link href={project.href} className="ui-button-light">
                         查看详情
-                        <span aria-hidden="true">→</span>
                       </Link>
-                      <Link
-                        href={project.portfolioHref}
-                        className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-muted-ink)] uppercase transition hover:text-[var(--color-accent-deep)]"
-                      >
+                      <Link href={project.portfolioHref} className="ui-button-light">
                         查看作品集
                       </Link>
                     </div>

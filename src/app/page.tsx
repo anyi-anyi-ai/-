@@ -77,10 +77,10 @@ const allProjects = [
   { title: "尘埃之上", href: "/projects/chen-ai-zhi-shang", active: true, status: "已上线详情" },
   { title: "觅踪", href: "/projects/mi-zong", active: true, status: "已上线详情" },
   { title: "燃梦立方", href: "/projects/ran-meng-li-fang", active: true, status: "已上线详情" },
-  { title: "秦土旧腔", href: "#", active: false, status: "待接入" },
-  { title: "岐黄养生轩", href: "#", active: false, status: "待接入" },
-  { title: "娱乐空间", href: "#", active: false, status: "待接入" },
-  { title: "家具设计", href: "#", active: false, status: "待接入" },
+  { title: "秦土旧腔", href: "/projects/qin-tu-jiu-qiang", active: true, status: "已上线详情" },
+  { title: "岐黄养生轩", href: "/projects/qi-huang-yang-sheng-xuan", active: true, status: "已上线详情" },
+  { title: "娱乐空间", href: "/projects/yu-le-kong-jian", active: true, status: "已上线详情" },
+  { title: "家具设计", href: "/projects/jia-ju-she-ji", active: true, status: "已上线详情" },
 ];
 
 const capabilities = [
@@ -184,10 +184,11 @@ const workflowSteps = [
 ];
 
 const browseGuide = [
-  "先看首页首屏与能力摘要，快速判断我的设计方向与表达方式。",
-  "再进入精选项目详情页，查看每个项目的图像、概念与空间逻辑。",
-  "最后回到简历摘要与联系模块，完成求职信息与沟通路径确认。",
+  "先看首页首屏与能力摘要，快速了解我的设计方向与表达方式。",
+  "再进入总作品集页或项目总览页，浏览目前整理完成的 8 个作品，建立对我作品类型与风格的整体印象。",
+  "最后回到简历摘要、荣誉页与联系模块，继续了解我的背景经历与求职信息。",
 ];
+
 
 const profileStats = [
   { value: "8", label: "作品方向储备" },
@@ -214,6 +215,8 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <section className="hero-shell relative isolate overflow-hidden text-white">
+        <div className="glow-orb top-[10%] left-[8%] h-40 w-40 opacity-70" />
+        <div className="glow-orb right-[10%] bottom-[14%] h-56 w-56 opacity-60" />
         <Image
           src="/projects/chen-ai-zhi-shang/cover.webp"
           alt="尘埃之上首页首屏主图"
@@ -292,34 +295,29 @@ export default function Home() {
               </div>
 
               <div className="flex flex-col gap-4 sm:flex-row">
-                <a
-                  href="#projects"
-                  className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-6 py-3 text-sm font-medium tracking-[0.18em] text-[var(--color-charcoal)] uppercase transition hover:brightness-105"
-                >
+                <a href="#projects" className="ui-button-primary">
                   查看精选作品
                 </a>
-                <Link
-                  href="/resume"
-                  className="inline-flex items-center justify-center rounded-full border border-white/20 px-6 py-3 text-sm font-medium tracking-[0.18em] text-white uppercase transition hover:border-white/45 hover:bg-white/6"
-                >
+                <Link href="/resume" className="ui-button-secondary text-white">
                   查看简历页
                 </Link>
               </div>
 
-              <div className="rounded-[1.5rem] border border-white/10 bg-black/22 p-5 text-sm leading-7 text-white/74">
-                这个首页被设计成一个“先快速判断、再深入浏览”的入口页：先看定位与方法，再看项目，再决定是否进一步联系。
+              <div className="ui-panel rounded-[1.7rem] bg-black/24 p-5 text-sm leading-7 text-white/78">
+                这个首页更像一块作品展陈前言：先了解我的设计定位与方法，再进入作品页细看项目内容，最后再判断是否适合进一步沟通或合作。
               </div>
             </div>
 
-            <div className="space-y-6 rounded-[2rem] border border-white/10 bg-white/8 p-6 backdrop-blur-md">
+            <div className="ui-panel space-y-6 rounded-[2.2rem] border-white/10 bg-white/8 p-6 backdrop-blur-md">
               <div className="space-y-2 border-b border-white/10 pb-5">
-                <p className="text-xs tracking-[0.24em] text-white/56 uppercase">首页主打项目</p>
+                <p className="text-xs tracking-[0.28em] text-white/56 uppercase">首页主打项目</p>
                 <h2 className="font-serif-display text-3xl font-semibold">尘埃之上</h2>
-                <p className="text-sm tracking-[0.16em] text-[var(--color-accent)] uppercase">未来生态 / 概念居住</p>
+                <p className="text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase">未来生态 / 概念居住</p>
               </div>
-              <p className="text-sm leading-7 text-white/78">
+              <p className="text-sm leading-7 text-white/82">
                 项目从火星极端环境切入，尝试构建兼具生存技术、生态系统与精神慰藉的未来居住原型，用强叙事性视觉建立首页第一记忆点。
               </p>
+              <div className="editorial-divider" />
               <dl className="grid gap-4 text-sm text-white/74 sm:grid-cols-3">
                 <div>
                   <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">项目方向</dt>
@@ -334,15 +332,11 @@ export default function Home() {
                   <dd>概念叙事与系统表达</dd>
                 </div>
               </dl>
-              <div className="rounded-[1.4rem] border border-white/10 bg-black/18 p-4 text-sm leading-7 text-white/74">
-                它承担首页的第一视觉记忆点，也代表你在“概念构建—图像表达—项目叙述”三方面的综合能力。
+              <div className="rounded-[1.5rem] border border-white/10 bg-black/22 p-4 text-sm leading-7 text-white/74">
+                它承担首页的第一视觉记忆点，也代表我在“概念构建—图像表达—项目叙述”三方面的综合能力。
               </div>
-              <Link
-                href="/projects/chen-ai-zhi-shang"
-                className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent)] uppercase transition hover:text-white"
-              >
+              <Link href="/projects/chen-ai-zhi-shang" className="ui-button-secondary w-full sm:w-fit text-white">
                 查看项目
-                <span aria-hidden="true">→</span>
               </Link>
             </div>
           </div>
@@ -377,7 +371,7 @@ export default function Home() {
             {featuredProjects.map((project) => (
               <article
                 key={project.title}
-                className="group flex h-full flex-col overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-white shadow-[0_24px_70px_rgba(26,24,21,0.06)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_30px_84px_rgba(26,24,21,0.1)]"
+                className="ui-card group flex h-full flex-col overflow-hidden rounded-[1.9rem]"
               >
                 <div className="grid gap-2 border-b border-[var(--color-line)] bg-[var(--color-muted)]/30 p-3">
                   {project.previewImages.map((previewImage, index) => (
@@ -575,10 +569,10 @@ export default function Home() {
             <p className="section-kicker">全部项目</p>
             <h2 className="section-title">先建立重点项目入口，再逐步扩展为完整作品目录</h2>
             <p className="section-copy">
-              当前优先上线已有详情页的四个项目，后续将继续把秦土旧腔、岐黄养生轩、娱乐空间与家具设计按统一详情页结构逐步接入网站。
+              目前这 8 个作品已经整理为完整的线上展示内容，你可以从项目总览页快速进入详情，也可以先通过总作品集页整体浏览，了解我的设计关注点与表达方式。
             </p>
           </div>
-          <Link href="/projects" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-80">
+          <Link href="/projects" className="ui-button-light">
             进入项目总览
           </Link>
         </div>

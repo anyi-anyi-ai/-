@@ -65,7 +65,7 @@ export default function AwardsPage() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
-        <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_70px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
+        <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
           <div className="space-y-5">
             <p className="section-kicker">Awards</p>
             <h1 className="section-title">把首页中的荣誉摘要展开为可用于建立可信度的独立说明页面</h1>
@@ -94,7 +94,7 @@ export default function AwardsPage() {
             {awardHighlights.map((award) => (
               <article
                 key={award.title}
-                className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_40px_rgba(26,24,21,0.05)]"
+                className="ui-card rounded-[2rem] p-6"
               >
                 <div className="flex flex-wrap items-center gap-3 text-xs tracking-[0.18em] uppercase">
                   <span className="rounded-full bg-[var(--color-muted)] px-3 py-1 text-[var(--color-accent-deep)]">{award.level}</span>
@@ -150,9 +150,15 @@ export default function AwardsPage() {
           <div className="grid gap-6 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/22 p-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-4">
               <p className="section-kicker">继续浏览</p>
-              <h2 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">如果需要完整判断背景与能力，可以继续查看项目总览页和简历页</h2>
+              <h2 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">如果你想进一步了解我的项目经历与个人背景，可以继续浏览作品集、项目总览和简历页面</h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row">
+              <Link
+                href="/portfolio"
+                className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
+              >
+                查看总作品集
+              </Link>
               <Link
                 href="/projects"
                 className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
