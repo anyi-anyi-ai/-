@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioItems, featuredItems, awardItems } from "@/data/portfolio-data";
+import Reveal from "@/components/Reveal";
 
 const allProjects = portfolioItems.map(item => ({
   title: item.title,
@@ -120,7 +121,7 @@ const closingNotes = [
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
       <section className="hero-shell relative isolate overflow-hidden text-white">
         <div className="glow-orb top-[10%] left-[8%] h-40 w-40 opacity-70" />
         <div className="glow-orb right-[10%] bottom-[14%] h-56 w-56 opacity-60" />
@@ -136,7 +137,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(208,175,118,0.2)_0%,rgba(208,175,118,0)_36%)]" />
 
         <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-between px-6 py-8 sm:px-10 lg:px-16">
-          <header className="flex flex-col gap-4 border-b border-white/10 pb-4 text-sm tracking-[0.22em] text-white/72 uppercase sm:flex-row sm:items-center sm:justify-between">
+          <header className="animate-reveal stagger-1 flex flex-col gap-4 border-b border-white/10 pb-4 text-sm tracking-[0.22em] text-white/72 uppercase sm:flex-row sm:items-center sm:justify-between">
             <span className="font-medium">安翌</span>
             <nav className="flex flex-wrap gap-x-4 gap-y-2 text-xs sm:gap-6 sm:text-sm">
               <a href="#projects" className="transition hover:text-white">
@@ -165,7 +166,7 @@ export default function Home() {
 
           <div className="grid gap-12 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:py-20">
             <div className="max-w-3xl space-y-8">
-              <div className="space-y-4">
+              <div className="animate-reveal stagger-2 space-y-4">
                 <p className="text-sm tracking-[0.28em] text-[var(--color-accent)] uppercase">
                   Environment Design Portfolio
                 </p>
@@ -177,7 +178,7 @@ export default function Home() {
                 </p>
               </div>
 
-              <div className="grid gap-4 text-sm text-white/78 sm:grid-cols-3">
+              <div className="animate-reveal stagger-3 grid gap-4 text-sm text-white/78 sm:grid-cols-3">
                 <div className="rounded-[1.4rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
                   <p className="text-[11px] tracking-[0.18em] text-white/50 uppercase">专业方向</p>
                   <p className="mt-2 text-base text-white">环境设计 / 室内空间</p>
@@ -192,7 +193,7 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-4">
+              <div className="animate-reveal stagger-4 grid gap-4 sm:grid-cols-4">
                 {profileStats.map((item) => (
                   <div key={item.label} className="rounded-[1.3rem] border border-white/10 bg-black/18 px-4 py-4 text-center backdrop-blur-sm">
                     <p className="font-serif-display text-3xl font-semibold text-white">{item.value}</p>
@@ -201,7 +202,7 @@ export default function Home() {
                 ))}
               </div>
 
-              <div className="flex flex-col gap-4 sm:flex-row">
+              <div className="animate-reveal stagger-4 flex flex-col gap-4 sm:flex-row">
                 <a href="#projects" className="ui-button-primary">
                   查看精选作品
                 </a>
@@ -210,12 +211,12 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="ui-panel rounded-[1.7rem] bg-black/24 p-5 text-sm leading-7 text-white/78">
-                这个首页更像一块作品展陈前言：先了解我的设计定位与方法，再进入作品页细看项目内容，最后再判断是否适合进一步沟通或合作。
+              <div className="animate-reveal stagger-5 ui-panel rounded-[1.7rem] bg-black/24 p-5 text-sm leading-7 text-white/78">
+                这个首页更像一块作品展陈前言：先了解我的设计定位与方法，再进入作品页细看项目内容，最后再判断是否适合进一步沟通 or 合作。
               </div>
             </div>
 
-            <div className="ui-panel space-y-6 rounded-[2.2rem] border-white/10 bg-white/8 p-6 backdrop-blur-md">
+            <div className="animate-reveal stagger-5 ui-panel space-y-6 rounded-[2.2rem] border-white/10 bg-white/8 p-6 backdrop-blur-md">
               <div className="space-y-2 border-b border-white/10 pb-5">
                 <p className="text-xs tracking-[0.28em] text-white/56 uppercase">首页主打项目</p>
                 <h2 className="font-serif-display text-3xl font-semibold">尘埃之上</h2>
@@ -251,6 +252,7 @@ export default function Home() {
       </section>
 
       <section id="projects" className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
+        <Reveal>
           <div className="mb-12 flex flex-col gap-5 md:flex-row md:items-end md:justify-between">
             <div className="max-w-3xl space-y-4">
               <p className="section-kicker">精选项目</p>
@@ -273,12 +275,13 @@ export default function Home() {
               四个项目分别对应文化叙事、未来概念、青年体验与共享办公四种不同任务类型，既能体现审美气质，也能体现你在概念、功能、场景和图像表达上的综合能力。
             </p>
           </div>
+        </Reveal>
 
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {featuredItems.map((project) => (
+            {featuredItems.map((project, index) => (
+              <Reveal key={project.title} delay={index * 100}>
               <article
-                key={project.title}
-                className="ui-card group flex h-full flex-col overflow-hidden rounded-[1.9rem]"
+                className={`ui-card group flex h-full flex-col overflow-hidden rounded-[1.9rem]`}
               >
                 <div className="grid gap-2 border-b border-[var(--color-line)] bg-[var(--color-muted)]/30 p-3">
                   {[project.heroImage, ...project.gallery.slice(0, 2)].map((previewImage, index) => (
@@ -333,50 +336,56 @@ export default function Home() {
                   </div>
                 </div>
               </article>
+              </Reveal>
             ))}
           </div>
       </section>
 
       <section id="about" className="border-y border-[var(--color-line)] bg-[var(--color-muted)]/50">
         <div className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
-          <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="space-y-5">
-              <p className="section-kicker">个人方法</p>
-              <h2 className="section-title">我更关注项目如何被阅读，而不只是最后呈现出一张效果图</h2>
-              <p className="section-copy">
-                在环境设计学习与项目表达中，我更重视"概念如何建立、空间如何组织、图像如何传达"这一整条链路。网站首页因此不仅展示结果，也刻意说明方法，帮助浏览者理解每个作品背后的判断逻辑。
-              </p>
+          <Reveal>
+            <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_24px_60px_rgba(26,24,21,0.05)] lg:grid-cols-[0.92fr_1.08fr]">
+              <div className="space-y-5">
+                <p className="section-kicker">个人方法</p>
+                <h2 className="section-title">我更关注项目如何被阅读，而不只是最后呈现出一张效果图</h2>
+                <p className="section-copy">
+                  在环境设计学习与项目表达中，我更重视"概念如何建立、空间如何组织、图像如何传达"这一整条链路。网站首页因此不仅展示结果，也刻意说明方法，帮助浏览者理解每个作品背后的判断逻辑。
+                </p>
+              </div>
+              <div className="grid gap-4 md:grid-cols-3">
+                {workflowSteps.map((item, index) => (
+                  <div key={item.step} className={`animate-reveal stagger-${index + 1}`}>
+                    <article className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5">
+                      <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">Step {item.step}</p>
+                      <h3 className="mt-3 font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
+                      <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{item.description}</p>
+                    </article>
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-4 md:grid-cols-3">
-              {workflowSteps.map((item) => (
-                <article key={item.step} className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5">
-                  <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">Step {item.step}</p>
-                  <h3 className="mt-3 font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{item.description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
+          </Reveal>
 
           <div className="mt-10 grid gap-10 lg:grid-cols-[0.75fr_1.25fr]">
-            <div className="space-y-4">
+            <Reveal className="space-y-4">
               <p className="section-kicker">能力摘要</p>
               <h2 className="section-title">让招聘方先看懂你的方法，再决定继续深入浏览哪些项目</h2>
               <p className="section-copy">
                 这一模块不只是罗列软件和关键词，而是快速说明你的设计方法、表达优势与适配项目类型，帮助浏览者在看图之外理解你的工作方式。
               </p>
-            </div>
+            </Reveal>
             <div className="grid gap-5 md:grid-cols-2">
-              {capabilities.map((item) => (
-                <article
-                  key={item.title}
-                  className="rounded-[1.65rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_40px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(26,24,21,0.08)]"
-                >
-                  <p className="mb-4 text-xs tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">能力方向</p>
-                  <h3 className="font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-7 text-[var(--color-copy)]">{item.description}</p>
-                  <p className="mt-4 border-t border-[var(--color-line)] pt-4 text-sm leading-7 text-[var(--color-muted-ink)]">{item.evidence}</p>
-                </article>
+              {capabilities.map((item, index) => (
+                <Reveal key={item.title} delay={index * 100}>
+                  <article
+                    className="rounded-[1.65rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_40px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_48px_rgba(26,24,21,0.08)]"
+                  >
+                    <p className="mb-4 text-xs tracking-[0.22em] text-[var(--color-accent-deep)] uppercase">能力方向</p>
+                    <h3 className="font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
+                    <p className="mt-4 text-sm leading-7 text-[var(--color-copy)]">{item.description}</p>
+                    <p className="mt-4 border-t border-[var(--color-line)] pt-4 text-sm leading-7 text-[var(--color-muted-ink)]">{item.evidence}</p>
+                  </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -384,64 +393,69 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-        <div className="rounded-[2rem] border border-[var(--color-line)] bg-white px-6 py-8 shadow-[0_18px_38px_rgba(26,24,21,0.05)] lg:px-8">
-          <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-            <div className="space-y-4">
-              <p className="section-kicker">求职定位</p>
-              <h2 className="font-serif-display text-4xl font-semibold leading-tight text-[var(--color-ink)]">当前网站重点服务于环境设计与室内设计方向的求职展示</h2>
+        <Reveal>
+          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white px-6 py-8 shadow-[0_18px_38px_rgba(26,24,21,0.05)] lg:px-8">
+            <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+              <div className="space-y-4">
+                <p className="section-kicker">求职定位</p>
+                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-[var(--color-ink)]">当前网站重点服务于环境设计与室内设计方向的求职展示</h2>
+              </div>
+              <p className="text-sm leading-8 text-[var(--color-copy)] sm:text-base">
+                首页的任务不是替代完整作品集，而是先帮助招聘方在较短时间内完成"判断方向、筛选项目、确认沟通意愿"三步。后续更深入的项目内容，会在各个详情页里逐步展开。
+              </p>
             </div>
-            <p className="text-sm leading-8 text-[var(--color-copy)] sm:text-base">
-              首页的任务不是替代完整作品集，而是先帮助招聘方在较短时间内完成"判断方向、筛选项目、确认沟通意愿"三步。后续更深入的项目内容，会在各个详情页里逐步展开。
-            </p>
           </div>
-        </div>
+        </Reveal>
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
-        <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-3xl space-y-4">
-            <p className="section-kicker">荣誉摘要</p>
-            <h2 className="section-title">用奖项与阶段成果建立可信度，让项目表达具备更明确的求职支撑</h2>
-            <p className="section-copy">
-              首页只展示最核心的荣誉摘要，用来证明作品表达与设计完成度已经获得真实竞赛结果支撑，后续再在独立简历页中承接证书与完整说明。
-            </p>
+        <Reveal>
+          <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+            <div className="max-w-3xl space-y-4">
+              <p className="section-kicker">荣誉摘要</p>
+              <h2 className="section-title">用奖项与阶段成果建立可信度，让项目表达具备更明确的求职支撑</h2>
+              <p className="section-copy">
+                首页只展示最核心的荣誉摘要，用来证明作品表达与设计完成度已经获得真实竞赛结果支撑，后续再在独立简历页中承接证书与完整说明。
+              </p>
+            </div>
+            <Link href="/awards" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-80">
+              进入荣誉页
+            </Link>
           </div>
-          <Link href="/awards" className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-80">
-            进入荣誉页
-          </Link>
-        </div>
+        </Reveal>
 
         <div className="grid gap-5 xl:grid-cols-3">
-          {awardItems.map((award) => (
-            <article
-              key={award.title}
-              className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_36px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_rgba(26,24,21,0.08)]"
-            >
-              <p className="mb-4 text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">荣誉奖项</p>
-              <h3 className="font-serif-display text-2xl font-semibold leading-tight text-[var(--color-ink)]">
-                {award.title}
-              </h3>
-              <div className="mt-6 space-y-3 text-sm text-[var(--color-copy)]">
-                <p>
-                  <span className="text-[var(--color-muted-ink)]">获奖级别：</span>
-                  {award.level}
-                </p>
-                {award.project ? (
+          {awardItems.map((award, index) => (
+            <Reveal key={award.title} delay={index * 100}>
+              <article
+                className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_36px_rgba(26,24,21,0.04)] transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_22px_44px_rgba(26,24,21,0.08)]"
+              >
+                <p className="mb-4 text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">荣誉奖项</p>
+                <h3 className="font-serif-display text-2xl font-semibold leading-tight text-[var(--color-ink)]">
+                  {award.title}
+                </h3>
+                <div className="mt-6 space-y-3 text-sm text-[var(--color-copy)]">
                   <p>
-                    <span className="text-[var(--color-muted-ink)]">对应项目：</span>
-                    {award.project}
+                    <span className="text-[var(--color-muted-ink)]">获奖级别：</span>
+                    {award.level}
                   </p>
-                ) : null}
-                {award.note ? <p>{award.note}</p> : null}
-              </div>
-            </article>
+                  {award.project ? (
+                    <p>
+                      <span className="text-[var(--color-muted-ink)]">对应项目：</span>
+                      {award.project}
+                    </p>
+                  ) : null}
+                  {award.note ? <p>{award.note}</p> : null}
+                </div>
+              </article>
+            </Reveal>
           ))}
         </div>
       </section>
 
       <section id="resume" className="bg-[var(--color-charcoal)] text-[var(--color-paper)]">
         <div className="mx-auto grid max-w-7xl gap-10 px-6 py-24 sm:px-10 lg:grid-cols-[0.82fr_1.18fr] lg:px-16">
-          <div className="space-y-5">
+          <Reveal className="space-y-5">
             <p className="text-xs tracking-[0.26em] text-[var(--color-accent)] uppercase">简历摘要</p>
             <h2 className="font-serif-display text-4xl leading-tight font-semibold sm:text-5xl">
               用网页化方式提炼教育背景、技能结构与实践经验，让信息阅读比简历截图更清楚。
@@ -456,15 +470,17 @@ export default function Home() {
               进入完整简历页
               <span aria-hidden="true">→</span>
             </Link>
-          </div>
+          </Reveal>
 
           <div className="grid gap-5 rounded-[2rem] border border-white/10 bg-white/6 p-6 sm:grid-cols-2">
-            {resumeHighlights.map((item) => (
-              <div key={item.label} className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5 transition duration-300 hover:bg-black/18">
-                <p className="text-xs tracking-[0.2em] text-white/54 uppercase">{item.label}</p>
-                <h3 className="font-serif-display text-2xl font-semibold">{item.title}</h3>
-                <p className="text-sm leading-7 text-white/72">{item.description}</p>
-              </div>
+            {resumeHighlights.map((item, index) => (
+              <Reveal key={item.label} delay={index * 100}>
+                <div className="space-y-3 rounded-[1.4rem] border border-white/8 bg-black/12 p-5 transition duration-300 hover:bg-black/18 h-full">
+                  <p className="text-xs tracking-[0.2em] text-white/54 uppercase">{item.label}</p>
+                  <h3 className="font-serif-display text-2xl font-semibold">{item.title}</h3>
+                  <p className="text-sm leading-7 text-white/72">{item.description}</p>
+                </div>
+              </Reveal>
             ))}
           </div>
         </div>

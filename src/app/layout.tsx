@@ -19,8 +19,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" className="scroll-smooth">
       <body className={`${geistSans.variable} bg-[var(--color-paper)] text-[var(--color-ink)] antialiased`}>
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-[var(--color-accent)] focus:px-6 focus:py-3 focus:text-sm focus:font-bold focus:text-[var(--color-charcoal)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent-glow)]"
+        >
+          跳转到主要内容
+        </a>
         {children}
       </body>
     </html>
