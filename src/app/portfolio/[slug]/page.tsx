@@ -1,3 +1,6 @@
+"use client";
+
+import { useState, use } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -5,18 +8,18 @@ import { portfolioItems, portfolioMap } from "@/data/portfolio-data";
 import SubpageNav from "@/components/SubpageNav";
 import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
+import Lightbox from "@/components/Lightbox";
 
-export function generateStaticParams() {
-  return portfolioItems.map((item) => ({ slug: item.slug }));
-}
-
-export default async function PortfolioDetailPage({
+export default function PortfolioDetailPage({
   params,
 }: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await params;
+  const { slug } = use(params);
   const portfolio = portfolioMap[slug];
+
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [activeImageIndex, setActiveImageIndex] = useState(0);
 
   if (!portfolio) {
     notFound();
@@ -24,10 +27,15 @@ export default async function PortfolioDetailPage({
 
   const relatedItems = portfolioItems.filter((item) => item.slug !== portfolio.slug).slice(0, 3);
 
+  const openLightbox = (index: number) => {
+    setActiveImageIndex(index);
+    setLightboxOpen(true);
+  };
+
   return (
-    <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-[var(--color-accent)]/30">
       <SubpageNav
-        backLabel="← 返回总作品集页"
+        backLabel="← Portfolios"
         backHref="/portfolio"
         links={[
           { label: "项目总览", href: "/projects" },
@@ -36,232 +44,187 @@ export default async function PortfolioDetailPage({
         ]}
       />
 
-      <section className="mx-auto max-w-7xl px-6 py-14 sm:px-10 lg:px-16 lg:py-18">
-        <Reveal>
-          <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
-            <div className="overflow-hidden rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)] p-4 shadow-[0_24px_80px_rgba(26,24,21,0.12)]">
-              <div className="project-hero-frame relative">
-                <Image
-                  src={portfolio.heroImage}
-                  alt={`${portfolio.title}主图`}
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                  className="object-contain p-2"
-                />
-              </div>
-            </div>
-            <div className="space-y-6">
-              <div className="space-y-3">
-                <p className="section-kicker">作品集分页</p>
-                <h1 className="font-serif-display text-4xl leading-tight font-semibold sm:text-5xl">{portfolio.title}</h1>
-                <p className="text-lg text-[var(--color-accent-deep)]">{portfolio.type}</p>
-              </div>
-              <p className="text-base leading-8 text-[var(--color-copy)]">{portfolio.overview}</p>
-              <div className="flex flex-wrap gap-2">
-                {portfolio.keywords.map((keyword) => (
-                  <span
-                    key={keyword}
-                    className="rounded-full border border-[var(--color-line)] bg-[var(--color-muted)] px-4 py-2 text-xs tracking-[0.16em] text-[var(--color-muted-ink)] uppercase"
-                  >
-                    {keyword}
-                  </span>
-                ))}
-              </div>
-              <div className="rounded-[1.4rem] border border-[var(--color-line)] bg-white p-5 text-sm leading-7 text-[var(--color-copy)] shadow-[0_14px_36px_rgba(26,24,21,0.05)]">
-                <span className="block text-[11px] tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">当前状态</span>
-                <span className="mt-3 block">{portfolio.status}</span>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="border-y border-[var(--color-line)] bg-white/65">
-        <div className="mx-auto grid max-w-7xl gap-10 px-6 py-18 sm:px-10 lg:grid-cols-[0.76fr_1.24fr] lg:px-16">
-          <Reveal className="space-y-4">
-            <p className="section-kicker">重点说明</p>
-            <h2 className="section-title">这一页负责把单个作品集从"入口卡片"展开成可以独立阅读的内容页</h2>
-          </Reveal>
-          <div className="grid gap-4">
-            {portfolio.highlights.map((highlight, index) => (
-              <Reveal key={highlight} delay={index * 100}>
-                <article
-                  className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-5 text-sm leading-7 text-[var(--color-copy)] shadow-[0_16px_32px_rgba(26,24,21,0.05)]"
-                >
-                  {highlight}
-                </article>
-              </Reveal>
-            ))}
-          </div>
+      {/* 1. PORTFOLIO HERO */}
+      <section className="relative h-[80vh] w-full overflow-hidden bg-[var(--color-muted)]">
+        <div className="absolute inset-0 z-0">
+          <Image
+            src={portfolio.heroImage}
+            alt={`${portfolio.title} 主图`}
+            fill
+            className="object-cover opacity-80"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/60" />
         </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
-        <Reveal>
-          <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
-            <p className="section-kicker">设计说明</p>
-            <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">来自作者的设计理念阐述</h2>
-            <div className="editorial-divider mt-6 mb-6" />
-            <p className="text-sm leading-8 text-[var(--color-copy)]">{portfolio.designStatement}</p>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
-        <div className="grid gap-8 lg:grid-cols-[0.92fr_1.08fr]">
-          <Reveal>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)] h-full">
-              <p className="section-kicker">过程说明</p>
-              <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">先说明这个作品如何被建立，再展示它如何被阅读</h2>
-              <div className="mt-6 grid gap-3">
-                {portfolio.processNotes.map((item, index) => (
-                  <div key={item} className="rounded-[1.3rem] border border-[var(--color-line)] bg-[var(--color-muted)]/24 px-4 py-4 text-sm leading-7 text-[var(--color-copy)] animate-reveal" style={{ animationDelay: `${index * 100}ms` }}>
-                    <span className="mr-3 text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">0{index + 1}</span>
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-          <Reveal delay={200}>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/24 p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)] h-full">
-              <p className="section-kicker">能力总结</p>
-              <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">这一作品集在网站中的判断价值</h2>
-              <p className="mt-6 text-sm leading-8 text-[var(--color-copy)]">{portfolio.capabilitySummary}</p>
-              {portfolio.detailHref ? (
-                <Link
-                  href={portfolio.detailHref}
-                  className="mt-6 inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
-                >
-                  查看对应项目详情页
-                  <span aria-hidden="true">→</span>
-                </Link>
-              ) : (
-                <p className="mt-6 text-sm leading-8 text-[var(--color-muted-ink)]">
-                  项目详情内容已完整接入，可结合设计说明与图像展示进行深度阅读。
+        <div className="absolute bottom-0 left-0 z-10 w-full px-6 py-20 sm:px-10 lg:px-16 lg:py-24">
+          <div className="mx-auto max-w-[1600px]">
+            <Reveal>
+              <div className="max-w-4xl space-y-6">
+                <p className="section-kicker">Portfolio Entry</p>
+                <h1 className="font-serif-display text-6xl font-bold leading-tight text-white sm:text-7xl lg:text-8xl">
+                  {portfolio.title}
+                </h1>
+                <p className="text-xl tracking-widest text-[var(--color-accent)] uppercase">
+                  {portfolio.type}
                 </p>
-              )}            </div>
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 2. OVERVIEW & HIGHLIGHTS */}
+      <section className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+        <div className="grid gap-20 lg:grid-cols-[1fr_0.7fr] lg:items-start">
+          <Reveal>
+            <div className="space-y-12">
+              <div className="space-y-6 text-2xl font-medium leading-relaxed text-white/90">
+                {portfolio.overview}
+              </div>
+              <div className="h-px w-full bg-white/5" />
+              <p className="text-lg leading-relaxed text-white/50 italic">
+                "{portfolio.designStatement}"
+              </p>
+              
+              <div className="grid gap-4 sm:grid-cols-2">
+                <div className="glass-card rounded-2xl p-8">
+                  <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-4">Status</p>
+                  <p className="text-lg font-serif-display text-white">{portfolio.status}</p>
+                </div>
+                <div className="glass-card rounded-2xl p-8">
+                  <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-4">Tags</p>
+                  <div className="flex flex-wrap gap-2">
+                    {portfolio.keywords.map(k => (
+                      <span key={k} className="text-xs font-medium text-white/40 italic">#{k}</span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal delay={200}>
+            <div className="glass-panel space-y-10 p-10 lg:p-12">
+              <h3 className="text-xs font-bold tracking-[0.4em] text-white uppercase italic">Core Highlights</h3>
+              <div className="space-y-6">
+                {portfolio.highlights.map((h, i) => (
+                  <div key={h} className="group flex gap-6">
+                    <span className="font-serif-display text-2xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors">0{i+1}</span>
+                    <p className="text-sm leading-relaxed text-white/60">{h}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      {portfolio.videoSrc ? (
-        <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
-          <Reveal>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
-              <div className="mb-6 space-y-4">
-                <p className="section-kicker">项目视频</p>
-                <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">通过动态影像进一步感受项目的空间氛围</h2>
+      {/* 3. PROCESS & CAPABILITY */}
+      <section className="relative border-y border-white/5 bg-white/[0.02] py-24 lg:py-32">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+          <div className="grid gap-12 lg:grid-cols-2">
+            <Reveal>
+              <div className="glass-panel p-10 lg:p-16 h-full">
+                <p className="section-kicker mb-8">Process Notes</p>
+                <div className="space-y-6">
+                  {portfolio.processNotes.map((note, index) => (
+                    <div key={note} className="relative pl-10 border-l border-white/5">
+                      <div className="absolute left-[-4px] top-0 h-2 w-2 rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_rgba(212,163,115,0.5)]" />
+                      <p className="text-sm leading-relaxed text-white/60">{note}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-              <video
-                controls
-                preload="metadata"
-                playsInline
-                className="w-full rounded-[1.4rem]"
-                poster={portfolio.heroImage}
-              >
-                <source src={portfolio.videoSrc} type="video/mp4" />
-                您的浏览器不支持视频播放。
-              </video>
-            </div>
-          </Reveal>
-        </section>
-      ) : null}
-
-      <section className="border-y border-[var(--color-line)] bg-[var(--color-muted)]/28">
-        <div className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
-          <Reveal className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-3xl space-y-4">
-              <p className="section-kicker">图像展示</p>
-              <h2 className="section-title">优先承接已有图像内容，后续再逐步补充过程图、展板图和说明材料</h2>
-            </div>
-            {portfolio.detailHref ? (
-              <Link href={portfolio.detailHref} className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-80">
-                查看项目详情页
-              </Link>
-            ) : null}
-          </Reveal>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {portfolio.gallery.map((image, index) => (
-              <Reveal key={image} delay={index * 50}>
-                <figure
-                  className="overflow-hidden rounded-[1.8rem] border border-[var(--color-line)] bg-white p-3 shadow-[0_18px_44px_rgba(26,24,21,0.08)] h-full"
-                >
-                  <div className="project-gallery-frame relative">
-                    <Image
-                      src={image}
-                      alt={`${portfolio.title}图像 ${index + 1}`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
-                      className="object-contain p-2 transition duration-500 hover:scale-105"
-                    />
+            </Reveal>
+            <Reveal delay={200}>
+              <div className="glass-panel p-10 lg:p-16 h-full border-[var(--color-accent)]/20">
+                <p className="section-kicker mb-8">Value Proposition</p>
+                <h3 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">能力总结与判断价值</h3>
+                <p className="text-lg leading-relaxed text-white/70 italic border-l-4 border-[var(--color-accent)] pl-8">
+                  {portfolio.capabilitySummary}
+                </p>
+                {portfolio.detailHref && (
+                  <div className="mt-12">
+                    <Link href={portfolio.detailHref} className="ui-button-primary w-full sm:w-fit">查看对应项目详情</Link>
                   </div>
-                </figure>
+                )}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. GALLERY */}
+      <section className="mx-auto max-w-[1800px] px-4 py-24 sm:px-6 lg:px-10 lg:py-32">
+        <Reveal className="mb-20 text-center">
+          <p className="section-kicker mb-4">Gallery Sheets</p>
+          <h2 className="section-title mx-auto">作品图像展示</h2>
+        </Reveal>
+        
+        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 space-y-6">
+          {portfolio.gallery.map((img, index) => (
+            <Reveal key={img} delay={(index % 3) * 100}>
+              <div
+                onClick={() => openLightbox(index)}
+                className="group relative cursor-pointer overflow-hidden rounded-sm border border-white/5 bg-white/[0.03] transition-all duration-500 hover:border-white/20"
+              >
+                <Image
+                  src={img}
+                  alt={`${portfolio.title} 详情图 ${index + 1}`}
+                  width={800}
+                  height={1200}
+                  className="h-auto w-full opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
+                />
+                <div className="absolute bottom-4 right-4 text-[9px] font-bold tracking-[0.3em] text-white/20 uppercase transition group-hover:text-[var(--color-accent)]">
+                  SH-{String(index + 1).padStart(2, "0")}
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      {/* 5. RELATED */}
+      <section className="border-t border-white/5 bg-white/[0.01] py-32">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+          <Reveal className="mb-20">
+            <p className="section-kicker mb-4">Connections</p>
+            <h2 className="section-title text-4xl">继续延伸阅览</h2>
+          </Reveal>
+          <div className="grid gap-8 sm:grid-cols-3">
+            {relatedItems.map((item, index) => (
+              <Reveal key={item.slug} delay={index * 100}>
+                <Link
+                  href={`/portfolio/${item.slug}`}
+                  className="glass-card block rounded-2xl p-8 h-full"
+                >
+                  <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-6">Related Portfolio</p>
+                  <h3 className="font-serif-display text-2xl font-semibold text-white leading-tight mb-4 group-hover:text-[var(--color-accent)] transition-colors">{item.title}</h3>
+                  <p className="text-sm leading-relaxed text-white/40 line-clamp-2">{item.summary}</p>
+                </Link>
               </Reveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16">
-        <Reveal>
-          <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="space-y-4">
-              <p className="section-kicker">继续延伸</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">看完这个作品集后，可以继续查看相关项目详情、简历页或其他作品集</h2>
-              <p className="text-sm leading-8 text-[var(--color-copy)]">
-                当前页面的任务是承接单个作品集本身。后续会继续增加与具体项目详情页、荣誉页和全站导航之间的更强联动关系。
-              </p>
-            </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {relatedItems.map((item, index) => (
-                <div key={item.slug} className={`animate-reveal stagger-${index + 1}`}>
-                  <Link
-                    href={`/portfolio/${item.slug}`}
-                    className="rounded-[1.4rem] border border-[var(--color-line)] bg-[var(--color-muted)]/24 px-4 py-5 transition hover:border-[var(--color-accent-deep)] block h-full"
-                  >
-                    <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">其他作品集</p>
-                    <h3 className="mt-3 font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{item.summary}</p>
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Reveal>
-      </section>
+      <SubpageFooter
+        heading="看完当前作品集，可以继续查看项目详情、简历或其他作品集"
+        links={[
+          { label: "项目总览", href: "/projects" },
+          { label: "简历页面", href: "/resume" },
+          { label: "返回目录", href: "/portfolio", primary: true },
+        ]}
+      />
 
-      <section className="border-t border-[var(--color-line)] bg-white">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 px-6 py-14 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
-          <div className="space-y-3">
-            <p className="section-kicker">页面跳转</p>
-            <p className="max-w-2xl text-sm leading-7 text-[var(--color-copy)]">
-              当前作品集页已经具备独立入口、图像展示区、过程说明和能力总结结构，后续将继续结合各作品的真实资料逐步深化内容。
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3">
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-            >
-              返回总作品集页
-            </Link>
-            <Link
-              href="/resume"
-              className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-            >
-              查看简历页
-            </Link>
-            <Link
-              href="/awards"
-              className="inline-flex items-center justify-center rounded-full bg-[var(--color-accent)] px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-charcoal)] uppercase transition hover:brightness-105"
-            >
-              查看荣誉页
-            </Link>
-          </div>
-        </div>
-      </section>
+      <Lightbox
+        images={portfolio.gallery}
+        initialIndex={activeImageIndex}
+        isOpen={lightboxOpen}
+        onClose={() => setLightboxOpen(false)}
+        projectTitle={portfolio.title}
+      />
     </main>
   );
 }

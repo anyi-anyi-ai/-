@@ -84,7 +84,7 @@ const contactItems = [
 
 export default function ResumePage() {
   return (
-    <main className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-[var(--color-accent)]/30">
       <SubpageNav
         links={[
           { label: "总作品集", href: "/portfolio" },
@@ -94,102 +94,105 @@ export default function ResumePage() {
         ]}
       />
 
-      <section className="mx-auto max-w-7xl px-6 py-18 sm:px-10 lg:px-16 lg:py-24">
+      <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+        <div className="glow-orb top-0 left-0 h-96 w-96 opacity-10" />
         <Reveal>
-          <div className="ui-card grid gap-8 rounded-[2.2rem] bg-white p-8 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="space-y-5">
+          <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
+            <div className="space-y-8">
               <p className="section-kicker">Resume</p>
-              <h1 className="section-title">教育背景、技能结构、实践经验与求职方向的系统呈现</h1>
-              <p className="section-copy">
+              <h1 className="section-title text-5xl sm:text-6xl">教育背景、技能结构、实践经验与求职方向的系统呈现</h1>
+              <p className="section-copy max-w-2xl text-white/60">
                 本页面集中整理了我的学术背景与专业能力，旨在为招聘方提供一个清晰、客观的能力评估参考，展示我如何将设计理论应用于环境与室内空间实践中。
-              </p>            </div>
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5 animate-reveal stagger-1">
-                <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">教育信息</p>
-                <h2 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{education.school}</h2>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{education.major} · {education.degree}</p>
-                <p className="mt-2 text-sm leading-7 text-[var(--color-muted-ink)]">{education.period}</p>
+              </p>
+            </div>
+            <div className="grid gap-6 sm:grid-cols-2">
+              <div className="glass-card rounded-[1.8rem] p-8">
+                <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-6">Education</p>
+                <h2 className="font-serif-display text-2xl font-semibold text-white leading-snug">{education.school}</h2>
+                <p className="mt-4 text-sm text-white/70 italic">{education.major}</p>
+                <p className="mt-2 text-xs text-white/40 tracking-[0.1em] uppercase">{education.degree}</p>
               </div>
-              <div className="rounded-[1.5rem] border border-[var(--color-line)] bg-[var(--color-muted)]/35 p-5 animate-reveal stagger-2">
-                <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">求职定位</p>
-                <h2 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">环境设计 / 室内设计</h2>
-                <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">
-                  重点关注空间叙事、文化转译、主题场景与图像表达相关方向，希望进入兼顾概念与落地的设计岗位继续成长。
-                </p>
+              <div className="glass-card rounded-[1.8rem] p-8">
+                <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-6">Positioning</p>
+                <h2 className="font-serif-display text-2xl font-semibold text-white">环境设计 / 室内设计</h2>
+                <p className="mt-4 text-sm leading-relaxed text-white/60">关注空间叙事、文化转译与图像表达，致力于兼顾概念与落地的设计成长。</p>
               </div>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section className="border-y border-[var(--color-line)] bg-[var(--color-muted)]/35">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-          <Reveal className="mb-10 max-w-3xl space-y-4">
-            <p className="section-kicker">教育背景</p>
-            <h2 className="section-title">以系统学习为基础，把课程训练逐步转化为具备展示力的作品表达</h2>
-          </Reveal>
-          <Reveal delay={200}>
-            <article className="rounded-[1.8rem] border border-[var(--color-line)] bg-white p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)]">
-              <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-                <div>
-                  <h3 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{education.school}｜{education.major}</h3>
-                  <p className="mt-3 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase">{education.degree}</p>
-                  <p className="mt-2 text-sm leading-7 text-[var(--color-muted-ink)]">{education.period}</p>
-                </div>
-                <p className="text-sm leading-8 text-[var(--color-copy)]">{education.summary}</p>
+      <section className="relative border-y border-white/5 bg-white/[0.02] py-24">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+          <Reveal>
+            <div className="glass-panel p-10 lg:p-16">
+              <div className="mb-12 border-b border-white/5 pb-12">
+                <p className="section-kicker mb-4">Academic Background</p>
+                <h2 className="section-title text-4xl">以系统学习为基础，建立专业展示力</h2>
               </div>
-            </article>
+              <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
+                <div className="space-y-4">
+                  <h3 className="font-serif-display text-4xl font-semibold text-white">{education.school}</h3>
+                  <div className="flex items-center gap-4">
+                    <span className="text-[var(--color-accent)] italic">{education.major}</span>
+                    <span className="h-1 w-1 rounded-full bg-white/20" />
+                    <span className="text-white/40 text-xs tracking-widest">{education.period}</span>
+                  </div>
+                </div>
+                <p className="text-lg leading-[2] text-white/60 border-l border-white/10 pl-10 italic">
+                  "{education.summary}"
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-        <Reveal className="mb-10 max-w-3xl space-y-4">
-          <p className="section-kicker">技能结构</p>
-          <h2 className="section-title">把软件能力放回设计流程中说明，而不是只做工具名称罗列</h2>
+      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
+        <Reveal className="mb-20 text-center">
+          <p className="section-kicker mb-4">Core Skills</p>
+          <h2 className="section-title text-4xl mx-auto">软件能力与设计流程的深度集成</h2>
         </Reveal>
-        <div className="grid gap-5 lg:grid-cols-3">
+        <div className="grid gap-8 lg:grid-cols-3">
           {skillGroups.map((group, index) => (
             <Reveal key={group.title} delay={index * 100}>
-              <article
-                className="ui-card rounded-[1.9rem] p-6 h-full"
-              >
-                <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">技能模块</p>
-                <h3 className="mt-4 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{group.title}</h3>
-                <div className="mt-4 flex flex-wrap gap-2">
+              <article className="glass-card flex h-full flex-col rounded-[2.5rem] p-10">
+                <div className="flex items-center gap-4 mb-8 text-[10px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">
+                  <span>Module 0{index + 1}</span>
+                  <div className="h-px flex-1 bg-white/5" />
+                </div>
+                <h3 className="font-serif-display text-3xl font-semibold text-white">{group.title}</h3>
+                <div className="mt-8 flex flex-wrap gap-2">
                   {group.items.map((item) => (
-                    <span
-                      key={item}
-                      className="rounded-full border border-[var(--color-line)] bg-[var(--color-muted)] px-3 py-1 text-[11px] tracking-[0.16em] text-[var(--color-muted-ink)] uppercase"
-                    >
+                    <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] font-medium tracking-[0.1em] text-white/60 uppercase">
                       {item}
                     </span>
                   ))}
                 </div>
-                <p className="mt-5 text-sm leading-7 text-[var(--color-copy)]">{group.description}</p>
+                <p className="mt-8 text-sm leading-relaxed text-white/50">{group.description}</p>
               </article>
             </Reveal>
           ))}
         </div>
       </section>
 
-      <section className="border-y border-[var(--color-line)] bg-white/75">
-        <div className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-          <Reveal className="mb-10 max-w-3xl space-y-4">
-            <p className="section-kicker">实践经历</p>
-            <h2 className="section-title">通过项目执行、现场协作与作品整理，逐步建立真实场景中的设计推进能力</h2>
+      <section className="border-y border-white/5 bg-white/[0.01] py-32">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+          <Reveal className="mb-20">
+            <p className="section-kicker mb-4">Practice</p>
+            <h2 className="section-title text-4xl">在真实场景中建立设计推进能力</h2>
           </Reveal>
-          <div className="grid gap-5">
+          <div className="grid gap-6">
             {experiences.map((item, index) => (
               <Reveal key={item.title} delay={index * 100}>
-                <article
-                  className="rounded-[1.7rem] border border-[var(--color-line)] bg-white p-6 shadow-[0_16px_36px_rgba(26,24,21,0.04)] lg:grid lg:grid-cols-[0.28fr_0.72fr] lg:gap-8 h-full"
-                >
-                  <div>
-                    <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{item.period}</p>
-                    <h3 className="mt-3 font-serif-display text-3xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
+                <article className="glass-card group flex flex-col gap-8 rounded-[2rem] p-10 lg:flex-row lg:items-center">
+                  <div className="lg:w-1/4">
+                    <span className="font-serif-display text-4xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">{item.period}</span>
+                    <h3 className="mt-4 font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
                   </div>
-                  <p className="text-sm leading-8 text-[var(--color-copy)]">{item.description}</p>
+                  <div className="flex-1 border-l border-white/5 pl-10">
+                    <p className="text-lg leading-relaxed text-white/60">{item.description}</p>
+                  </div>
                 </article>
               </Reveal>
             ))}
@@ -197,36 +200,24 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 sm:px-10 lg:px-16">
-        <div className="grid gap-8 lg:grid-cols-[1fr_1fr]">
+      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
+        <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
-            <div className="ui-card rounded-[2.2rem] bg-white p-8 h-full">
-              <p className="section-kicker">代表项目</p>
-              <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">让简历信息与真实项目互相支撑</h2>
-              <p className="mt-4 text-sm leading-8 text-[var(--color-copy)]">
-                简历页不是孤立展示背景信息，而应与作品页形成交叉印证。以下四个项目是当前网站中最适合作为进一步判断入口的代表作。
-              </p>
-              <div className="mt-6 flex flex-wrap gap-3">
+            <div className="glass-panel p-10 lg:p-16 h-full">
+              <p className="section-kicker mb-6">Evidence</p>
+              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">代表项目与信息交叉印证</h2>
+              <div className="grid grid-cols-2 gap-4">
                 {projectLinks.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="rounded-full border border-[var(--color-line)] bg-[var(--color-muted)]/35 px-4 py-2 text-sm text-[var(--color-copy)] transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="mt-6 grid grid-cols-2 gap-3">
-                {projectLinks.map((item) => (
-                  <Link key={item.label} href={item.href} className="project-preview-frame relative overflow-hidden rounded-[1.2rem] border border-[var(--color-line)] bg-[var(--color-muted)] transition duration-500 hover:scale-[1.02]">
+                  <Link key={item.label} href={item.href} className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40">
                     <Image
                       src={item.heroImage}
-                      alt={`${item.label}缩略图`}
+                      alt={`${item.label} 预览`}
                       fill
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                      className="object-contain p-2"
+                      className="object-cover opacity-60 transition duration-700 group-hover:scale-110 group-hover:opacity-100"
                     />
+                    <div className="absolute inset-0 flex items-center justify-center p-4 bg-black/40 opacity-100 group-hover:bg-black/10 transition-colors">
+                      <span className="text-[10px] font-bold tracking-[0.2em] text-white uppercase text-center">{item.label}</span>
+                    </div>
                   </Link>
                 ))}
               </div>
@@ -234,63 +225,53 @@ export default function ResumePage() {
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/26 p-8 shadow-[0_18px_46px_rgba(26,24,21,0.05)] h-full">
-              <p className="section-kicker">荣誉支撑</p>
-              <h2 className="mt-4 font-serif-display text-4xl font-semibold text-[var(--color-ink)]">用阶段性竞赛成果补强可信度</h2>
-              <div className="mt-6 grid gap-4">
+            <div className="glass-panel p-10 lg:p-16 h-full border-[var(--color-accent)]/20">
+              <p className="section-kicker mb-6">Recognition</p>
+              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">竞赛成果补强职业可信度</h2>
+              <div className="space-y-6">
                 {awards.map((item, index) => (
-                  <article key={item.title} className={`rounded-[1.4rem] border border-[var(--color-line)] bg-white px-5 py-5 animate-reveal stagger-${index + 1}`}>
-                    <p className="text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{item.level}</p>
-                    <h3 className="mt-2 font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{item.title}</h3>
-                    <p className="mt-3 text-sm leading-7 text-[var(--color-copy)]">{item.note}</p>
-                  </article>
+                  <div key={item.title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 hover:bg-white/[0.06] transition-colors">
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.level}</span>
+                    <h3 className="mt-2 font-serif-display text-xl font-semibold text-white">{item.title}</h3>
+                    <p className="mt-3 text-xs leading-relaxed text-white/40">{item.note}</p>
+                  </div>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Link
-                  href="/awards"
-                  className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
-                >
-                  查看完整荣誉页面
-                  <span aria-hidden="true">→</span>
-                </Link>
-                <Link
-                  href="/portfolio"
-                  className="inline-flex items-center gap-2 text-sm tracking-[0.16em] text-[var(--color-muted-ink)] uppercase transition hover:text-[var(--color-accent-deep)]"
-                >
-                  继续浏览作品集
-                </Link>
+              <div className="mt-10 pt-8 border-t border-white/5">
+                <Link href="/awards" className="ui-button-primary w-full">查看完整荣誉页面</Link>
               </div>
             </div>
           </Reveal>
         </div>
       </section>
 
-      <footer id="contact" className="border-t border-[var(--color-line)] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
-          <div className="grid gap-8 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/22 p-6 lg:grid-cols-[0.92fr_1.08fr]">
-            <div className="space-y-4">
-              <p className="section-kicker">联系方式</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">如果需要进一步沟通项目、实习或岗位信息，可以直接联系我</h2>
-              <p className="text-sm leading-8 text-[var(--color-copy)]">
-                当前简历页重点承接教育背景、技能与经历说明；后续将继续补充可下载简历版本、证书预览和更完整的求职资料入口。
-              </p>
+      <footer id="contact" className="border-t border-white/5 bg-white/[0.01] py-24">
+        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+          <Reveal>
+            <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:p-16 lg:items-center">
+              <div className="space-y-6">
+                <p className="section-kicker">Connect</p>
+                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight sm:text-5xl">进一步沟通项目、实习或岗位信息</h2>
+                <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
+                  当前简历页重点承接教育背景与经历说明，后续将继续补全下载版、证书预览及更完整的求职入口。
+                </p>
+              </div>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {contactItems.map((item) => (
+                  <div key={item.label} className="glass-card rounded-2xl p-6 min-w-[240px]">
+                    <p className="text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase mb-3">{item.label}</p>
+                    {item.href ? (
+                      <a href={item.href} className="text-base font-medium text-white hover:text-[var(--color-accent)] transition-colors">
+                        {item.value}
+                      </a>
+                    ) : (
+                      <p className="text-base font-medium text-white">{item.value}</p>
+                    )}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div className="grid gap-4 sm:grid-cols-3">
-              {contactItems.map((item) => (
-                <div key={item.label} className="rounded-[1.4rem] border border-[var(--color-line)] bg-white px-5 py-5">
-                  <p className="text-[11px] tracking-[0.18em] text-[var(--color-muted-ink)] uppercase">{item.label}</p>
-                  {item.href ? (
-                    <a href={item.href} className="mt-3 block text-base text-[var(--color-copy)] transition hover:text-[var(--color-accent-deep)]">
-                      {item.value}
-                    </a>
-                  ) : (
-                    <p className="mt-3 text-base text-[var(--color-copy)]">{item.value}</p>
-                  )}
-                </div>
-              ))}
-            </div>
-          </div>
+          </Reveal>
         </div>
       </footer>
     </main>

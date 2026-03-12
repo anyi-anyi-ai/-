@@ -6,7 +6,7 @@ type NavLink = {
 };
 
 export default function SubpageNav({
-  backLabel = "← 返回首页",
+  backLabel = "← Back to Home",
   backHref = "/",
   links,
 }: {
@@ -15,21 +15,22 @@ export default function SubpageNav({
   links: NavLink[];
 }) {
   return (
-    <section className="border-b border-[var(--color-line)] bg-white/80 backdrop-blur-sm">
-      <div className="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-5 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
+    <section className="sticky top-0 z-50 border-b border-white/5 bg-[var(--color-paper)]/80 backdrop-blur-xl">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-4 px-6 py-6 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:px-16">
         <Link
           href={backHref}
-          className="text-sm tracking-[0.18em] text-[var(--color-accent-deep)] uppercase transition hover:opacity-75"
+          className="group flex items-center gap-3 text-xs font-bold tracking-[0.3em] text-white/40 uppercase transition hover:text-[var(--color-accent)]"
         >
+          <span className="h-px w-6 bg-white/10 transition-all group-hover:w-10 group-hover:bg-[var(--color-accent)]" />
           {backLabel}
         </Link>
-        <nav className="flex flex-wrap gap-4 text-xs tracking-[0.18em] text-[var(--color-muted-ink)] uppercase sm:text-sm">
+        <nav className="flex flex-wrap gap-8 text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase sm:text-xs">
           {links.map((link) =>
             link.href.startsWith("#") ? (
               <a
                 key={link.href}
                 href={link.href}
-                className="transition hover:text-[var(--color-accent-deep)]"
+                className="transition hover:text-white"
               >
                 {link.label}
               </a>
@@ -37,7 +38,7 @@ export default function SubpageNav({
               <Link
                 key={link.href}
                 href={link.href}
-                className="transition hover:text-[var(--color-accent-deep)]"
+                className="transition hover:text-white"
               >
                 {link.label}
               </Link>
