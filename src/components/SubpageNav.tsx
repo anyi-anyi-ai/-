@@ -24,26 +24,16 @@ export default function SubpageNav({
           <span className="h-px w-6 bg-white/10 transition-all group-hover:w-10 group-hover:bg-[var(--color-accent)]" />
           {backLabel}
         </Link>
-        <nav className="flex flex-wrap gap-8 text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase sm:text-xs">
-          {links.map((link) =>
-            link.href.startsWith("#") ? (
-              <a
-                key={link.href}
-                href={link.href}
-                className="transition hover:text-white"
-              >
-                {link.label}
-              </a>
-            ) : (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="transition hover:text-white"
-              >
-                {link.label}
-              </Link>
-            ),
-          )}
+        <nav className="flex items-center gap-6 overflow-x-auto pb-2 no-scrollbar sm:flex-wrap sm:gap-8 sm:pb-0 text-[10px] font-bold tracking-[0.3em] text-white/30 uppercase sm:text-xs">
+          {links.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className="whitespace-nowrap transition hover:text-white"
+            >
+              {link.label}
+            </Link>
+          ))}
         </nav>
       </div>
     </section>

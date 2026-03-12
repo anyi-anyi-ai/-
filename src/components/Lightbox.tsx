@@ -2,7 +2,6 @@
 
 import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
 
 interface LightboxProps {
   images: string[];
@@ -59,7 +58,7 @@ export default function Lightbox({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--color-ink)]/98 backdrop-blur-xl">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--color-ink)]/98 backdrop-blur-xl transition-opacity duration-300">
       {/* Decorative Architectural Grid (Subtle) */}
       <div className="pointer-events-none absolute inset-0 opacity-10">
         <div className="absolute top-1/2 left-0 h-[1px] w-full bg-white/20" />
@@ -71,7 +70,7 @@ export default function Lightbox({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-8 right-8 z-[210] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10"
+        className="absolute top-8 right-8 z-[210] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10 active:scale-95"
         aria-label="关闭预览"
       >
         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -82,7 +81,7 @@ export default function Lightbox({
       {/* Navigation */}
       <button
         onClick={handlePrev}
-        className="absolute left-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white"
+        className="absolute left-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95"
       >
         <span className="sr-only">上一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,7 +91,7 @@ export default function Lightbox({
 
       <button
         onClick={handleNext}
-        className="absolute right-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white"
+        className="absolute right-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95"
       >
         <span className="sr-only">下一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -101,13 +100,14 @@ export default function Lightbox({
       </button>
 
       {/* Main Image Container */}
-      <div className="relative h-[85vh] w-[90vw]">
+      <div className="relative h-[85vh] w-[90vw] animate-reveal">
         <Image
           src={images[currentIndex]}
           alt={`${projectTitle} 预览图 ${currentIndex + 1}`}
           fill
           className="object-contain"
           priority
+          sizes="90vw"
         />
       </div>
 

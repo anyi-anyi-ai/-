@@ -71,6 +71,14 @@
   .stagger-3 { animation-delay: 300ms; }
   .stagger-4 { animation-delay: 400ms; }
   .stagger-5 { animation-delay: 500ms; }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 @keyframes fadeInUp {
