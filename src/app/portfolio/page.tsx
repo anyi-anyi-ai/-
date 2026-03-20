@@ -6,15 +6,9 @@ import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
 
 const browseSteps = [
-  "先通过总作品集页快速确认全部作品集范围与方向。",
-  "再选择最符合岗位兴趣的作品集进入独立分页深入浏览。",
-  "最后结合简历页与荣誉页完成对能力、背景与成果的整体判断。",
-];
-
-const pageRoles = [
-  "总作品集页负责集中分发作品集入口，帮助浏览者先建立范围判断。",
-  "项目总览页更偏向展示已上线详情项目与接入状态，适合作为项目目录型补充页面。",
-  "作品集独立页则负责承接单个作品的说明、图像、过程提示与能力判断。",
+  "浏览总作品集，了解作品方向与范围。",
+  "选择感兴趣的作品集，进入独立详情页深入了解。",
+  "结合简历与荣誉页，全面评估专业能力与背景。",
 ];
 
 export default function PortfolioIndexPage() {
@@ -34,12 +28,12 @@ export default function PortfolioIndexPage() {
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
               <p className="section-kicker">Portfolio Hub</p>
-              <h1 className="section-title text-5xl sm:text-6xl">总作品集入口分发</h1>
+              <h1 className="section-title text-5xl sm:text-6xl">总作品集</h1>
               <p className="section-copy">
-                这里是整个网站所有作品内容的中心。你可以从这里快速了解当前已整理完成的 {portfolioItems.length} 个作品集方向，按兴趣或岗位方向进行深入浏览。
+                这里集中了 {portfolioItems.length} 个已整理完成的作品集方向。可根据兴趣或岗位需求选择深入浏览。
               </p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-3">
+            <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
                 <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">Total</p>
                 <h2 className="mt-4 font-serif-display text-4xl font-semibold">{portfolioItems.length}</h2>
@@ -47,13 +41,8 @@ export default function PortfolioIndexPage() {
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
                 <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">Focus</p>
-                <h2 className="mt-4 font-serif-display text-4xl font-semibold">逐页完善</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">持续深度优化</p>
-              </div>
-              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">Flow</p>
-                <h2 className="mt-4 font-serif-display text-4xl font-semibold">先总后分</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">逻辑化浏览</p>
+                <h2 className="mt-4 font-serif-display text-4xl font-semibold">持续更新</h2>
+                <p className="mt-4 text-xs leading-relaxed text-white/40">作品详情将逐步完善</p>
               </div>
             </div>
           </div>
@@ -66,7 +55,7 @@ export default function PortfolioIndexPage() {
             <div className="glass-panel grid gap-12 p-8 lg:grid-cols-[0.8fr_1.2fr] lg:p-12 lg:items-center">
               <div className="space-y-6">
                 <p className="section-kicker text-sm">Browsing Guide</p>
-                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight">推荐按逻辑顺序浏览</h2>
+                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight">浏览建议</h2>
               </div>
               <div className="grid gap-4">
                 {browseSteps.map((item, index) => (
@@ -81,28 +70,11 @@ export default function PortfolioIndexPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
-        <Reveal className="mb-20 max-w-4xl space-y-6">
-          <p className="section-kicker">Architecture</p>
-          <h2 className="section-title">页面分工说明</h2>
-        </Reveal>
-        <div className="grid gap-8 lg:grid-cols-3">
-          {pageRoles.map((item, index) => (
-            <Reveal key={item} delay={index * 100}>
-              <article className="glass-card flex h-full flex-col rounded-[2.2rem] p-10">
-                <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">Role 0{index + 1}</p>
-                <p className="mt-8 text-lg leading-relaxed text-white/70 italic">"{item}"</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
       <section className="border-t border-white/5 bg-white/[0.01]">
         <div className="mx-auto max-w-[1800px] px-6 py-32 sm:px-10 lg:px-16">
           <Reveal className="mb-20 max-w-4xl space-y-6">
             <p className="section-kicker">All Portfolios</p>
-            <h2 className="section-title">全部作品集目录</h2>
+            <h2 className="section-title">作品集目录</h2>
           </Reveal>
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
             {portfolioItems.map((item, index) => (
@@ -139,7 +111,7 @@ export default function PortfolioIndexPage() {
       </section>
 
       <SubpageFooter
-        heading="完成目录浏览，继续查看简历、荣誉或返回首页"
+        heading="继续查看简历、荣誉或返回首页"
         links={[
           { label: "查看简历页", href: "/resume" },
           { label: "查看荣誉页", href: "/awards" },

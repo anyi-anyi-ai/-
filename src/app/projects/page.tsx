@@ -22,18 +22,18 @@ export default function ProjectsIndexPage() {
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-16 lg:items-center">
             <div className="space-y-8">
               <p className="section-kicker text-sm">Project Index</p>
-              <h1 className="section-title text-5xl sm:text-6xl lg:text-7xl">所有已上线的项目详情</h1>
+              <h1 className="section-title text-5xl sm:text-6xl lg:text-7xl">项目总览</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                这里集中展示了目前已接入完整详情页的项目。每一个页面都包含了深入的设计推导、高清图像展示以及相关的能力总结。
+                集中展示已上线的项目详情。每个页面包含设计推导、高清图像展示与项目总结。
               </p>
             </div>
             <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 space-y-6">
               <div className="flex items-center gap-4">
                 <span className="h-2 w-2 rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_rgba(212,163,115,0.5)]" />
-                <p className="text-sm font-medium text-white/80 tracking-widest uppercase">Live Infrastructure</p>
+                <p className="text-sm font-medium text-white/80 tracking-widest uppercase">Project Status</p>
               </div>
-              <p className="text-sm leading-relaxed text-white/40 italic">
-                "项目总览页更偏向展示已上线的详情项目状态，适合作为项目目录型的补充页面。"
+              <p className="text-sm leading-relaxed text-white/40">
+                可在此快速浏览各项目状态，并进入对应详情页。
               </p>
             </div>
           </div>
@@ -84,7 +84,7 @@ export default function ProjectsIndexPage() {
       </section>
 
       <SubpageFooter
-        heading="浏览完项目目录，继续查看作品集分类或个人简历"
+        heading="继续查看作品集分类或个人简历"
         links={[
           { label: "查看总作品集", href: "/portfolio" },
           { label: "查看简历页", href: "/resume" },

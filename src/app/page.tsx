@@ -212,7 +212,7 @@ export default function Home() {
               </div>
 
               <div className="animate-reveal stagger-5 ui-panel rounded-[1.7rem] bg-black/24 p-5 text-sm leading-7 text-white/78">
-                这个首页更像一块作品展陈前言：先了解我的设计定位与方法，再进入作品页细看项目内容，最后再判断是否适合进一步沟通 or 合作。
+                这个首页是一块作品展陈前言：先了解设计定位与方法，再进入作品页细看项目内容，最后判断是否适合进一步沟通与合作。
               </div>
             </div>
 
@@ -258,9 +258,9 @@ export default function Home() {
           <div className="mb-20 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-4xl space-y-6">
               <p className="section-kicker">Curated Projects</p>
-              <h2 className="section-title">用代表作建立能力结构，而非作品缩略图的堆叠</h2>
+              <h2 className="section-title">先建立重点项目入口，再逐步扩展为完整作品目录</h2>
               <p className="section-copy">
-                精选四个项目，分别对应文化叙事、未来概念、体验空间与商业逻辑，展示从概念推导到视觉执行的完整链路。
+                你可以从项目总览页快速进入详情，也可以先通过总作品集页整体浏览，了解设计关注点与表达方式。
               </p>
             </div>
             <div className="flex items-center gap-4">
@@ -273,9 +273,9 @@ export default function Home() {
             <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
               <div className="space-y-6">
                 <p className="text-xs font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">策展逻辑</p>
-                <h3 className="font-serif-display text-4xl font-semibold text-white sm:text-5xl">不追求数量，而优先呈现能力覆盖面</h3>
+                <h3 className="font-serif-display text-4xl font-semibold text-white sm:text-5xl">呈现能力覆盖面</h3>
                 <p className="text-lg leading-relaxed text-white/60">
-                  四个项目分别对应文化叙事、未来概念、青年体验与共享办公四种不同任务类型，体现你在概念、功能、场景和图像表达上的综合深度。
+                  项目分别对应文化叙事、未来概念、体验空间与商业逻辑不同任务类型，体现概念、功能、场景和图像表达的综合深度。
                 </p>
               </div>
               <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2">
@@ -342,10 +342,10 @@ export default function Home() {
               <div className="space-y-8">
                 <div className="space-y-4">
                   <p className="section-kicker">Methodology</p>
-                  <h2 className="section-title">关注项目如何被阅读，而非仅仅最后一张效果图</h2>
+                  <h2 className="section-title">让招聘方先看懂方法，再决定深入浏览项目</h2>
                 </div>
                 <p className="section-copy">
-                  在环境设计学习与项目表达中，我更重视"概念如何建立、空间如何组织、图像如何传达"这一整条链路。不仅展示结果，也刻意说明方法，帮助浏览者理解每个作品背后的判断逻辑。
+                  快速说明设计方法、表达优势与适配项目类型，帮助浏览者在看图之外理解工作方式。
                 </p>
                 <div className="h-[1px] w-24 bg-[var(--color-accent)]" />
               </div>
@@ -366,9 +366,9 @@ export default function Home() {
           <div className="mt-24 grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <Reveal className="space-y-6 lg:sticky lg:top-32">
               <p className="section-kicker">Capabilities</p>
-              <h2 className="section-title text-4xl lg:text-5xl">让招聘方先看懂你的方法，再决定深入浏览哪些项目</h2>
+              <h2 className="section-title text-4xl lg:text-5xl">核心能力结构</h2>
               <p className="section-copy">
-                快速说明设计方法、表达优势与适配项目类型，帮助浏览者在看图之外理解你的工作方式。
+                建立能力模型，清晰呈现设计方向与优势。
               </p>
             </Reveal>
             <div className="grid gap-6 md:grid-cols-2">
@@ -400,10 +400,10 @@ export default function Home() {
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div className="space-y-6">
                 <p className="section-kicker">Career Positioning</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">当前网站重点服务于环境设计与室内设计方向的求职展示</h2>
+                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">重点服务于环境设计与室内设计求职展示</h2>
               </div>
               <p className="text-lg leading-relaxed text-white/60">
-                首页的任务不是替代完整作品集，而是先帮助招聘方在较短时间内完成"判断方向、筛选项目、确认沟通意愿"三步。后续更深入的项目内容，会在各个详情页里逐步展开。
+                首页任务是帮助招聘方在较短时间内完成“判断方向、筛选项目、确认沟通意愿”，后续深入项目内容会在详情页逐步展开。
               </p>
             </div>
           </div>
@@ -461,10 +461,10 @@ export default function Home() {
           <Reveal className="space-y-8">
             <p className="section-kicker">Professional Profile</p>
             <h2 className="font-serif-display text-5xl font-bold leading-tight text-white sm:text-6xl">
-              提炼教育背景、技能与经验，信息阅读比截图更清晰
+              教育背景、技能与经验提炼
             </h2>
             <p className="text-lg leading-relaxed text-white/60">
-              首页呈现求职核心信息，完整版、证书预览及下载入口详见 Resume 页面。
+              首页呈现求职核心信息，完整版、证书预览及下载入口详见简历页面。
             </p>
             <Link
               href="/resume"
@@ -492,9 +492,9 @@ export default function Home() {
         <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl space-y-4">
             <p className="section-kicker">全部项目</p>
-            <h2 className="section-title">先建立重点项目入口，再逐步扩展为完整作品目录</h2>
+            <h2 className="section-title">完整作品目录</h2>
             <p className="section-copy">
-              目前这 8 个作品已经整理为完整的线上展示内容，你可以从项目总览页快速进入详情，也可以先通过总作品集页整体浏览，了解我的设计关注点与表达方式。
+              作品已整理为完整线上展示内容，可从总览页进入详情，或通过总作品集页整体浏览。
             </p>
           </div>
           <Link href="/projects" className="ui-button-light">
@@ -564,9 +564,9 @@ export default function Home() {
           <div className="mt-10 flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl space-y-4">
               <p className="section-kicker">Contact</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">让作品、简历与联系路径在同一网站中闭环</h2>
+              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">联系方式</h2>
               <p className="max-w-2xl text-sm leading-8 text-[var(--color-copy)] sm:text-base">
-                当前首页的目标，是让浏览者可以在一个页面中完成"认识你、浏览代表项目、判断能力方向、查看求职摘要、建立联系"这一整条基本路径。
+                欢迎通过以下方式与我联系，探讨环境设计、室内空间等相关工作机会。
               </p>
               <div className="grid gap-3 pt-2">
                 {closingNotes.map((item) => (

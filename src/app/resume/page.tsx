@@ -100,9 +100,9 @@ export default function ResumePage() {
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
               <p className="section-kicker">Resume</p>
-              <h1 className="section-title text-5xl sm:text-6xl">教育背景、技能结构、实践经验与求职方向的系统呈现</h1>
+              <h1 className="section-title text-5xl sm:text-6xl">个人简历与专业背景</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                本页面集中整理了我的学术背景与专业能力，旨在为招聘方提供一个清晰、客观的能力评估参考，展示我如何将设计理论应用于环境与室内空间实践中。
+                集中展示教育背景、技能结构、实践经验与求职方向，提供清晰客观的能力评估参考。
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
@@ -128,7 +128,7 @@ export default function ResumePage() {
             <div className="glass-panel p-10 lg:p-16">
               <div className="mb-12 border-b border-white/5 pb-12">
                 <p className="section-kicker mb-4">Academic Background</p>
-                <h2 className="section-title text-4xl">以系统学习为基础，建立专业展示力</h2>
+                <h2 className="section-title text-4xl">教育背景</h2>
               </div>
               <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
                 <div className="space-y-4">
@@ -151,7 +151,7 @@ export default function ResumePage() {
       <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
         <Reveal className="mb-20 text-center">
           <p className="section-kicker mb-4">Core Skills</p>
-          <h2 className="section-title text-4xl mx-auto">软件能力与设计流程的深度集成</h2>
+          <h2 className="section-title text-4xl mx-auto">专业技能结构</h2>
         </Reveal>
         <div className="grid gap-8 lg:grid-cols-3">
           {skillGroups.map((group, index) => (
@@ -180,7 +180,7 @@ export default function ResumePage() {
         <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
           <Reveal className="mb-20">
             <p className="section-kicker mb-4">Practice</p>
-            <h2 className="section-title text-4xl">在真实场景中建立设计推进能力</h2>
+            <h2 className="section-title text-4xl">实践经验</h2>
           </Reveal>
           <div className="grid gap-6">
             {experiences.map((item, index) => (
@@ -205,7 +205,7 @@ export default function ResumePage() {
           <Reveal>
             <div className="glass-panel p-10 lg:p-16 h-full">
               <p className="section-kicker mb-6">Evidence</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">代表项目与信息交叉印证</h2>
+              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">代表项目</h2>
               <div className="grid grid-cols-2 gap-4">
                 {projectLinks.map((item) => (
                   <Link key={item.label} href={item.href} className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40">
@@ -227,7 +227,7 @@ export default function ResumePage() {
           <Reveal delay={200}>
             <div className="glass-panel p-10 lg:p-16 h-full border-[var(--color-accent)]/20">
               <p className="section-kicker mb-6">Recognition</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">竞赛成果补强职业可信度</h2>
+              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">荣誉奖项</h2>
               <div className="space-y-6">
                 {awards.map((item, index) => (
                   <div key={item.title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 hover:bg-white/[0.06] transition-colors">
@@ -251,9 +251,9 @@ export default function ResumePage() {
             <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:p-16 lg:items-center">
               <div className="space-y-6">
                 <p className="section-kicker">Connect</p>
-                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight sm:text-5xl">进一步沟通项目、实习或岗位信息</h2>
+                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight sm:text-5xl">联系方式</h2>
                 <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
-                  当前简历页重点承接教育背景与经历说明，后续将继续补全下载版、证书预览及更完整的求职入口。
+                  欢迎通过以下方式探讨环境设计、室内空间等相关工作机会。
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
