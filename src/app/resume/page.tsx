@@ -66,11 +66,11 @@ const awards = [
   {
     title: "「华夏奖」文化艺术设计大赛",
     level: "优秀奖",
-    note: "作为作品集可信度补充，后续将在荣誉页继续补充对应证明材料。",
+    note: "作为文化主题表达与作品集可信度的补充证明。",
   },
 ];
 
-const projectLinks = featuredItems.map(item => ({
+const projectLinks = featuredItems.map((item) => ({
   label: item.title,
   href: item.detailHref,
   heroImage: item.heroImage,
@@ -99,23 +99,23 @@ export default function ResumePage() {
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
-              <p className="section-kicker">Resume</p>
+              <p className="section-kicker">个人简历</p>
               <h1 className="section-title text-5xl sm:text-6xl">个人简历与专业背景</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                集中展示教育背景、技能结构、实践经验与求职方向，提供清晰客观的能力评估参考。
+                集中展示教育背景、技能结构、实践经验与求职方向，方便快速了解我的学习经历与能力重点。
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="glass-card rounded-[1.8rem] p-8">
-                <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-6">Education</p>
-                <h2 className="font-serif-display text-2xl font-semibold text-white leading-snug">{education.school}</h2>
-                <p className="mt-4 text-sm text-white/70 italic">{education.major}</p>
-                <p className="mt-2 text-xs text-white/40 tracking-[0.1em] uppercase">{education.degree}</p>
+                <p className="mb-6 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">教育</p>
+                <h2 className="font-serif-display text-2xl font-semibold leading-snug text-white">{education.school}</h2>
+                <p className="mt-4 text-sm italic text-white/70">{education.major}</p>
+                <p className="mt-2 text-xs tracking-[0.1em] text-white/40 uppercase">{education.degree}</p>
               </div>
               <div className="glass-card rounded-[1.8rem] p-8">
-                <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-6">Positioning</p>
+                <p className="mb-6 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">方向</p>
                 <h2 className="font-serif-display text-2xl font-semibold text-white">环境设计 / 室内设计</h2>
-                <p className="mt-4 text-sm leading-relaxed text-white/60">关注空间叙事、文化转译与图像表达，致力于兼顾概念与落地的设计成长。</p>
+                <p className="mt-4 text-sm leading-relaxed text-white/60">关注空间叙事、文化转译与图像表达，持续补足概念构建与落地表达能力。</p>
               </div>
             </div>
           </div>
@@ -127,21 +127,19 @@ export default function ResumePage() {
           <Reveal>
             <div className="glass-panel p-10 lg:p-16">
               <div className="mb-12 border-b border-white/5 pb-12">
-                <p className="section-kicker mb-4">Academic Background</p>
-                <h2 className="section-title text-4xl">教育背景</h2>
+                <p className="section-kicker mb-4">教育背景</p>
+                <h2 className="section-title text-4xl">在校学习经历</h2>
               </div>
               <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
                 <div className="space-y-4">
                   <h3 className="font-serif-display text-4xl font-semibold text-white">{education.school}</h3>
                   <div className="flex items-center gap-4">
-                    <span className="text-[var(--color-accent)] italic">{education.major}</span>
+                    <span className="italic text-[var(--color-accent)]">{education.major}</span>
                     <span className="h-1 w-1 rounded-full bg-white/20" />
-                    <span className="text-white/40 text-xs tracking-widest">{education.period}</span>
+                    <span className="text-xs tracking-widest text-white/40">{education.period}</span>
                   </div>
                 </div>
-                <p className="text-lg leading-[2] text-white/60 border-l border-white/10 pl-10 italic">
-                  "{education.summary}"
-                </p>
+                <p className="border-l border-white/10 pl-10 text-lg leading-[2] text-white/60">{education.summary}</p>
               </div>
             </div>
           </Reveal>
@@ -150,15 +148,15 @@ export default function ResumePage() {
 
       <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
         <Reveal className="mb-20 text-center">
-          <p className="section-kicker mb-4">Core Skills</p>
-          <h2 className="section-title text-4xl mx-auto">专业技能结构</h2>
+          <p className="section-kicker mb-4">专业技能</p>
+          <h2 className="section-title mx-auto text-4xl">技能结构</h2>
         </Reveal>
         <div className="grid gap-8 lg:grid-cols-3">
           {skillGroups.map((group, index) => (
             <Reveal key={group.title} delay={index * 100}>
               <article className="glass-card flex h-full flex-col rounded-[2.5rem] p-10">
-                <div className="flex items-center gap-4 mb-8 text-[10px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">
-                  <span>Module 0{index + 1}</span>
+                <div className="mb-8 flex items-center gap-4 text-[10px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">
+                  <span>技能分类</span>
                   <div className="h-px flex-1 bg-white/5" />
                 </div>
                 <h3 className="font-serif-display text-3xl font-semibold text-white">{group.title}</h3>
@@ -179,15 +177,15 @@ export default function ResumePage() {
       <section className="border-y border-white/5 bg-white/[0.01] py-32">
         <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
           <Reveal className="mb-20">
-            <p className="section-kicker mb-4">Practice</p>
-            <h2 className="section-title text-4xl">实践经验</h2>
+            <p className="section-kicker mb-4">实践经验</p>
+            <h2 className="section-title text-4xl">项目与现场实践</h2>
           </Reveal>
           <div className="grid gap-6">
             {experiences.map((item, index) => (
               <Reveal key={item.title} delay={index * 100}>
                 <article className="glass-card group flex flex-col gap-8 rounded-[2rem] p-10 lg:flex-row lg:items-center">
                   <div className="lg:w-1/4">
-                    <span className="font-serif-display text-4xl text-white/10 group-hover:text-[var(--color-accent)]/20 transition-colors duration-500">{item.period}</span>
+                    <span className="font-serif-display text-4xl text-white/10 transition-colors duration-500 group-hover:text-[var(--color-accent)]/20">{item.period}</span>
                     <h3 className="mt-4 font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
                   </div>
                   <div className="flex-1 border-l border-white/5 pl-10">
@@ -203,9 +201,9 @@ export default function ResumePage() {
       <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
-            <div className="glass-panel p-10 lg:p-16 h-full">
-              <p className="section-kicker mb-6">Evidence</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">代表项目</h2>
+            <div className="glass-panel h-full p-10 lg:p-16">
+              <p className="section-kicker mb-6">代表项目</p>
+              <h2 className="mb-8 font-serif-display text-4xl font-semibold leading-tight text-white">精选项目入口</h2>
               <div className="grid grid-cols-2 gap-4">
                 {projectLinks.map((item) => (
                   <Link key={item.label} href={item.href} className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40">
@@ -215,8 +213,8 @@ export default function ResumePage() {
                       fill
                       className="object-cover opacity-60 transition duration-700 group-hover:scale-110 group-hover:opacity-100"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center p-4 bg-black/40 opacity-100 group-hover:bg-black/10 transition-colors">
-                      <span className="text-[10px] font-bold tracking-[0.2em] text-white uppercase text-center">{item.label}</span>
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 p-4 transition-colors group-hover:bg-black/10">
+                      <span className="text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase">{item.label}</span>
                     </div>
                   </Link>
                 ))}
@@ -225,20 +223,20 @@ export default function ResumePage() {
           </Reveal>
 
           <Reveal delay={200}>
-            <div className="glass-panel p-10 lg:p-16 h-full border-[var(--color-accent)]/20">
-              <p className="section-kicker mb-6">Recognition</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight mb-8">荣誉奖项</h2>
+            <div className="glass-panel h-full border-[var(--color-accent)]/20 p-10 lg:p-16">
+              <p className="section-kicker mb-6">荣誉奖项</p>
+              <h2 className="mb-8 font-serif-display text-4xl font-semibold leading-tight text-white">竞赛成果</h2>
               <div className="space-y-6">
-                {awards.map((item, index) => (
-                  <div key={item.title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 hover:bg-white/[0.06] transition-colors">
+                {awards.map((item) => (
+                  <div key={item.title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.06]">
                     <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.level}</span>
                     <h3 className="mt-2 font-serif-display text-xl font-semibold text-white">{item.title}</h3>
                     <p className="mt-3 text-xs leading-relaxed text-white/40">{item.note}</p>
                   </div>
                 ))}
               </div>
-              <div className="mt-10 pt-8 border-t border-white/5">
-                <Link href="/awards" className="ui-button-primary w-full">查看完整荣誉页面</Link>
+              <div className="mt-10 border-t border-white/5 pt-8">
+                <Link href="/awards" className="ui-button-primary w-full">查看完整荣誉页</Link>
               </div>
             </div>
           </Reveal>
@@ -248,20 +246,20 @@ export default function ResumePage() {
       <footer id="contact" className="border-t border-white/5 bg-white/[0.01] py-24">
         <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
           <Reveal>
-            <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:p-16 lg:items-center">
+            <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-16">
               <div className="space-y-6">
-                <p className="section-kicker">Connect</p>
-                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight sm:text-5xl">联系方式</h2>
-                <p className="text-lg text-white/50 max-w-2xl leading-relaxed">
-                  欢迎通过以下方式探讨环境设计、室内空间等相关工作机会。
+                <p className="section-kicker">联系方式</p>
+                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">欢迎联系我</h2>
+                <p className="max-w-2xl text-lg leading-relaxed text-white/50">
+                  欢迎通过以下方式联系我，进一步沟通环境设计、室内空间与相关岗位机会。
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">
                 {contactItems.map((item) => (
-                  <div key={item.label} className="glass-card rounded-2xl p-6 min-w-[240px]">
-                    <p className="text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase mb-3">{item.label}</p>
+                  <div key={item.label} className="glass-card min-w-[240px] rounded-2xl p-6">
+                    <p className="mb-3 text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-base font-medium text-white hover:text-[var(--color-accent)] transition-colors">
+                      <a href={item.href} className="text-base font-medium text-white transition-colors hover:text-[var(--color-accent)]">
                         {item.value}
                       </a>
                     ) : (

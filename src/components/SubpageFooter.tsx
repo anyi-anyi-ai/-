@@ -18,7 +18,7 @@ export default function SubpageFooter({
       <div className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16">
         <div className="glass-panel grid gap-12 p-8 lg:grid-cols-[1fr_auto] lg:items-center lg:p-16">
           <div className="space-y-6">
-            <p className="section-kicker">Keep Exploring</p>
+            <p className="section-kicker">继续浏览</p>
             <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight lg:text-5xl">
               {heading}
             </h2>

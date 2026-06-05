@@ -7,7 +7,7 @@ const allProjects = portfolioItems.map(item => ({
   title: item.title,
   href: item.detailHref,
   active: true,
-  status: "已上线详情",
+  status: "项目详情",
 }));
 
 const capabilities = [
@@ -91,13 +91,6 @@ const workflowSteps = [
   },
 ];
 
-const browseGuide = [
-  "先看首页首屏与能力摘要，快速了解我的设计方向与表达方式。",
-  "再进入总作品集页或项目总览页，浏览目前整理完成的 8 个作品，建立对我作品类型与风格的整体印象。",
-  "最后回到简历摘要、荣誉页与联系模块，继续了解我的背景经历与求职信息。",
-];
-
-
 const profileStats = [
   { value: String(portfolioItems.length), label: "作品方向储备" },
   { value: String(featuredItems.length), label: "精选项目" },
@@ -111,12 +104,6 @@ const actionLinks = [
   { label: "浏览简历页", href: "/resume" },
   { label: "查看荣誉页", href: "/awards" },
   { label: "直接联系我", href: "#contact" },
-];
-
-const closingNotes = [
-  "首页负责建立第一印象、能力判断与项目入口，不替代完整作品详情页。",
-  "每个已上线项目都将继续补充过程图、展板图、视频与项目总结内容。",
-  "后续将继续扩展独立简历页与证书展示页，形成更完整的求职资料闭环。",
 ];
 
 export default function Home() {
@@ -211,9 +198,6 @@ export default function Home() {
                 </Link>
               </div>
 
-              <div className="animate-reveal stagger-5 ui-panel rounded-[1.7rem] bg-black/24 p-5 text-sm leading-7 text-white/78">
-                这个首页是一块作品展陈前言：先了解设计定位与方法，再进入作品页细看项目内容，最后判断是否适合进一步沟通与合作。
-              </div>
             </div>
 
             <div className="animate-reveal stagger-5 ui-panel space-y-6 rounded-[2.2rem] border-white/10 bg-white/8 p-6 backdrop-blur-md">
@@ -241,7 +225,7 @@ export default function Home() {
                 </div>
               </dl>
               <div className="rounded-[1.5rem] border border-white/10 bg-black/22 p-4 text-sm leading-7 text-white/74">
-                它承担首页的第一视觉记忆点，也代表我在"概念构建—图像表达—项目叙述"三方面的综合能力。
+                它承担首页的第一视觉记忆点，也代表我在概念构建、图像表达与项目叙述三方面的综合能力。
               </div>
               <Link href="/projects/chen-ai-zhi-shang" className="ui-button-secondary w-full sm:w-fit text-white">
                 查看项目
@@ -257,7 +241,7 @@ export default function Home() {
         <Reveal>
           <div className="mb-20 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-4xl space-y-6">
-              <p className="section-kicker">Curated Projects</p>
+              <p className="section-kicker">作品精选</p>
               <h2 className="section-title">先建立重点项目入口，再逐步扩展为完整作品目录</h2>
               <p className="section-copy">
                 你可以从项目总览页快速进入详情，也可以先通过总作品集页整体浏览，了解设计关注点与表达方式。
@@ -272,7 +256,7 @@ export default function Home() {
           <div className="glass-panel mb-16 overflow-hidden p-10 lg:p-16">
             <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
               <div className="space-y-6">
-                <p className="text-xs font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">策展逻辑</p>
+                <p className="text-xs font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">项目覆盖</p>
                 <h3 className="font-serif-display text-4xl font-semibold text-white sm:text-5xl">呈现能力覆盖面</h3>
                 <p className="text-lg leading-relaxed text-white/60">
                   项目分别对应文化叙事、未来概念、体验空间与商业逻辑不同任务类型，体现概念、功能、场景和图像表达的综合深度。
@@ -311,7 +295,7 @@ export default function Home() {
                 <div className="flex flex-1 flex-col px-2 pb-4">
                   <div className="mb-4 flex items-center justify-between">
                     <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{project.status}</span>
-                    <span className="text-[10px] font-medium tracking-[0.1em] text-white/30 italic">SH-{index+1}</span>
+                    <span className="text-[10px] font-medium tracking-[0.1em] text-white/30 italic">精选项目</span>
                   </div>
                   <h3 className="font-serif-display text-2xl font-semibold text-white transition group-hover:text-[var(--color-accent)]">
                     {project.title}
@@ -323,7 +307,7 @@ export default function Home() {
                   
                   <div className="mt-auto pt-8">
                     <div className="flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase transition group-hover:text-white">
-                      <span>View Project</span>
+                      <span>查看项目</span>
                       <span className="h-[1px] w-8 bg-white/20 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
                     </div>
                   </div>
@@ -341,7 +325,7 @@ export default function Home() {
             <div className="grid gap-16 rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-10 backdrop-blur-xl lg:grid-cols-[0.92fr_1.08fr] lg:p-16">
               <div className="space-y-8">
                 <div className="space-y-4">
-                  <p className="section-kicker">Methodology</p>
+                  <p className="section-kicker">设计方法</p>
                   <h2 className="section-title">让招聘方先看懂方法，再决定深入浏览项目</h2>
                 </div>
                 <p className="section-copy">
@@ -353,7 +337,7 @@ export default function Home() {
                 {workflowSteps.map((item, index) => (
                   <div key={item.step} className={`animate-reveal stagger-${index + 1}`}>
                     <article className="h-full rounded-[1.8rem] border border-white/5 bg-white/[0.02] p-6 transition hover:bg-white/[0.05]">
-                      <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">Step 0{item.step}</p>
+                      <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">步骤 {item.step}</p>
                       <h3 className="mt-4 font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
                       <p className="mt-4 text-sm leading-relaxed text-white/50">{item.description}</p>
                     </article>
@@ -365,7 +349,7 @@ export default function Home() {
 
           <div className="mt-24 grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
             <Reveal className="space-y-6 lg:sticky lg:top-32">
-              <p className="section-kicker">Capabilities</p>
+              <p className="section-kicker">核心能力</p>
               <h2 className="section-title text-4xl lg:text-5xl">核心能力结构</h2>
               <p className="section-copy">
                 建立能力模型，清晰呈现设计方向与优势。
@@ -378,7 +362,7 @@ export default function Home() {
                     className="glass-card flex h-full flex-col rounded-[2.2rem] p-8"
                   >
                     <div className="mb-6 flex items-center justify-between">
-                      <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">Expertise</span>
+                      <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">能力重点</span>
                       <div className="h-2 w-2 rounded-full bg-[var(--color-accent)] opacity-40" />
                     </div>
                     <h3 className="font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
@@ -399,11 +383,11 @@ export default function Home() {
           <div className="glass-panel px-8 py-12 lg:px-16 lg:py-20">
             <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
               <div className="space-y-6">
-                <p className="section-kicker">Career Positioning</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">重点服务于环境设计与室内设计求职展示</h2>
+                <p className="section-kicker">求职方向</p>
+                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">面向环境设计与室内设计相关岗位展示作品与能力</h2>
               </div>
               <p className="text-lg leading-relaxed text-white/60">
-                首页任务是帮助招聘方在较短时间内完成“判断方向、筛选项目、确认沟通意愿”，后续深入项目内容会在详情页逐步展开。
+                通过精选项目、能力结构、简历摘要与荣誉信息，快速展示我的设计方向、项目类型与求职定位。
               </p>
             </div>
           </div>
@@ -414,14 +398,14 @@ export default function Home() {
         <Reveal>
           <div className="mb-20 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-4xl space-y-6">
-              <p className="section-kicker">Recognition</p>
+              <p className="section-kicker">荣誉奖项</p>
               <h2 className="section-title">奖项与成果建立的可信度支撑</h2>
               <p className="section-copy">
                 首页展示核心荣誉，证明设计完成度已获竞赛支撑，详情见荣誉页。
               </p>
             </div>
             <Link href="/awards" className="group flex items-center gap-3 text-xs font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase transition hover:text-white">
-              <span>View All Awards</span>
+              <span>查看全部荣誉</span>
               <span className="h-[1px] w-8 bg-[var(--color-accent)] transition-all group-hover:w-12" />
             </Link>
           </div>
@@ -447,7 +431,7 @@ export default function Home() {
                       <span>项目：{award.project}</span>
                     </p>
                   ) : null}
-                  {award.note ? <p className="italic">"{award.note}"</p> : null}
+                  {award.note ? <p className="italic">{award.note}</p> : null}
                 </div>
               </article>
             </Reveal>
@@ -459,7 +443,7 @@ export default function Home() {
         <div className="glow-orb top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 opacity-10" />
         <div className="mx-auto grid max-w-[1600px] gap-20 px-6 sm:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16">
           <Reveal className="space-y-8">
-            <p className="section-kicker">Professional Profile</p>
+            <p className="section-kicker">简历摘要</p>
             <h2 className="font-serif-display text-5xl font-bold leading-tight text-white sm:text-6xl">
               教育背景、技能与经验提炼
             </h2>
@@ -502,21 +486,6 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="mb-10 grid gap-4 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/28 p-6 lg:grid-cols-[0.95fr_1.05fr]">
-          <div className="space-y-3">
-            <p className="text-xs tracking-[0.2em] text-[var(--color-accent-deep)] uppercase">浏览引导</p>
-            <h3 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">推荐按照"首页判断 → 项目深入 → 联系确认"的顺序浏览</h3>
-          </div>
-          <div className="grid gap-3">
-            {browseGuide.map((item, index) => (
-              <div key={item} className="rounded-[1.3rem] border border-[var(--color-line)] bg-white px-4 py-4 text-sm leading-7 text-[var(--color-copy)]">
-                <span className="mr-3 text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">0{index + 1}</span>
-                {item}
-              </div>
-            ))}
-          </div>
-        </div>
-
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {allProjects.map((project) =>
             project.active ? (
@@ -545,7 +514,7 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
           <div className="grid gap-6 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/22 p-6 lg:grid-cols-[1fr_auto] lg:items-center">
             <div className="space-y-4">
-              <p className="section-kicker">行动入口</p>
+              <p className="section-kicker">快速入口</p>
               <h2 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">如果你已经完成浏览，可以直接继续查看项目、简历或联系信息</h2>
             </div>
             <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
@@ -563,18 +532,11 @@ export default function Home() {
 
           <div className="mt-10 flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl space-y-4">
-              <p className="section-kicker">Contact</p>
+              <p className="section-kicker">联系方式</p>
               <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">联系方式</h2>
               <p className="max-w-2xl text-sm leading-8 text-[var(--color-copy)] sm:text-base">
                 欢迎通过以下方式与我联系，探讨环境设计、室内空间等相关工作机会。
               </p>
-              <div className="grid gap-3 pt-2">
-                {closingNotes.map((item) => (
-                  <div key={item} className="rounded-[1.2rem] border border-[var(--color-line)] bg-white px-4 py-4 text-sm leading-7 text-[var(--color-copy)]">
-                    {item}
-                  </div>
-                ))}
-              </div>
             </div>
             <div className="grid gap-4 text-sm text-[var(--color-copy)] sm:min-w-[20rem]">
               {contactItems.map((item) => (

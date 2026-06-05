@@ -5,12 +5,6 @@ import SubpageNav from "@/components/SubpageNav";
 import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
 
-const browseSteps = [
-  "浏览总作品集，了解作品方向与范围。",
-  "选择感兴趣的作品集，进入独立详情页深入了解。",
-  "结合简历与荣誉页，全面评估专业能力与背景。",
-];
-
 export default function PortfolioIndexPage() {
   return (
     <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
@@ -27,54 +21,36 @@ export default function PortfolioIndexPage() {
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
-              <p className="section-kicker">Portfolio Hub</p>
+              <p className="section-kicker">作品集</p>
               <h1 className="section-title text-5xl sm:text-6xl">总作品集</h1>
               <p className="section-copy">
-                这里集中了 {portfolioItems.length} 个已整理完成的作品集方向。可根据兴趣或岗位需求选择深入浏览。
+                这里汇集了 {portfolioItems.length} 个作品方向，涵盖文化叙事、商业体验、概念场景与家具设计等不同类型。
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">Total</p>
+                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">数量</p>
                 <h2 className="mt-4 font-serif-display text-4xl font-semibold">{portfolioItems.length}</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">作品集总数</p>
+                <p className="mt-4 text-xs leading-relaxed text-white/40">当前可浏览的作品项目</p>
               </div>
               <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">Focus</p>
-                <h2 className="mt-4 font-serif-display text-4xl font-semibold">持续更新</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">作品详情将逐步完善</p>
+                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">方向</p>
+                <h2 className="mt-4 font-serif-display text-4xl font-semibold">多类型覆盖</h2>
+                <p className="mt-4 text-xs leading-relaxed text-white/40">文化主题、商业空间、未来概念与单体设计</p>
               </div>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section className="relative border-y border-white/5 bg-white/[0.02] py-24">
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
-          <Reveal>
-            <div className="glass-panel grid gap-12 p-8 lg:grid-cols-[0.8fr_1.2fr] lg:p-12 lg:items-center">
-              <div className="space-y-6">
-                <p className="section-kicker text-sm">Browsing Guide</p>
-                <h2 className="font-serif-display text-4xl font-semibold text-white leading-tight">浏览建议</h2>
-              </div>
-              <div className="grid gap-4">
-                {browseSteps.map((item, index) => (
-                  <div key={item} className="flex items-center gap-6 rounded-xl border border-white/5 bg-white/[0.03] p-5 transition hover:bg-white/[0.06]">
-                    <span className="font-serif-display text-3xl text-white/10">0{index + 1}</span>
-                    <p className="text-sm leading-relaxed text-white/70">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
       <section className="border-t border-white/5 bg-white/[0.01]">
         <div className="mx-auto max-w-[1800px] px-6 py-32 sm:px-10 lg:px-16">
           <Reveal className="mb-20 max-w-4xl space-y-6">
-            <p className="section-kicker">All Portfolios</p>
+            <p className="section-kicker">全部作品</p>
             <h2 className="section-title">作品集目录</h2>
+            <p className="section-copy">
+              可根据感兴趣的项目类型进入详情页，查看项目概念、图像表达与设计说明。
+            </p>
           </Reveal>
           <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
             {portfolioItems.map((item, index) => (
@@ -95,11 +71,11 @@ export default function PortfolioIndexPage() {
                   </div>
                   <div className="px-2 pb-4">
                     <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.status}</p>
-                    <h3 className="mt-4 font-serif-display text-3xl font-semibold text-white group-hover:text-[var(--color-accent)] transition-colors">{item.title}</h3>
+                    <h3 className="mt-4 font-serif-display text-3xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{item.title}</h3>
                     <p className="mt-4 text-[11px] font-bold tracking-[0.1em] text-white/30 uppercase italic">{item.type}</p>
                     <p className="mt-6 text-sm leading-relaxed text-white/50 line-clamp-2">{item.summary}</p>
                     <div className="mt-10 flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-white/20 uppercase transition group-hover:text-white">
-                      <span>Explore</span>
+                      <span>查看作品</span>
                       <span className="h-px w-8 bg-white/10 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
                     </div>
                   </div>

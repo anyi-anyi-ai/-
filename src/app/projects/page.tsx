@@ -19,21 +19,21 @@ export default function ProjectsIndexPage() {
       <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
         <div className="glow-orb bottom-0 left-0 h-96 w-96 opacity-10" />
         <Reveal>
-          <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1.1fr_0.9fr] lg:p-16 lg:items-center">
+          <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-16">
             <div className="space-y-8">
-              <p className="section-kicker text-sm">Project Index</p>
-              <h1 className="section-title text-5xl sm:text-6xl lg:text-7xl">项目总览</h1>
+              <p className="section-kicker text-sm">项目总览</p>
+              <h1 className="section-title text-5xl sm:text-6xl lg:text-7xl">项目详情入口</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                集中展示已上线的项目详情。每个页面包含设计推导、高清图像展示与项目总结。
+                这里集中展示各项目的详情页入口，进入后可查看设计概念、图像展示与完整说明。
               </p>
             </div>
             <div className="rounded-3xl border border-white/5 bg-white/[0.02] p-8 space-y-6">
               <div className="flex items-center gap-4">
                 <span className="h-2 w-2 rounded-full bg-[var(--color-accent)] shadow-[0_0_10px_rgba(212,163,115,0.5)]" />
-                <p className="text-sm font-medium text-white/80 tracking-widest uppercase">Project Status</p>
+                <p className="text-sm font-medium tracking-widest text-white/80 uppercase">项目状态</p>
               </div>
               <p className="text-sm leading-relaxed text-white/40">
-                可在此快速浏览各项目状态，并进入对应详情页。
+                可快速浏览每个项目的方向与完成度，并进入对应详情页继续查看。
               </p>
             </div>
           </div>
@@ -49,7 +49,7 @@ export default function ProjectsIndexPage() {
                   href={`/projects/${project.slug}`}
                   className="glass-card group flex flex-col overflow-hidden rounded-[2.5rem] p-6"
                 >
-                  <div className="project-preview-frame relative mb-8 overflow-hidden rounded-[1.8rem] bg-black/40 aspect-[4/3]">
+                  <div className="project-preview-frame relative mb-8 aspect-[4/3] overflow-hidden rounded-[1.8rem] bg-black/40">
                     <Image
                       src={project.heroImage}
                       alt={project.title}
@@ -59,19 +59,19 @@ export default function ProjectsIndexPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
                   </div>
-                  
+
                   <div className="px-2 pb-4">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{project.status}</span>
-                      <span className="text-[10px] font-medium tracking-[0.1em] text-white/20 italic">0{index + 1}</span>
-                    </div>
-                    <h3 className="font-serif-display text-3xl font-semibold text-white group-hover:text-[var(--color-accent)] transition-colors">{project.title}</h3>
+                  <div className="mb-4 flex items-center justify-between">
+                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{project.status}</span>
+                    <span className="text-[10px] font-medium tracking-[0.1em] text-white/20 italic">项目</span>
+                  </div>
+                    <h3 className="font-serif-display text-3xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{project.title}</h3>
                     <p className="mt-4 text-[11px] font-bold tracking-[0.1em] text-white/30 uppercase italic">{project.type}</p>
                     <p className="mt-6 text-sm leading-relaxed text-white/50 line-clamp-3">{project.summary}</p>
-                    
-                    <div className="mt-10 pt-8 border-t border-white/5">
+
+                    <div className="mt-10 border-t border-white/5 pt-8">
                       <div className="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase transition group-hover:text-white">
-                        <span>Details Entry</span>
+                        <span>查看详情</span>
                         <span className="h-px w-8 bg-white/10 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
                       </div>
                     </div>
@@ -84,7 +84,7 @@ export default function ProjectsIndexPage() {
       </section>
 
       <SubpageFooter
-        heading="继续查看作品集分类或个人简历"
+        heading="继续查看作品分类或个人简历"
         links={[
           { label: "查看总作品集", href: "/portfolio" },
           { label: "查看简历页", href: "/resume" },

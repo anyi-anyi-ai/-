@@ -6,15 +6,9 @@ import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
 
 const pageValues = [
-  "为首页中的荣誉摘要提供更完整的承接页面，让竞赛成果不只作为一句文字出现。",
-  "把奖项与项目建立对应关系，帮助浏览者理解成果背后的设计内容，而不是只看奖项名称。",
-  "后续可继续补充证书原图、获奖时间、赛事背景与参赛说明，形成更完整的证明材料页。",
-];
-
-const nextSteps = [
-  "证书图片已补充，后续继续完善获奖时间信息。",
-  "为每项荣誉补充赛事简介、参赛类别与对应项目说明。",
-  "在项目详情页中加入「相关荣誉」入口，形成双向跳转结构。",
+  "奖项为作品集提供外部评价参考，帮助招聘方更快建立信任。",
+  "每项荣誉都与具体项目或能力方向相关，而不只是单独陈列的结果。",
+  "荣誉页与项目页、简历页一起构成更完整的个人成果展示。",
 ];
 
 export default function AwardsPage() {
@@ -34,16 +28,16 @@ export default function AwardsPage() {
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
-              <p className="section-kicker">Awards & Recognition</p>
-              <h1 className="section-title text-5xl sm:text-6xl">建立设计成果的外部公信力</h1>
+              <p className="section-kicker">荣誉奖项</p>
+              <h1 className="section-title text-5xl sm:text-6xl">设计成果与竞赛证明</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                本页面不仅罗列奖项，更旨在说明成果如何与项目表达、竞赛验证和求职展示之间形成对应关系，为作品集提供明确的真实性支撑。
+                这里集中展示与作品集相关的核心竞赛成果，用来补充项目完成度、表达能力与专业认可度。
               </p>
             </div>
             <div className="grid gap-4 sm:grid-cols-3">
-              {pageValues.map((item, index) => (
-                <div key={item} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 hover:bg-white/[0.06] transition-colors">
-                  <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase mb-4">Value 0{index + 1}</p>
+              {pageValues.map((item) => (
+                <div key={item} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.06]">
+                  <p className="mb-4 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">重点</p>
                   <p className="text-xs leading-relaxed text-white/50">{item}</p>
                 </div>
               ))}
@@ -55,30 +49,30 @@ export default function AwardsPage() {
       <section id="awards-list" className="relative border-y border-white/5 bg-white/[0.02] py-32">
         <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
           <Reveal className="mb-20">
-            <p className="section-kicker mb-4">Recognition Index</p>
-            <h2 className="section-title text-4xl">当前以核心竞赛成果为主</h2>
+            <p className="section-kicker mb-4">奖项列表</p>
+            <h2 className="section-title text-4xl">当前展示核心竞赛成果</h2>
           </Reveal>
           <div className="grid gap-8 xl:grid-cols-3">
             {awardItems.map((award, index) => (
               <Reveal key={award.title} delay={index * 100}>
                 <article className="glass-card group flex h-full flex-col rounded-[2.5rem] p-8">
-                  <div className="flex items-center justify-between mb-8">
+                  <div className="mb-8 flex items-center justify-between">
                     <span className="rounded-full border border-[var(--color-accent)]/30 bg-[var(--color-accent)]/10 px-4 py-1 text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">
                       {award.level}
                     </span>
                     <span className="text-[10px] font-medium tracking-[0.2em] text-white/30">{award.time}</span>
                   </div>
-                  
-                  <h3 className="font-serif-display text-3xl font-semibold text-white leading-snug group-hover:text-[var(--color-accent)] transition-colors">
+
+                  <h3 className="font-serif-display text-3xl font-semibold leading-snug text-white transition-colors group-hover:text-[var(--color-accent)]">
                     {award.title}
                   </h3>
-                  
+
                   <div className="mt-8 space-y-4 text-sm leading-relaxed text-white/60 italic">
-                    <p className="border-l border-white/10 pl-4">对应方向：{award.project}</p>
+                    <p className="border-l border-white/10 pl-4">对应项目：{award.project}</p>
                     <p className="text-white/40">{award.description}</p>
                   </div>
 
-                  {award.certificateImage && (
+                  {award.certificateImage ? (
                     <div className="relative mt-10 aspect-[1.4/1] overflow-hidden rounded-2xl border border-white/10 bg-black/40">
                       <Image
                         src={award.certificateImage}
@@ -87,14 +81,14 @@ export default function AwardsPage() {
                         className="object-cover opacity-80 transition duration-700 group-hover:scale-110 group-hover:opacity-100"
                       />
                     </div>
-                  )}
-                  
-                  <div className="mt-10 mt-auto pt-8 border-t border-white/5">
+                  ) : null}
+
+                  <div className="mt-auto mt-10 border-t border-white/5 pt-8">
                     <Link
                       href={award.href}
                       className="flex items-center gap-3 text-[10px] font-bold tracking-[0.3em] text-white/20 uppercase transition group-hover:text-white"
                     >
-                      <span>Explore Project</span>
+                      <span>查看项目</span>
                       <span className="h-px w-8 bg-white/10 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
                     </Link>
                   </div>
@@ -109,21 +103,23 @@ export default function AwardsPage() {
         <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
           <Reveal>
             <div className="space-y-8">
-              <p className="section-kicker">Philosophy</p>
-              <h2 className="font-serif-display text-5xl font-semibold text-white leading-tight">让奖项从「标签」变为「成果证明」</h2>
+              <p className="section-kicker">成果说明</p>
+              <h2 className="font-serif-display text-5xl font-semibold leading-tight text-white">荣誉是项目表达之外的补充证明</h2>
               <p className="text-lg leading-relaxed text-white/60">
-                对于求职型作品集来说，荣誉页的意义在于帮助浏览者建立信任链条。它与项目页、简历页共同组成网站中的可信度层。
+                对求职型作品集来说，奖项可以帮助招聘方更快判断项目质量，也能作为学习成果与表达能力的外部参考。
               </p>
             </div>
           </Reveal>
           <Reveal delay={200}>
             <div className="glass-panel p-10 lg:p-12">
-              <p className="section-kicker mb-8">Next Steps</p>
+              <p className="section-kicker mb-8">查看建议</p>
               <div className="space-y-4">
-                {nextSteps.map((item, index) => (
-                  <div key={item} className="flex gap-6 rounded-xl border border-white/5 bg-white/[0.02] p-5">
-                    <span className="font-serif-display text-2xl text-white/10">0{index + 1}</span>
-                    <p className="text-sm leading-relaxed text-white/50">{item}</p>
+                {awardItems.map((item) => (
+                  <div key={item.title} className="flex gap-6 rounded-xl border border-white/5 bg-white/[0.02] p-5">
+                    <span className="h-2 w-2 rounded-full bg-[var(--color-accent)]/60" />
+                    <p className="text-sm leading-relaxed text-white/50">
+                      {item.title}，{item.level}，可结合对应项目页一起查看。
+                    </p>
                   </div>
                 ))}
               </div>

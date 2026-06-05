@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import Lightbox from "@/components/Lightbox";
 import { PortfolioItem } from "@/data/portfolio-data";
 
-export default function ProjectContent({ project, relatedItems }: { project: PortfolioItem, relatedItems: PortfolioItem[] }) {
+export default function ProjectContent({ project }: { project: PortfolioItem, relatedItems: PortfolioItem[] }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -50,7 +50,7 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
               <div className="flex items-center gap-4">
                 <span className="h-[1px] w-12 bg-[var(--color-accent)]" />
                 <p className="text-xs font-medium tracking-[0.4em] text-[var(--color-accent)] uppercase">
-                  Project Detail / {project.type}
+                  项目详情 / {project.type}
                 </p>
               </div>
               <h1 className="font-serif-display text-6xl font-bold leading-[1.1] tracking-tight text-white sm:text-7xl lg:text-8xl">
@@ -73,7 +73,7 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
           <Reveal>
             <div className="space-y-10">
               <div className="space-y-4">
-                <p className="text-[11px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase italic">Overview</p>
+                <p className="text-[11px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase italic">项目概览</p>
                 <h2 className="font-serif-display text-4xl font-semibold leading-snug lg:text-5xl text-white">
                   {project.overview}
                 </h2>
@@ -89,10 +89,10 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
             <div className="relative rounded-[2rem] border border-white/10 bg-white/[0.03] p-10 shadow-[0_30px_90px_-20px_rgba(0,0,0,0.4)] lg:sticky lg:top-32 backdrop-blur-md">
               <div className="absolute -top-3 -left-3 h-6 w-6 border-t-2 border-l-2 border-[var(--color-accent)]" />
               <div className="space-y-8">
-                <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase underline decoration-[var(--color-accent)] decoration-2 underline-offset-8">Specifications</h3>
+                <h3 className="text-xs font-bold tracking-[0.2em] text-white uppercase underline decoration-[var(--color-accent)] decoration-2 underline-offset-8">项目信息</h3>
                 <dl className="space-y-6">
                   <div>
-                    <dt className="text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase">Keywords</dt>
+                    <dt className="text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase">关键词</dt>
                     <dd className="mt-2 flex flex-wrap gap-2">
                       {project.keywords.map(k => (
                         <span key={k} className="text-sm font-medium text-[var(--color-accent)] italic">#{k}</span>
@@ -100,13 +100,13 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
                     </dd>
                   </div>
                   <div>
-                    <dt className="text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase">Status</dt>
+                    <dt className="text-[10px] font-medium tracking-[0.2em] text-white/40 uppercase">状态</dt>
                     <dd className="mt-2 text-base font-serif-display text-[var(--color-accent)]">{project.status}</dd>
                   </div>
                   {project.portfolioHref && (
                     <div className="pt-4">
                       <Link href={project.portfolioHref} className="group inline-flex items-center gap-3 text-xs font-bold tracking-[0.2em] uppercase transition hover:text-[var(--color-accent)] text-white/60">
-                        <span>Back to Portfolio</span>
+                        <span>查看作品集版本</span>
                         <span className="h-[1px] w-8 bg-white/20 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
                       </Link>
                     </div>
@@ -124,12 +124,11 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
           <Reveal>
             <div className="mb-20 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
               <div className="max-w-3xl space-y-4">
-                <p className="text-[11px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">Design Highlights</p>
+                <p className="text-[11px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">设计亮点</p>
                 <h2 className="font-serif-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
                   以概念、体验与视觉表达共同构成项目阅读路径
                 </h2>
               </div>
-              <div className="text-[60px] font-serif-display text-white/10 leading-none lg:text-[120px]">01</div>
             </div>
           </Reveal>
 
@@ -138,7 +137,7 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
               <Reveal key={h} delay={i * 150}>
                 <div className="group relative border-l border-white/10 pl-8 transition hover:border-[var(--color-accent)]">
                   <span className="absolute -left-[1px] top-0 h-0 w-[1px] bg-[var(--color-accent)] transition-all duration-700 group-hover:h-full" />
-                  <p className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase mb-4">Highlight 0{i+1}</p>
+                  <p className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase mb-4">要点</p>
                   <p className="text-lg leading-relaxed text-white/80">{h}</p>
                 </div>
               </Reveal>
@@ -151,7 +150,7 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
       <section className="mx-auto max-w-[1800px] px-4 py-24 sm:px-6 lg:px-10 lg:py-32">
         <Reveal>
           <div className="mb-16 text-center space-y-4">
-            <p className="text-[11px] font-bold tracking-[0.5em] text-[var(--color-accent)] uppercase italic">Project Gallery</p>
+            <p className="text-[11px] font-bold tracking-[0.5em] text-[var(--color-accent)] uppercase italic">项目图像</p>
             <h2 className="font-serif-display text-3xl font-medium tracking-tight text-white">点击图片以进入沉浸式画廊模式</h2>
             <div className="mx-auto h-[1px] w-24 bg-white/10" />
           </div>
@@ -179,9 +178,6 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
                   className="h-auto w-full opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 />
-                <div className="absolute bottom-4 right-4 z-10 text-[10px] font-medium tracking-[0.2em] text-white/20 uppercase transition group-hover:text-[var(--color-accent)]">
-                  SH-0{index + 1}
-                </div>
               </div>
             </Reveal>
           ))}
@@ -211,7 +207,7 @@ export default function ProjectContent({ project, relatedItems }: { project: Por
         <div className="mx-auto max-w-7xl px-6 text-center sm:px-10 lg:px-16">
           <Reveal>
             <div className="space-y-10">
-              <p className="text-[11px] font-bold tracking-[0.4em] text-white/30 uppercase">Keep Exploring</p>
+              <p className="text-[11px] font-bold tracking-[0.4em] text-white/30 uppercase">继续浏览</p>
               <h2 className="font-serif-display text-5xl font-semibold leading-tight text-white">阅览更多作品集，<br/>或查阅我的专业简历</h2>
               <div className="flex flex-wrap justify-center gap-6 pt-6">
                 <Link

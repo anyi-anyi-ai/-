@@ -6,7 +6,7 @@ type NavLink = {
 };
 
 export default function SubpageNav({
-  backLabel = "← Back to Home",
+  backLabel = "返回首页",
   backHref = "/",
   links,
 }: {
