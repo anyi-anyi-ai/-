@@ -168,6 +168,27 @@ export default function PortfolioContent({ portfolio, relatedItems }: { portfoli
         </div>
       </section>
 
+      {portfolio.videoSrc && (
+        <section className="mx-auto max-w-[1600px] px-6 pb-24 sm:px-10 lg:px-16 lg:pb-32">
+          <Reveal className="mb-12 text-center">
+            <p className="section-kicker mb-4">动态影像</p>
+            <h2 className="section-title mx-auto text-white">作品动态展示</h2>
+          </Reveal>
+          <Reveal>
+            <div className="relative overflow-hidden rounded-[2.5rem] border border-white/5 bg-black p-4 shadow-2xl">
+              <video
+                controls
+                preload="metadata"
+                poster={portfolio.heroImage}
+                className="w-full rounded-[1.8rem] opacity-90"
+              >
+                <source src={portfolio.videoSrc} type="video/mp4" />
+              </video>
+            </div>
+          </Reveal>
+        </section>
+      )}
+
       {/* 5. RELATED */}
       <section className="border-t border-white/5 bg-white/[0.01] py-32">
         <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">

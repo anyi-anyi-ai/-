@@ -12,6 +12,8 @@
   --color-accent-deep: #b5835a;
   --color-accent-glow: rgba(212, 163, 115, 0.15);
   --color-panel: rgba(255, 255, 255, 0.03);
+  --font-sans-local: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", Arial, Helvetica, sans-serif;
+  --font-mono-local: "Cascadia Mono", "Consolas", monospace;
   
   --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.5);
   --shadow-lift: 0 30px 88px rgba(0, 0, 0, 0.7);
@@ -23,8 +25,8 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-sans-local);
+  --font-mono: var(--font-mono-local);
   --font-serif-display: Georgia, "Times New Roman", "Source Han Serif SC", "Songti SC", serif;
 }
 
@@ -46,7 +48,7 @@
     background-attachment: fixed;
     background-blend-mode: overlay;
     color: var(--foreground);
-    font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    font-family: var(--font-sans-local);
     text-rendering: optimizeLegibility;
   }
 
