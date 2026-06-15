@@ -16,7 +16,7 @@ export default function PortfolioIndexPage() {
         ]}
       />
 
-      <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <section className="relative mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <div className="glow-orb top-0 right-0 h-96 w-96 opacity-10" />
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
@@ -43,23 +43,23 @@ export default function PortfolioIndexPage() {
         </Reveal>
       </section>
 
-      <section className="border-t border-white/5 bg-white/[0.01]">
-        <div className="mx-auto max-w-[1800px] px-6 py-32 sm:px-10 lg:px-16">
-          <Reveal className="mb-20 max-w-4xl space-y-6">
+      <section className="border-t border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-16">
+          <Reveal className="mb-12 sm:mb-16 max-w-4xl space-y-6">
             <p className="section-kicker">全部作品</p>
-            <h2 className="section-title">作品集目录</h2>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl">作品集目录</h2>
             <p className="section-copy">
               可根据感兴趣的项目类型进入详情页，查看项目概念、图像表达与设计说明。
             </p>
           </Reveal>
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {portfolioItems.map((item, index) => (
               <Reveal key={item.slug} delay={index * 50}>
                 <Link
                   href={`/portfolio/${item.slug}`}
-                  className="glass-card group block h-full overflow-hidden rounded-[2.5rem] p-5"
+                  className="glass-card group block h-full overflow-hidden p-0"
                 >
-                  <div className="project-preview-frame relative mb-8 overflow-hidden rounded-[1.8rem] bg-black/40">
+                  <div className="project-card-image mb-6">
                     <Image
                       src={item.heroImage}
                       alt={`${item.title}缩略图`}
@@ -69,10 +69,10 @@ export default function PortfolioIndexPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
                   </div>
-                  <div className="px-2 pb-4">
-                    <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.status}</p>
-                    <h3 className="mt-4 font-serif-display text-3xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{item.title}</h3>
-                    <p className="mt-4 text-[11px] font-bold tracking-[0.1em] text-white/30 uppercase italic">{item.type}</p>
+                  <div className="px-2 pb-2">
+                    <p className="card-label">{item.status}</p>
+                    <h3 className="mt-3 font-serif-display text-2xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{item.title}</h3>
+                    <p className="card-type mt-3">{item.type}</p>
                     <p className="mt-6 text-sm leading-relaxed text-white/50 line-clamp-2">{item.summary}</p>
                     <div className="mt-10 flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-white/20 uppercase transition group-hover:text-white">
                       <span>查看作品</span>

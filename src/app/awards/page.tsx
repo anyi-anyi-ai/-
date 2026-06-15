@@ -6,9 +6,9 @@ import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
 
 const pageValues = [
-  "奖项为作品集提供外部评价参考，帮助招聘方更快建立信任。",
-  "每项荣誉都与具体项目或能力方向相关，而不只是单独陈列的结果。",
-  "荣誉页与项目页、简历页一起构成更完整的个人成果展示。",
+  "竞赛荣誉是设计完成度与创意能力的外部验证，为作品集提供可信度支撑。",
+  "每项荣誉都与具体项目或能力方向紧密关联，体现系统化的学习与实践成果。",
+  "荣誉页与项目页、简历页相互呼应，构成完整的个人专业能力展示体系。",
 ];
 
 export default function AwardsPage() {
@@ -104,9 +104,9 @@ export default function AwardsPage() {
           <Reveal>
             <div className="space-y-8">
               <p className="section-kicker">成果说明</p>
-              <h2 className="font-serif-display text-5xl font-semibold leading-tight text-white">荣誉是项目表达之外的补充证明</h2>
+              <h2 className="font-serif-display text-4xl sm:text-5xl font-semibold leading-tight text-white">荣誉是设计能力的有力证明</h2>
               <p className="text-lg leading-relaxed text-white/60">
-                对求职型作品集来说，奖项可以帮助招聘方更快判断项目质量，也能作为学习成果与表达能力的外部参考。
+                竞赛奖项体现项目完成度与创意水平，为作品集提供专业认可与可信度支撑。
               </p>
             </div>
           </Reveal>
@@ -129,7 +129,7 @@ export default function AwardsPage() {
       </section>
 
       <SubpageFooter
-        heading="进一步了解我的项目经历与个人背景"
+        heading="探索更多作品与经历"
         links={[
           { label: "查看总作品集", href: "/portfolio" },
           { label: "查看项目页", href: "/projects" },

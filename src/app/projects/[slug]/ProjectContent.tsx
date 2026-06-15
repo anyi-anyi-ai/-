@@ -8,7 +8,7 @@ import Reveal from "@/components/Reveal";
 import Lightbox from "@/components/Lightbox";
 import { PortfolioItem } from "@/data/portfolio-data";
 
-export default function ProjectContent({ project }: { project: PortfolioItem, relatedItems: PortfolioItem[] }) {
+export default function ProjectContent({ project }: { project: PortfolioItem }) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
@@ -29,7 +29,7 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
       />
 
       {/* 1. ARCHITECTURAL HERO SECTION - IMMERSIVE SCALE */}
-      <section className="relative h-[92vh] w-full overflow-hidden bg-[var(--color-muted)]">
+      <section className="relative h-[50vh] sm:h-[70vh] lg:h-[92vh] w-full overflow-hidden bg-[var(--color-muted)]">
         <div className="absolute inset-0 z-0">
           <Image
             src={project.heroImage}
@@ -44,7 +44,7 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
         </div>
 
         {/* Hero Floating Card - Editorial Style */}
-        <div className="absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t from-black/20 to-transparent pb-20 pt-40 px-6 sm:px-10 lg:px-16">
+        <div className="absolute bottom-0 left-0 z-10 w-full bg-gradient-to-t from-black/20 to-transparent pb-12 pt-20 sm:pt-32 lg:pt-40 px-4 sm:px-10 lg:px-16">
           <Reveal>
             <div className="max-w-5xl space-y-6">
               <div className="flex items-center gap-4">
@@ -53,7 +53,7 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
                   项目详情 / {project.type}
                 </p>
               </div>
-              <h1 className="font-serif-display text-6xl font-bold leading-[1.1] tracking-tight text-white sm:text-7xl lg:text-8xl">
+              <h1 className="font-serif-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] tracking-tight text-white">
                 {project.title}
               </h1>
               <p className="max-w-2xl text-lg leading-relaxed text-white/80 backdrop-blur-sm bg-white/5 p-2 rounded">
@@ -68,13 +68,13 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
       </section>
 
       {/* 2. OVERVIEW & SPECS - ASYMMETRICAL GRID */}
-      <section className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <div className="grid gap-16 lg:grid-cols-[1fr_0.6fr]">
           <Reveal>
             <div className="space-y-10">
               <div className="space-y-4">
                 <p className="text-[11px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase italic">项目概览</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-snug lg:text-5xl text-white">
+                <h2 className="font-serif-display text-2xl sm:text-3xl md:text-4xl font-semibold leading-snug text-white">
                   {project.overview}
                 </h2>
               </div>
@@ -119,13 +119,13 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
       </section>
 
       {/* 3. HIGHLIGHTS & PROCESS - FULL WIDTH VISUAL FLOW */}
-      <section className="bg-white/[0.02] py-24 text-[var(--color-paper)] lg:py-32 border-y border-white/5">
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16 text-white">
+      <section className="bg-white/[0.02] py-12 sm:py-16 lg:py-24 text-[var(--color-paper)] border-y border-white/5">
+        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16 text-white">
           <Reveal>
             <div className="mb-20 flex flex-col items-start justify-between gap-8 md:flex-row md:items-end">
               <div className="max-w-3xl space-y-4">
                 <p className="text-[11px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">设计亮点</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight sm:text-5xl lg:text-6xl">
+                <h2 className="font-serif-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-semibold leading-tight">
                   以概念、体验与视觉表达共同构成项目阅读路径
                 </h2>
               </div>
@@ -147,20 +147,24 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
       </section>
 
       {/* 4. MAIN GALLERY - THE "SHEETS" SYSTEM */}
-      <section className="mx-auto max-w-[1800px] px-4 py-24 sm:px-6 lg:px-10 lg:py-32">
+      <section className="mx-auto max-w-[1800px] px-4 py-12 sm:px-6 sm:py-16 lg:px-10 lg:py-24">
         <Reveal>
           <div className="mb-16 text-center space-y-4">
             <p className="text-[11px] font-bold tracking-[0.5em] text-[var(--color-accent)] uppercase italic">项目图像</p>
-            <h2 className="font-serif-display text-3xl font-medium tracking-tight text-white">点击图片以进入沉浸式画廊模式</h2>
+            <h2 className="font-serif-display text-xl sm:text-2xl md:text-3xl font-medium tracking-tight text-white">点击图片以进入沉浸式画廊模式</h2>
             <div className="mx-auto h-[1px] w-24 bg-white/10" />
           </div>
         </Reveal>
 
-        <div className="columns-1 gap-6 sm:columns-2 lg:columns-3 space-y-6">
+        <div className="columns-1 gap-6 sm:columns-2 md:columns-2 lg:columns-3 space-y-6">
           {project.gallery.map((img, index) => (
             <Reveal key={img} delay={(index % 3) * 100}>
               <div
                 onClick={() => openLightbox(index)}
+                role="button"
+                tabIndex={0}
+                aria-label={`查看 ${project.title} 详情图 ${index + 1}`}
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') openLightbox(index); }}
                 className="group relative cursor-pointer overflow-hidden rounded-sm border border-white/5 bg-white/[0.03] transition-all duration-500 hover:border-white/20"
               >
                 <div className="absolute top-4 left-4 z-10 opacity-0 transition-opacity group-hover:opacity-100">
@@ -175,6 +179,7 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
                   alt={`${project.title} 详情图 ${index + 1}`}
                   width={800}
                   height={1200}
+                  loading="lazy"
                   className="h-auto w-full opacity-80 transition duration-700 group-hover:scale-105 group-hover:opacity-100"
                   sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 33vw"
                 />
@@ -186,7 +191,7 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
 
       {/* 5. VIDEO SECTION - IF EXISTS */}
       {project.videoSrc && (
-        <section className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16">
+        <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
           <Reveal>
             <div className="relative overflow-hidden rounded-[2.5rem] bg-black p-4 shadow-2xl border border-white/5">
               <video
@@ -203,12 +208,12 @@ export default function ProjectContent({ project }: { project: PortfolioItem, re
       )}
 
       {/* 6. NEXT PROJECT NAV */}
-      <section className="border-t border-white/5 bg-white/[0.01] py-24">
-        <div className="mx-auto max-w-7xl px-6 text-center sm:px-10 lg:px-16">
+      <section className="border-t border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-7xl px-4 text-center sm:px-6 sm:py-16 lg:px-16">
           <Reveal>
             <div className="space-y-10">
               <p className="text-[11px] font-bold tracking-[0.4em] text-white/30 uppercase">继续浏览</p>
-              <h2 className="font-serif-display text-5xl font-semibold leading-tight text-white">阅览更多作品集，<br/>或查阅我的专业简历</h2>
+              <h2 className="font-serif-display text-3xl sm:text-4xl md:text-5xl font-semibold leading-tight text-white">阅览更多作品集，<br/>或查阅我的专业简历</h2>
               <div className="flex flex-wrap justify-center gap-6 pt-6">
                 <Link
                   href="/portfolio"

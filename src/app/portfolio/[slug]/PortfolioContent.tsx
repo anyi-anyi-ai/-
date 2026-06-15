@@ -214,7 +214,7 @@ export default function PortfolioContent({ portfolio, relatedItems }: { portfoli
       </section>
 
       <SubpageFooter
-        heading="看完当前作品集，可以继续查看项目详情、简历或其他作品集"
+        heading="探索更多作品与信息"
         links={[
           { label: "项目总览", href: "/projects" },
           { label: "简历页面", href: "/resume" },

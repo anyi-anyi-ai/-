@@ -33,7 +33,5 @@ export default async function ProjectDetailPage({
     notFound();
   }
 
-  const relatedItems = portfolioItems.filter((item) => item.slug !== project.slug).slice(0, 3);
-
-  return <ProjectContent project={project} relatedItems={relatedItems} />;
+  return <ProjectContent project={project} />;
 }

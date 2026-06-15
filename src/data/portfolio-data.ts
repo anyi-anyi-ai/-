@@ -30,36 +30,36 @@ function buildGallery(slug: string, detailCount: number): string[] {
 }
 
 const ciAnBiAnGallery = [
-  "/projects/ci-an-bi-an/detail-1.jpg",
-  "/projects/ci-an-bi-an/detail-2.jpg",
-  "/projects/ci-an-bi-an/detail-3.jpg",
-  "/projects/ci-an-bi-an/detail-4.jpg",
-  "/projects/ci-an-bi-an/detail-5.png",
-  "/projects/ci-an-bi-an/detail-6.png",
-  "/projects/ci-an-bi-an/detail-7.png",
-  "/projects/ci-an-bi-an/detail-8.png",
-  "/projects/ci-an-bi-an/detail-9.png",
-  "/projects/ci-an-bi-an/detail-10.png",
-  "/projects/ci-an-bi-an/detail-11.png",
-  "/projects/ci-an-bi-an/detail-12.png",
-  "/projects/ci-an-bi-an/detail-13.png",
-  "/projects/ci-an-bi-an/detail-14.png",
-  "/projects/ci-an-bi-an/detail-15.png",
-  "/projects/ci-an-bi-an/detail-16.png",
-  "/projects/ci-an-bi-an/detail-17.jpg",
-  "/projects/ci-an-bi-an/detail-18.png",
-  "/projects/ci-an-bi-an/detail-19.jpeg",
-  "/projects/ci-an-bi-an/detail-20.png",
-  "/projects/ci-an-bi-an/detail-21.png",
-  "/projects/ci-an-bi-an/detail-22.png",
-  "/projects/ci-an-bi-an/detail-23.png",
-  "/projects/ci-an-bi-an/detail-24.jpeg",
-  "/projects/ci-an-bi-an/detail-25.jpeg",
-  "/projects/ci-an-bi-an/detail-26.jpg",
-  "/projects/ci-an-bi-an/detail-27.png",
-  "/projects/ci-an-bi-an/detail-28.png",
-  "/projects/ci-an-bi-an/detail-29.png",
-  "/projects/ci-an-bi-an/detail-30.png",
+  "/projects/ci-an-bi-an/detail-1.webp",
+  "/projects/ci-an-bi-an/detail-2.webp",
+  "/projects/ci-an-bi-an/detail-3.webp",
+  "/projects/ci-an-bi-an/detail-4.webp",
+  "/projects/ci-an-bi-an/detail-5.webp",
+  "/projects/ci-an-bi-an/detail-6.webp",
+  "/projects/ci-an-bi-an/detail-7.webp",
+  "/projects/ci-an-bi-an/detail-8.webp",
+  "/projects/ci-an-bi-an/detail-9.webp",
+  "/projects/ci-an-bi-an/detail-10.webp",
+  "/projects/ci-an-bi-an/detail-11.webp",
+  "/projects/ci-an-bi-an/detail-12.webp",
+  "/projects/ci-an-bi-an/detail-13.webp",
+  "/projects/ci-an-bi-an/detail-14.webp",
+  "/projects/ci-an-bi-an/detail-15.webp",
+  "/projects/ci-an-bi-an/detail-16.webp",
+  "/projects/ci-an-bi-an/detail-17.webp",
+  "/projects/ci-an-bi-an/detail-18.webp",
+  "/projects/ci-an-bi-an/detail-19.webp",
+  "/projects/ci-an-bi-an/detail-20.webp",
+  "/projects/ci-an-bi-an/detail-21.webp",
+  "/projects/ci-an-bi-an/detail-22.webp",
+  "/projects/ci-an-bi-an/detail-23.webp",
+  "/projects/ci-an-bi-an/detail-24.webp",
+  "/projects/ci-an-bi-an/detail-25.webp",
+  "/projects/ci-an-bi-an/detail-26.webp",
+  "/projects/ci-an-bi-an/detail-27.webp",
+  "/projects/ci-an-bi-an/detail-28.webp",
+  "/projects/ci-an-bi-an/detail-29.webp",
+  "/projects/ci-an-bi-an/detail-30.webp",
 ];
 
 export const portfolioItems: PortfolioItem[] = [
@@ -70,7 +70,7 @@ export const portfolioItems: PortfolioItem[] = [
     subtitle: "中式哲学框架下的丧葬疗愈空间设计",
     summary: "以太极阴阳关系组织此岸、彼岸与花园，回应当代殡葬空间中的告别、记忆与疗愈需求。",
     status: "毕业设计",
-    heroImage: "/projects/ci-an-bi-an/cover.jpg",
+    heroImage: "/projects/ci-an-bi-an/detail-25.webp",
     videoSrc: "/videos/ci-an-bi-an-fog.mp4",
     keywords: ["丧葬疗愈", "中式哲学", "废弃矿坑"],
     tags: ["生命教育", "太极形态", "情绪动线"],
@@ -354,6 +354,16 @@ export const featuredItems = portfolioItems.filter((item) => item.featured);
 
 export const awardItems = [
   {
+    title: "米兰设计周2026中国高校设计学科师生优秀作品展",
+    level: "山东赛区二等奖",
+    project: "太空移民居住空间集成概念设计",
+    href: "/projects/chen-ai-zhi-shang",
+    time: "2026",
+    description: "作品以太空移民居住空间为主题，体现环境设计方向的概念创新与系统集成能力。",
+    note: "证明项目在概念设计与空间表达方面具备竞赛级认可。",
+    certificateImage: "/awards/9dee9748e93d6b36394c4fa079403b1c.webp",
+  },
+  {
     title: "全国大学生数字媒体科技作品及创意竞赛",
     level: "国赛三等奖",
     project: "燃梦立方",
@@ -384,3 +394,15 @@ export const awardItems = [
     certificateImage: "/awards/certificate-2.webp",
   },
 ];
+
+/**
+ * 首页配置：集中管理硬编码的图片路径和主打项目
+ */
+export const homepageConfig = {
+  /** 首页 Hero 背景图 */
+  heroBackground: "/projects/chen-ai-zhi-shang/cover.webp",
+  /** 首页主打项目 slug */
+  featuredProjectSlug: "chen-ai-zhi-shang",
+  /** 首页侧边栏展示项目 slug */
+  sidebarProjectSlug: "dao-yin-wu-ming",
+};

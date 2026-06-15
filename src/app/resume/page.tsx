@@ -77,7 +77,8 @@ const projectLinks = featuredItems.map((item) => ({
 }));
 
 const contactItems = [
-  { label: "邮箱", value: "ay1839628583@outlook.com", href: "mailto:ay1839628583@outlook.com" },
+  { label: "邮箱", value: "anyi@anyitmr.com", href: "mailto:anyi@anyitmr.com" },
+  { label: "备用邮箱", value: "ay1839628583@outlook.com", href: "mailto:ay1839628583@outlook.com" },
   { label: "电话", value: "19712029262", href: "tel:19712029262" },
   { label: "求职方向", value: "环境设计 / 室内设计 / 空间表达相关岗位" },
 ];
@@ -94,15 +95,15 @@ export default function ResumePage() {
         ]}
       />
 
-      <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <section className="relative mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <div className="glow-orb top-0 left-0 h-96 w-96 opacity-10" />
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
             <div className="space-y-8">
               <p className="section-kicker">个人简历</p>
-              <h1 className="section-title text-5xl sm:text-6xl">个人简历与专业背景</h1>
+              <h1 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl">个人简历与专业背景</h1>
               <p className="section-copy max-w-2xl text-white/60">
-                集中展示教育背景、技能结构、实践经验与求职方向，方便快速了解我的学习经历与能力重点。
+                系统展示教育背景、专业技能与实践经验，呈现环境设计方向的完整学习与成长轨迹。
               </p>
             </div>
             <div className="grid gap-6 sm:grid-cols-2">
@@ -122,8 +123,8 @@ export default function ResumePage() {
         </Reveal>
       </section>
 
-      <section className="relative border-y border-white/5 bg-white/[0.02] py-24">
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+      <section className="relative border-y border-white/5 bg-white/[0.02] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
           <Reveal>
             <div className="glass-panel p-10 lg:p-16">
               <div className="mb-12 border-b border-white/5 pb-12">
@@ -146,7 +147,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
+      <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <Reveal className="mb-20 text-center">
           <p className="section-kicker mb-4">专业技能</p>
           <h2 className="section-title mx-auto text-4xl">技能结构</h2>
@@ -174,8 +175,8 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="border-y border-white/5 bg-white/[0.01] py-32">
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+      <section className="border-y border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
           <Reveal className="mb-20">
             <p className="section-kicker mb-4">实践经验</p>
             <h2 className="section-title text-4xl">项目与现场实践</h2>
@@ -198,7 +199,7 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
+      <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <div className="grid gap-12 lg:grid-cols-2">
           <Reveal>
             <div className="glass-panel h-full p-10 lg:p-16">
@@ -243,15 +244,15 @@ export default function ResumePage() {
         </div>
       </section>
 
-      <footer id="contact" className="border-t border-white/5 bg-white/[0.01] py-24">
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
+      <footer id="contact" className="border-t border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
           <Reveal>
             <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-16">
               <div className="space-y-6">
                 <p className="section-kicker">联系方式</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">欢迎联系我</h2>
+                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">期待与您交流</h2>
                 <p className="max-w-2xl text-lg leading-relaxed text-white/50">
-                  欢迎通过以下方式联系我，进一步沟通环境设计、室内空间与相关岗位机会。
+                  如有环境设计、室内空间相关的工作机会或合作意向，欢迎通过以下方式与我联系。
                 </p>
               </div>
               <div className="grid gap-4 sm:grid-cols-2">

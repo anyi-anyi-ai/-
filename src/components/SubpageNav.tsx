@@ -29,6 +29,7 @@ export default function SubpageNav({
             <Link
               key={link.href}
               href={link.href}
+              aria-label={`跳转到${link.label}`}
               className="whitespace-nowrap transition hover:text-white"
             >
               {link.label}

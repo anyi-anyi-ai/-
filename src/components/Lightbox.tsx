@@ -70,10 +70,10 @@ export default function Lightbox({
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-8 right-8 z-[210] flex h-12 w-12 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10 active:scale-95"
+        className="absolute top-4 right-4 sm:top-8 sm:right-8 z-[210] flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10 active:scale-95 touch-target"
         aria-label="关闭预览"
       >
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </button>
@@ -81,7 +81,7 @@ export default function Lightbox({
       {/* Navigation */}
       <button
         onClick={handlePrev}
-        className="absolute left-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95"
+        className="absolute left-2 sm:left-8 z-[210] flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95 touch-target"
       >
         <span className="sr-only">上一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@ export default function Lightbox({
 
       <button
         onClick={handleNext}
-        className="absolute right-8 z-[210] flex h-14 w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95"
+        className="absolute right-2 sm:right-8 z-[210] flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95 touch-target"
       >
         <span className="sr-only">下一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,7 +100,7 @@ export default function Lightbox({
       </button>
 
       {/* Main Image Container */}
-      <div className="relative h-[85vh] w-[90vw] animate-reveal">
+      <div className="relative h-[70vh] w-[95vw] sm:h-[85vh] sm:w-[90vw] animate-reveal">
         <Image
           src={images[currentIndex]}
           alt={`${projectTitle} 预览图 ${currentIndex + 1}`}

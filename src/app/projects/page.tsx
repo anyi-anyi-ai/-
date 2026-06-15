@@ -16,7 +16,7 @@ export default function ProjectsIndexPage() {
         ]}
       />
 
-      <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
+      <section className="relative mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
         <div className="glow-orb bottom-0 left-0 h-96 w-96 opacity-10" />
         <Reveal>
           <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:p-16">
@@ -33,23 +33,23 @@ export default function ProjectsIndexPage() {
                 <p className="text-sm font-medium tracking-widest text-white/80 uppercase">项目状态</p>
               </div>
               <p className="text-sm leading-relaxed text-white/40">
-                可快速浏览每个项目的方向与完成度，并进入对应详情页继续查看。
+                浏览各项目的方向定位与完成状态，进入详情页查看完整的设计概念与图像展示。
               </p>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section className="relative border-t border-white/5 bg-white/[0.01] py-32">
-        <div className="mx-auto max-w-[1800px] px-6 sm:px-10 lg:px-16">
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-3">
+      <section className="relative border-t border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
+        <div className="mx-auto max-w-[1800px] px-4 sm:px-6 lg:px-16">
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {portfolioItems.map((project, index) => (
               <Reveal key={project.slug} delay={index * 100}>
                 <Link
                   href={`/projects/${project.slug}`}
-                  className="glass-card group flex flex-col overflow-hidden rounded-[2.5rem] p-6"
+                  className="glass-card group flex flex-col overflow-hidden p-0"
                 >
-                  <div className="project-preview-frame relative mb-8 aspect-[4/3] overflow-hidden rounded-[1.8rem] bg-black/40">
+                  <div className="project-card-image mb-6">
                     <Image
                       src={project.heroImage}
                       alt={project.title}
@@ -60,13 +60,13 @@ export default function ProjectsIndexPage() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
                   </div>
 
-                  <div className="px-2 pb-4">
+                  <div className="px-2 pb-2">
                   <div className="mb-4 flex items-center justify-between">
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{project.status}</span>
+                    <span className="card-label">{project.status}</span>
                     <span className="text-[10px] font-medium tracking-[0.1em] text-white/20 italic">项目</span>
                   </div>
-                    <h3 className="font-serif-display text-3xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{project.title}</h3>
-                    <p className="mt-4 text-[11px] font-bold tracking-[0.1em] text-white/30 uppercase italic">{project.type}</p>
+                    <h3 className="font-serif-display text-2xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{project.title}</h3>
+                    <p className="card-type mt-3">{project.type}</p>
                     <p className="mt-6 text-sm leading-relaxed text-white/50 line-clamp-3">{project.summary}</p>
 
                     <div className="mt-10 border-t border-white/5 pt-8">

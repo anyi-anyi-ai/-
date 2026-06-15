@@ -81,6 +81,35 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
+
+  /* Responsive container */
+  .container-responsive {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-responsive {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-responsive {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  /* Touch-friendly target size */
+  .touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }
 
 @keyframes fadeInUp {
@@ -107,7 +136,7 @@
 }
 
 .section-title {
-  max-width: 48rem;
+  max-width: 100%;
   font-family: var(--font-serif-display);
   font-size: clamp(2.2rem, 4vw, 3.8rem);
   line-height: 1.06;
@@ -116,26 +145,39 @@
   color: var(--color-ink);
 }
 
+@media (min-width: 640px) {
+  .section-title {
+    max-width: 48rem;
+  }
+}
+
 .section-copy {
-  max-width: 42rem;
+  max-width: 100%;
   font-size: 1rem;
   line-height: 1.95;
   color: var(--color-copy);
 }
 
+@media (min-width: 640px) {
+  .section-copy {
+    max-width: 42rem;
+  }
+}
+
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  border-radius: 2rem;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              background-color 0.3s ease,
+              border-color 0.3s ease;
 }
 
 .glass-card:hover {
@@ -157,7 +199,7 @@
   text-transform: uppercase;
   color: #000;
   box-shadow: 0 10px 30px rgba(212, 163, 115, 0.2);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
 }
 
 .ui-button-primary:hover {
@@ -180,7 +222,7 @@
   text-transform: uppercase;
   color: var(--color-ink);
   backdrop-filter: blur(8px);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .ui-button-secondary:hover {
@@ -192,16 +234,60 @@
 /* Fix: Manually set styles for ui-card instead of @apply to a local class */
 .ui-card {
   background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), 
+              background-color 0.3s ease,
+              border-color 0.3s ease;
 }
 
 .ui-card:hover {
   background: rgba(255, 255, 255, 0.07);
   border-color: rgba(212, 163, 115, 0.3);
   transform: translateY(-4px);
+}
+
+/* Standardized glass-card for consistent project cards */
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 2rem;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.glass-card:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(212, 163, 115, 0.3);
+  transform: translateY(-4px);
+}
+
+/* Unified image container for project cards */
+.project-card-image {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  min-height: 200px;
+}
+
+/* Card label styles */
+.card-label {
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+.card-type {
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 .project-preview-frame {
