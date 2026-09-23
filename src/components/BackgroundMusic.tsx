@@ -12,7 +12,7 @@ export default function BackgroundMusic() {
   useEffect(() => {
     const audio = new Audio("/audio/healing/takeshi-senoo-summer-festival-dream-fireworks.mp3");
     audio.loop = true;
-    audio.volume = 0.1; // 默认音量10%，作为背景音更柔和
+    audio.volume = 0.05; // 默认音量5%（1/20），作为背景音更轻柔
     audio.preload = "auto";
 
     // 监听加载状态
@@ -174,8 +174,8 @@ export default function BackgroundMusic() {
             type="range"
             min="0"
             max="1"
-            step="0.05"
-            defaultValue="0.1"
+            step="0.01"
+            defaultValue="0.05"
             onChange={handleVolumeChange}
             className="w-20 accent-[var(--color-accent)] cursor-pointer"
             aria-label="音量控制"
