@@ -29,7 +29,72 @@ function buildGallery(slug: string, detailCount: number): string[] {
   return images;
 }
 
+const ciAnBiAnGallery = [
+  "/projects/ci-an-bi-an/detail-1.webp",
+  "/projects/ci-an-bi-an/detail-2.webp",
+  "/projects/ci-an-bi-an/detail-3.webp",
+  "/projects/ci-an-bi-an/detail-4.webp",
+  "/projects/ci-an-bi-an/detail-5.webp",
+  "/projects/ci-an-bi-an/detail-6.webp",
+  "/projects/ci-an-bi-an/detail-7.webp",
+  "/projects/ci-an-bi-an/detail-8.webp",
+  "/projects/ci-an-bi-an/detail-9.webp",
+  "/projects/ci-an-bi-an/detail-10.webp",
+  "/projects/ci-an-bi-an/detail-11.webp",
+  "/projects/ci-an-bi-an/detail-12.webp",
+  "/projects/ci-an-bi-an/detail-13.webp",
+  "/projects/ci-an-bi-an/detail-14.webp",
+  "/projects/ci-an-bi-an/detail-15.webp",
+  "/projects/ci-an-bi-an/detail-16.webp",
+  "/projects/ci-an-bi-an/detail-17.webp",
+  "/projects/ci-an-bi-an/detail-18.webp",
+  "/projects/ci-an-bi-an/detail-19.webp",
+  "/projects/ci-an-bi-an/detail-20.webp",
+  "/projects/ci-an-bi-an/detail-21.webp",
+  "/projects/ci-an-bi-an/detail-22.webp",
+  "/projects/ci-an-bi-an/detail-23.webp",
+  "/projects/ci-an-bi-an/detail-24.webp",
+  "/projects/ci-an-bi-an/detail-25.webp",
+  "/projects/ci-an-bi-an/detail-26.webp",
+  "/projects/ci-an-bi-an/detail-27.webp",
+  "/projects/ci-an-bi-an/detail-28.webp",
+  "/projects/ci-an-bi-an/detail-29.webp",
+  "/projects/ci-an-bi-an/detail-30.webp",
+];
+
 export const portfolioItems: PortfolioItem[] = [
+  {
+    title: "此岸彼岸",
+    slug: "ci-an-bi-an",
+    type: "丧葬疗愈 / 生命教育空间",
+    subtitle: "中式哲学框架下的丧葬疗愈空间设计",
+    summary: "以太极阴阳关系组织此岸、彼岸与花园，回应当代殡葬空间中的告别、记忆与疗愈需求。",
+    status: "毕业设计",
+    heroImage: "/projects/ci-an-bi-an/detail-25.webp",
+    videoSrc: "/videos/ci-an-bi-an-fog.mp4",
+    keywords: ["丧葬疗愈", "中式哲学", "废弃矿坑"],
+    tags: ["生命教育", "太极形态", "情绪动线"],
+    overview:
+      "《此岸彼岸》选址于山东烟台莱山区一处废弃花岗岩矿坑，以背山面海的地域特质、胶东送行民俗与中式生死观为线索，尝试把殡葬空间从效率化的遗体处理设施转化为能够容纳记忆、悲伤与生命教育的疗愈场所。",
+    designStatement:
+      "方案以太极阴阳相生的关系为形态原型，将整体空间梳理为面向日常与公共生命教育的此岸、承担私密告别与哀悼疗愈的彼岸，以及引导生者从悲痛重返生活的来复花园。彼岸设置独立入口与单向哀悼路径，依次串联入寂·前厅、沉行·长廊、辞光·礼厅、生生·回廊、容泣·静室、破执·陶室、虚白·静室、寄语·书室、望川·水庭、复明·阶庭与来复·花园，让下沉、告别、安放、哭泣、宣泄、冥想、书写、观水与上升成为连续的情绪疗愈过程。",
+    highlights: [
+      "以太极图的阴阳互抱关系组织此岸、彼岸与花园，形成可行走、可停留、可回返的生死叙事结构。",
+      "利用废弃矿坑的下沉地形、岩壁包裹感与水体记忆，将工业创伤转化为具有安放、沉潜与复原意味的场所精神。",
+      "通过独立入口、三线分流与单向哀悼动线，为家属提供从正式告别到情绪释放再到回归日常的完整心理路径。",
+    ],
+    gallery: ciAnBiAnGallery,
+    detailHref: "/projects/ci-an-bi-an",
+    portfolioHref: "/portfolio/ci-an-bi-an",
+    processNotes: [
+      "先从当代殡葬空间过度追求效率、缺少情绪停顿的问题出发，明确设计需要为悲伤留出时间和空间。",
+      "再提取胶东送行民俗与中式哲学中的指路、归乡、阴阳相生、有无相生等线索，把抽象生死观转译为空间路径。",
+      "最后围绕此岸公共生命教育、彼岸私密哀悼与花园回归疗愈三层结构，完成展板、效果图、论文与网页展示的统一部署。",
+    ],
+    capabilitySummary: "这一作品集集中体现建筑叙事、社会议题回应、情绪动线组织、文化哲学转译与毕业设计级综合表达能力。",
+    value: "作为毕业设计代表项目，强化作品集在建筑空间、生命议题、文化哲学与完整系统表达上的核心竞争力。",
+    featured: true,
+  },
   {
     title: "尘埃之上",
     slug: "chen-ai-zhi-shang",
@@ -289,6 +354,16 @@ export const featuredItems = portfolioItems.filter((item) => item.featured);
 
 export const awardItems = [
   {
+    title: "米兰设计周2026中国高校设计学科师生优秀作品展",
+    level: "山东赛区二等奖",
+    project: "太空移民居住空间集成概念设计",
+    href: "/projects/chen-ai-zhi-shang",
+    time: "2026",
+    description: "作品以太空移民居住空间为主题，体现环境设计方向的概念创新与系统集成能力。",
+    note: "证明项目在概念设计与空间表达方面具备竞赛级认可。",
+    certificateImage: "/awards/9dee9748e93d6b36394c4fa079403b1c.webp",
+  },
+  {
     title: "全国大学生数字媒体科技作品及创意竞赛",
     level: "国赛三等奖",
     project: "燃梦立方",
@@ -319,3 +394,15 @@ export const awardItems = [
     certificateImage: "/awards/certificate-2.webp",
   },
 ];
+
+/**
+ * 首页配置：集中管理硬编码的图片路径和主打项目
+ */
+export const homepageConfig = {
+  /** 首页 Hero 背景图 */
+  heroBackground: "/projects/chen-ai-zhi-shang/cover.webp",
+  /** 首页主打项目 slug */
+  featuredProjectSlug: "chen-ai-zhi-shang",
+  /** 首页侧边栏展示项目 slug */
+  sidebarProjectSlug: "dao-yin-wu-ming",
+};
