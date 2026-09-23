@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { featuredItems } from "@/data/portfolio-data";
+import { LocalizedText } from "@/components/LanguageProvider";
 import SubpageNav from "@/components/SubpageNav";
 import Reveal from "@/components/Reveal";
 
@@ -78,14 +79,14 @@ const projectLinks = featuredItems.map((item) => ({
 
 const contactItems = [
   { label: "邮箱", value: "anyi@anyitmr.com", href: "mailto:anyi@anyitmr.com" },
-  { label: "备用邮箱", value: "ay1839628583@outlook.com", href: "mailto:ay1839628583@outlook.com" },
   { label: "电话", value: "19712029262", href: "tel:19712029262" },
   { label: "求职方向", value: "环境设计 / 室内设计 / 空间表达相关岗位" },
 ];
 
 export default function ResumePage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-[var(--color-accent)]/30">
+    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)] selection:bg-white/10">
+      <div className="bg-subtle-glow" />
       <SubpageNav
         links={[
           { label: "总作品集", href: "/portfolio" },
@@ -95,176 +96,192 @@ export default function ResumePage() {
         ]}
       />
 
-      <section className="relative mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
-        <div className="glow-orb top-0 left-0 h-96 w-96 opacity-10" />
-        <Reveal>
-          <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
-            <div className="space-y-8">
-              <p className="section-kicker">个人简历</p>
-              <h1 className="section-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl">个人简历与专业背景</h1>
-              <p className="section-copy max-w-2xl text-white/60">
-                系统展示教育背景、专业技能与实践经验，呈现环境设计方向的完整学习与成长轨迹。
-              </p>
-            </div>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="glass-card rounded-[1.8rem] p-8">
-                <p className="mb-6 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">教育</p>
-                <h2 className="font-serif-display text-2xl font-semibold leading-snug text-white">{education.school}</h2>
-                <p className="mt-4 text-sm italic text-white/70">{education.major}</p>
-                <p className="mt-2 text-xs tracking-[0.1em] text-white/40 uppercase">{education.degree}</p>
-              </div>
-              <div className="glass-card rounded-[1.8rem] p-8">
-                <p className="mb-6 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">方向</p>
-                <h2 className="font-serif-display text-2xl font-semibold text-white">环境设计 / 室内设计</h2>
-                <p className="mt-4 text-sm leading-relaxed text-white/60">关注空间叙事、文化转译与图像表达，持续补足概念构建与落地表达能力。</p>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="relative border-y border-white/5 bg-white/[0.02] py-12 sm:py-16 lg:py-24">
-        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
+      {/* 1. HERO - TECHNICAL CV STYLE */}
+      <section className="relative border-b border-white/10 pt-32 pb-24">
+        <div className="mx-auto max-w-7xl px-8">
           <Reveal>
-            <div className="glass-panel p-10 lg:p-16">
-              <div className="mb-12 border-b border-white/5 pb-12">
-                <p className="section-kicker mb-4">教育背景</p>
-                <h2 className="section-title text-4xl">在校学习经历</h2>
-              </div>
-              <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
-                <div className="space-y-4">
-                  <h3 className="font-serif-display text-4xl font-semibold text-white">{education.school}</h3>
-                  <div className="flex items-center gap-4">
-                    <span className="italic text-[var(--color-accent)]">{education.major}</span>
-                    <span className="h-1 w-1 rounded-full bg-white/20" />
-                    <span className="text-xs tracking-widest text-white/40">{education.period}</span>
-                  </div>
+            <div className="grid gap-12 lg:grid-cols-[1.5fr_0.5fr] items-end">
+              <div className="max-w-4xl space-y-8">
+                <div className="flex items-center gap-4">
+                  <span className="h-px w-12 bg-white/20"></span>
+                  <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase">
+                    Curriculum Vitae
+                  </p>
                 </div>
-                <p className="border-l border-white/10 pl-10 text-lg leading-[2] text-white/60">{education.summary}</p>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
-        <Reveal className="mb-20 text-center">
-          <p className="section-kicker mb-4">专业技能</p>
-          <h2 className="section-title mx-auto text-4xl">技能结构</h2>
-        </Reveal>
-        <div className="grid gap-8 lg:grid-cols-3">
-          {skillGroups.map((group, index) => (
-            <Reveal key={group.title} delay={index * 100}>
-              <article className="glass-card flex h-full flex-col rounded-[2.5rem] p-10">
-                <div className="mb-8 flex items-center gap-4 text-[10px] font-bold tracking-[0.4em] text-[var(--color-accent)] uppercase">
-                  <span>技能分类</span>
-                  <div className="h-px flex-1 bg-white/5" />
-                </div>
-                <h3 className="font-serif-display text-3xl font-semibold text-white">{group.title}</h3>
-                <div className="mt-8 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span key={item} className="rounded-full border border-white/10 bg-white/5 px-4 py-1 text-[10px] font-medium tracking-[0.1em] text-white/60 uppercase">
-                      {item}
-                    </span>
-                  ))}
-                </div>
-                <p className="mt-8 text-sm leading-relaxed text-white/50">{group.description}</p>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
-        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
-          <Reveal className="mb-20">
-            <p className="section-kicker mb-4">实践经验</p>
-            <h2 className="section-title text-4xl">项目与现场实践</h2>
-          </Reveal>
-          <div className="grid gap-6">
-            {experiences.map((item, index) => (
-              <Reveal key={item.title} delay={index * 100}>
-                <article className="glass-card group flex flex-col gap-8 rounded-[2rem] p-10 lg:flex-row lg:items-center">
-                  <div className="lg:w-1/4">
-                    <span className="font-serif-display text-4xl text-white/10 transition-colors duration-500 group-hover:text-[var(--color-accent)]/20">{item.period}</span>
-                    <h3 className="mt-4 font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
-                  </div>
-                  <div className="flex-1 border-l border-white/5 pl-10">
-                    <p className="text-lg leading-relaxed text-white/60">{item.description}</p>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1600px] px-4 py-12 sm:px-6 sm:py-16 lg:px-16 lg:py-24">
-        <div className="grid gap-12 lg:grid-cols-2">
-          <Reveal>
-            <div className="glass-panel h-full p-10 lg:p-16">
-              <p className="section-kicker mb-6">代表项目</p>
-              <h2 className="mb-8 font-serif-display text-4xl font-semibold leading-tight text-white">精选项目入口</h2>
-              <div className="grid grid-cols-2 gap-4">
-                {projectLinks.map((item) => (
-                  <Link key={item.label} href={item.href} className="group relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-                    <Image
-                      src={item.heroImage}
-                      alt={`${item.label} 预览`}
-                      fill
-                      className="object-cover opacity-60 transition duration-700 group-hover:scale-110 group-hover:opacity-100"
-                    />
-                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 p-4 transition-colors group-hover:bg-black/10">
-                      <span className="text-center text-[10px] font-bold tracking-[0.2em] text-white uppercase">{item.label}</span>
-                    </div>
-                  </Link>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <Reveal delay={200}>
-            <div className="glass-panel h-full border-[var(--color-accent)]/20 p-10 lg:p-16">
-              <p className="section-kicker mb-6">荣誉奖项</p>
-              <h2 className="mb-8 font-serif-display text-4xl font-semibold leading-tight text-white">竞赛成果</h2>
-              <div className="space-y-6">
-                {awards.map((item) => (
-                  <div key={item.title} className="rounded-2xl border border-white/5 bg-white/[0.03] p-6 transition-colors hover:bg-white/[0.06]">
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.level}</span>
-                    <h3 className="mt-2 font-serif-display text-xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-3 text-xs leading-relaxed text-white/40">{item.note}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="mt-10 border-t border-white/5 pt-8">
-                <Link href="/awards" className="ui-button-primary w-full">查看完整荣誉页</Link>
-              </div>
-            </div>
-          </Reveal>
-        </div>
-      </section>
-
-      <footer id="contact" className="border-t border-white/5 bg-white/[0.01] py-12 sm:py-16 lg:py-24">
-        <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-16">
-          <Reveal>
-            <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_auto] lg:items-center lg:p-16">
-              <div className="space-y-6">
-                <p className="section-kicker">联系方式</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">期待与您交流</h2>
-                <p className="max-w-2xl text-lg leading-relaxed text-white/50">
-                  如有环境设计、室内空间相关的工作机会或合作意向，欢迎通过以下方式与我联系。
+                <h1 className="text-5xl md:text-7xl lg:text-[7rem] font-serif font-light leading-[0.9] text-white tracking-tighter">
+                  个人简历
+                </h1>
+                <p className="text-xl font-light leading-relaxed text-white/50 border-l border-white/20 pl-8 max-w-2xl">
+                  集中展示教育背景、技能结构、实践经验与求职方向，方便快速了解我的学习经历与能力重点。
                 </p>
               </div>
-              <div className="grid gap-4 sm:grid-cols-2">
+              
+              <div className="mono text-[10px] text-white/30 space-y-2 border-l border-white/10 pl-6 hidden lg:block">
+                <p>STATUS: SEEKING OPPORTUNITIES</p>
+                <p>FIELD: ENVIRONMENTAL DESIGN</p>
+                <p>UPDATED: 2026.06</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 2. EDUCATION - STRICT GRID */}
+      <section className="relative py-32 border-b border-white/10 bg-white/[0.015]">
+        <div className="mx-auto max-w-7xl px-8">
+          <Reveal>
+            <div className="grid gap-16 lg:grid-cols-[0.4fr_1.6fr]">
+              <div>
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase sticky top-32">Education</p>
+              </div>
+              <div className="border border-white/10 bg-[#080809] p-12 lg:p-16">
+                <div className="grid gap-12 lg:grid-cols-[1fr_2fr] items-start">
+                  <div className="space-y-4">
+                    <p className="mono text-[9px] text-white/30 tracking-widest">{education.period}</p>
+                    <h3 className="text-4xl font-serif text-white">{education.school}</h3>
+                    <p className="text-sm italic text-white/50">{education.major}</p>
+                    <p className="mono text-[9px] text-white/30 tracking-widest uppercase mt-4 border border-white/10 inline-block px-2 py-1">{education.degree}</p>
+                  </div>
+                  <div className="lg:border-l border-white/10 lg:pl-12">
+                    <p className="text-lg leading-relaxed text-white/60 font-light">
+                      {education.summary}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 3. SKILLS - MONOSPACE DATA TABLES */}
+      <section className="relative py-32 border-b border-white/10">
+        <div className="mx-auto max-w-7xl px-8">
+          <Reveal>
+            <div className="grid gap-16 lg:grid-cols-[0.4fr_1.6fr]">
+              <div>
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase sticky top-32">Skill Structure</p>
+              </div>
+              <div className="grid gap-px bg-white/10 border border-white/10">
+                {skillGroups.map((group, index) => (
+                  <div key={group.title} className="bg-[#080809] p-10 lg:p-12 transition-colors hover:bg-white/5">
+                    <div className="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] items-start">
+                      <div className="space-y-4">
+                        <span className="mono text-[9px] text-white/20">0{index + 1} // CLASSIFICATION</span>
+                        <h3 className="text-2xl font-serif text-white/90">{group.title}</h3>
+                      </div>
+                      <div className="space-y-8">
+                        <p className="text-sm leading-relaxed text-white/50">{group.description}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {group.items.map((item) => (
+                            <span key={item} className="mono text-[9px] text-white/40 border border-white/10 bg-white/[0.02] px-3 py-1 uppercase tracking-widest hover:border-white/40 transition-colors">
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 4. EXPERIENCES - TIMELINE LEDGER */}
+      <section className="relative py-32 border-b border-white/10 bg-white/[0.015]">
+        <div className="mx-auto max-w-7xl px-8">
+          <Reveal>
+            <div className="grid gap-16 lg:grid-cols-[0.4fr_1.6fr]">
+              <div>
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase sticky top-32">Experience</p>
+              </div>
+              <div className="space-y-px bg-white/10 border border-white/10">
+                {experiences.map((item, index) => (
+                  <div key={item.title} className="grid lg:grid-cols-[0.6fr_1.4fr] gap-px bg-white/10 group">
+                    <div className="bg-[#080809] p-10 group-hover:bg-[#0b0b0d] transition-colors">
+                      <span className="mono text-2xl lg:text-4xl text-white/20 group-hover:text-white/40 transition-colors">{item.period}</span>
+                    </div>
+                    <div className="bg-[#080809] p-10 group-hover:bg-[#0b0b0d] transition-colors space-y-4">
+                      <h3 className="text-xl font-serif text-white/90">{item.title}</h3>
+                      <p className="text-sm leading-relaxed text-white/50 max-w-2xl">{item.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 5. AWARDS & PROJECTS - SIDE BY SIDE PANELS */}
+      <section className="relative py-32">
+        <div className="mx-auto max-w-7xl px-8">
+          <Reveal>
+            <div className="grid gap-px bg-white/10 border border-white/10 lg:grid-cols-2">
+              <div className="bg-[#080809] p-12 lg:p-16">
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase mb-12">Selected Works</p>
+                <div className="grid grid-cols-2 gap-4">
+                  {projectLinks.map((item) => (
+                    <Link key={item.label} href={item.href} className="group relative aspect-video overflow-hidden border border-white/10 bg-zinc-900 transition-all hover:border-white/30">
+                      <Image
+                        src={item.heroImage}
+                        alt={item.label}
+                        fill
+                        className="object-cover opacity-60 grayscale transition duration-1000 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+                      />
+                      <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors"></div>
+                      <div className="absolute bottom-4 left-4 mono text-[9px] text-white/50 group-hover:text-white transition-colors">{item.label}</div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-[#080809] p-12 lg:p-16 border-white/10">
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase mb-12">Awards Overview</p>
+                <div className="space-y-6">
+                  {awards.map((item) => (
+                    <div key={item.title} className="border border-white/5 p-6 hover:bg-white/[0.02] transition-colors">
+                      <span className="mono text-[9px] text-white/30 tracking-widest uppercase mb-2 block">{item.level}</span>
+                      <h3 className="font-serif text-lg text-white/90">{item.title}</h3>
+                      <p className="mt-3 text-xs leading-relaxed text-white/40 font-light">{item.note}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-12 pt-8 border-t border-white/5">
+                  <Link href="/awards" className="mono text-[10px] text-white/40 hover:text-white transition-colors underline underline-offset-8">
+                    <LocalizedText zh="查看完整荣誉列表 →" en="VIEW ALL AWARDS →" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* 6. CONTACT FOOTER */}
+      <footer id="contact" className="border-t border-white/10 py-32 bg-white/[0.015]">
+        <div className="mx-auto max-w-7xl px-8">
+          <Reveal>
+            <div className="grid gap-16 lg:grid-cols-[0.8fr_1.2fr] items-center">
+              <div className="space-y-6">
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase">Contact Requisition</p>
+                <h2 className="font-serif text-4xl sm:text-5xl text-white">期待与您的交流</h2>
+                <p className="text-sm leading-relaxed text-white/50 max-w-md">
+                  如果您对我的环境设计方向、空间表达或是网页构建过程感兴趣，欢迎通过以下方式联系我。
+                </p>
+              </div>
+              <div className="grid gap-px bg-white/10 border border-white/10 sm:grid-cols-2">
                 {contactItems.map((item) => (
-                  <div key={item.label} className="glass-card min-w-[240px] rounded-2xl p-6">
-                    <p className="mb-3 text-[9px] font-bold tracking-[0.3em] text-white/30 uppercase">{item.label}</p>
+                  <div key={item.label} className="bg-[#080809] p-8 hover:bg-white/[0.04] transition-colors">
+                    <p className="mono text-[9px] text-white/30 tracking-widest uppercase mb-4">{item.label}</p>
                     {item.href ? (
-                      <a href={item.href} className="text-base font-medium text-white transition-colors hover:text-[var(--color-accent)]">
+                      <a href={item.href} className="text-sm text-white/90 hover:text-white transition-colors">
                         {item.value}
                       </a>
                     ) : (
-                      <p className="text-base font-medium text-white">{item.value}</p>
+                      <p className="text-sm text-white/90">{item.value}</p>
                     )}
                   </div>
                 ))}

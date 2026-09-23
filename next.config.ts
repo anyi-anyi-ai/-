@@ -1,15 +1,9 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
+import type { NextConfig } from "next";
 
-const appDir = dirname(fileURLToPath(import.meta.url));
-
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   output: "export",
+  outputFileTracingRoot: process.cwd(),
   images: { unoptimized: true },
-  turbopack: {
-    root: appDir,
-  },
 };
 
 export default nextConfig;

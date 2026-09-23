@@ -55,25 +55,25 @@ export default function Lightbox({
     };
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  if (!isOpen || images.length === 0) return null;
 
   return (
-    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[var(--color-ink)]/98 backdrop-blur-xl transition-opacity duration-300">
+    <div className="fixed inset-0 z-[200] flex items-center justify-center bg-[#080809]/98 backdrop-blur-xl transition-opacity duration-300">
       {/* Decorative Architectural Grid (Subtle) */}
       <div className="pointer-events-none absolute inset-0 opacity-10">
         <div className="absolute top-1/2 left-0 h-[1px] w-full bg-white/20" />
         <div className="absolute top-0 left-1/2 h-full w-[1px] bg-white/20" />
-        <div className="absolute top-10 left-10 text-[10px] tracking-[0.2em] text-white">X: 0.000</div>
-        <div className="absolute right-10 bottom-10 text-[10px] tracking-[0.2em] text-white">Y: 1.000</div>
+        <div className="absolute top-10 left-10 text-[10px] mono tracking-[0.2em] text-white">X: 0.000</div>
+        <div className="absolute right-10 bottom-10 text-[10px] mono tracking-[0.2em] text-white">Y: 1.000</div>
       </div>
 
       {/* Close Button */}
       <button
         onClick={onClose}
-        className="absolute top-4 right-4 sm:top-8 sm:right-8 z-[210] flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full border border-white/10 text-white transition hover:bg-white/10 active:scale-95 touch-target"
+        className="absolute top-8 right-8 z-[210] flex h-10 w-10 items-center justify-center border border-white/20 text-white transition hover:bg-white/10"
         aria-label="关闭预览"
       >
-        <svg width="18" height="18" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="16" height="16" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M15 5L5 15M5 5L15 15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
       </button>
@@ -81,7 +81,7 @@ export default function Lightbox({
       {/* Navigation */}
       <button
         onClick={handlePrev}
-        className="absolute left-2 sm:left-8 z-[210] flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95 touch-target"
+        className="absolute left-8 z-[210] flex h-16 w-10 items-center justify-center border border-white/10 text-white/40 transition hover:border-white/40 hover:text-white"
       >
         <span className="sr-only">上一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -91,7 +91,7 @@ export default function Lightbox({
 
       <button
         onClick={handleNext}
-        className="absolute right-2 sm:right-8 z-[210] flex h-12 w-12 sm:h-14 sm:w-14 items-center justify-center rounded-full border border-white/5 text-white/40 transition hover:border-white/20 hover:text-white active:scale-95 touch-target"
+        className="absolute right-8 z-[210] flex h-16 w-10 items-center justify-center border border-white/10 text-white/40 transition hover:border-white/40 hover:text-white"
       >
         <span className="sr-only">下一张</span>
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -100,26 +100,26 @@ export default function Lightbox({
       </button>
 
       {/* Main Image Container */}
-      <div className="relative h-[70vh] w-[95vw] sm:h-[85vh] sm:w-[90vw] animate-reveal">
+      <div className="relative h-[85vh] w-[85vw] animate-soft-rise bg-[#080809] border border-white/5">
         <Image
           src={images[currentIndex]}
           alt={`${projectTitle} 预览图 ${currentIndex + 1}`}
           fill
           className="object-contain"
           priority
-          sizes="90vw"
+          sizes="85vw"
         />
       </div>
 
       {/* Info Overlay */}
-      <div className="absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-center text-white/60">
-        <p className="text-[11px] font-medium tracking-[0.3em] uppercase">
-          {projectTitle} — SHEET {String(currentIndex + 1).padStart(2, "0")}
+      <div className="absolute bottom-8 left-8 flex flex-col items-start gap-2 text-white/60">
+        <p className="mono text-[10px] tracking-[0.3em] uppercase text-white/80">
+          {projectTitle}
         </p>
-        <div className="h-[1px] w-12 bg-white/20" />
-        <p className="text-[10px] tracking-[0.1em]">
-          {currentIndex + 1} / {images.length}
-        </p>
+        <div className="flex items-center gap-3">
+          <span className="mono text-[9px] uppercase tracking-widest text-white/30">REF NO.</span>
+          <span className="mono text-[10px]">{String(currentIndex + 1).padStart(2, "0")} / {String(images.length).padStart(2, "0")}</span>
+        </div>
       </div>
     </div>
   );
