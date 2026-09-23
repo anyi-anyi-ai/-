@@ -1,10 +1,18 @@
 import type { Metadata } from "next";
-import { Geist } from "next/font/google";
+import { Geist, Noto_Serif_SC } from "next/font/google";
+import { LanguageProvider } from "@/components/LanguageProvider";
+import CustomCursor from "@/components/CustomCursor";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const notoSerif = Noto_Serif_SC({
+  variable: "--font-noto-serif",
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
 export const metadata: Metadata = {
@@ -19,15 +27,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN" className="scroll-smooth">
-      <body className={`${geistSans.variable} bg-[var(--color-paper)] text-[var(--color-ink)] antialiased`}>
+    <html lang="zh-CN" className="scroll-smooth" suppressHydrationWarning>
+      <body className={`${geistSans.variable} ${notoSerif.variable} antialiased cursor-none`}>
+        <CustomCursor />
         <a
           href="#main-content"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-[var(--color-accent)] focus:px-6 focus:py-3 focus:text-sm focus:font-bold focus:text-[var(--color-charcoal)] focus:outline-none focus:ring-4 focus:ring-[var(--color-accent-glow)]"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-full focus:bg-slate-950 focus:px-6 focus:py-3 focus:text-sm focus:font-bold focus:text-white focus:outline-none focus:ring-4 focus:ring-sky-200/50"
         >
           跳转到主要内容
         </a>
-        {children}
+        <LanguageProvider>{children}</LanguageProvider>
       </body>
     </html>
   );

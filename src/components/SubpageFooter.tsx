@@ -1,10 +1,30 @@
+"use client";
+
 import Link from "next/link";
+import { LocalizedText, useLanguage, type LocalizedCopy } from "@/components/LanguageProvider";
 
 type FooterLink = {
-  label: string;
+  label: string | LocalizedCopy;
   href: string;
   primary?: boolean;
 };
+
+const labelTranslations: Record<string, string> = {
+  查看总作品集: "View portfolio",
+  查看项目页: "View projects",
+  查看简历页: "View resume",
+  查看荣誉页: "View awards",
+  返回首页: "Back home",
+  返回目录: "Back to catalog",
+  项目总览: "Project overview",
+  简历页面: "Resume",
+};
+
+function FooterLabel({ label }: { label: string | LocalizedCopy }) {
+  const { locale } = useLanguage();
+  if (typeof label !== "string") return <LocalizedText {...label} />;
+  return locale === "zh" ? label : labelTranslations[label] ?? label;
+}
 
 export default function SubpageFooter({
   heading,
@@ -31,7 +51,7 @@ export default function SubpageFooter({
                   href={link.href}
                   className="ui-button-primary min-w-[180px]"
                 >
-                  {link.label}
+                  <FooterLabel label={link.label} />
                 </Link>
               ) : (
                 <Link
@@ -39,7 +59,7 @@ export default function SubpageFooter({
                   href={link.href}
                   className="ui-button-secondary min-w-[180px]"
                 >
-                  {link.label}
+                  <FooterLabel label={link.label} />
                 </Link>
               ),
             )}

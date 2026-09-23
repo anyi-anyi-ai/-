@@ -1,560 +1,254 @@
 import Image from "next/image";
 import Link from "next/link";
-import { portfolioItems, featuredItems, awardItems } from "@/data/portfolio-data";
-import Reveal from "@/components/Reveal";
+import Footer from "@/components/Footer";
+import FloatingMusicPlayer from "@/components/FloatingMusicPlayer";
+import GlassCard from "@/components/GlassCard";
+import HomeProjectsSection from "@/components/HomeProjectsSection";
+import { LocalizedText } from "@/components/LanguageProvider";
+import Navbar from "@/components/Navbar";
+import {
+  aboutProfile,
+  activeGrowthSnapshot,
+  capabilities,
+  contactMethods,
+  designFocuses,
+  featuredProjects,
+  learningCategories,
+  projects,
+  quickLinks,
+} from "@/data/site-data";
+import { homeAboutPlaylist } from "@/data/music-data";
 
-const allProjects = portfolioItems.map(item => ({
-  title: item.title,
-  href: item.detailHref,
-  active: true,
-  status: "项目详情",
-}));
-
-const capabilities = [
-  {
-    title: "空间叙事",
-    description: "擅长从概念母题、情绪氛围到浏览路径建立完整叙事，使空间方案在阅读时具备清晰节奏与记忆点。",
-    evidence: "适用于概念居住、主题空间与文化民宿等需要先建立故事框架的项目。",
-  },
-  {
-    title: "文化转译",
-    description: "将道家、丝路、戏曲、中医等文化母题转化为空间语言，强调精神意象、材料气质与场景体验的统一。",
-    evidence: "重点体现在「道隐无名」「觅踪」等项目中，避免文化符号化和表面化。",
-  },
-  {
-    title: "视觉表达",
-    description: "结合 3ds Max、V-Ray、Blender、Photoshop 等工具完成效果图、展板与项目图像表达，保证方案具有展示力。",
-    evidence: "用于把复杂概念转译成可被快速理解的高完成度视觉结果。",
-  },
-  {
-    title: "AI 工作流",
-    description: "在概念发散、风格测试、图像生成与表达迭代中引入 AIGC 与 ComfyUI，提高创意探索与方案调整效率。",
-    evidence: "帮助项目在早期发散和后期润色阶段都保持更高的迭代速度。",
-  },
-];
-
-const resumeHighlights = [
-  {
-    label: "教育背景",
-    title: "烟台大学｜环境设计",
-    description: "建筑学院，本科，预计 2026 年 7 月毕业，系统学习室内空间、商业空间、展示设计与主题表达。",
-  },
-  {
-    label: "技能矩阵",
-    title: "设计软件与 AI 工作流",
-    description: "熟悉 3ds Max、V-Ray、Blender、CAD、Photoshop、Illustrator，并持续把 AIGC 与 ComfyUI 纳入设计表达流程。",
-  },
-  {
-    label: "实践经历",
-    title: "项目执行与现场协作",
-    description: "参与社区美育项目与演唱会布展工作，逐步积累面向真实场景的沟通、执行与交付经验。",
-  },
-  {
-    label: "个人特质",
-    title: "持续学习与稳定推进",
-    description: "具备责任感、沟通意识与任务管理能力，能够在创意表达与实际落地之间保持稳定推进。",
-  },
-];
-
-const contactItems = [
-  {
-    label: "邮箱",
-    value: "ay1839628583@outlook.com",
-    href: "mailto:ay1839628583@outlook.com",
-  },
-  {
-    label: "电话",
-    value: "19712029262",
-    href: "tel:19712029262",
-  },
-  {
-    label: "求职方向",
-    value: "环境设计 / 室内设计 / 空间表达相关岗位",
-  },
-];
-
-const workflowSteps = [
-  {
-    step: "01",
-    title: "概念切入",
-    description: "从文化母题、场景需求或主题命题出发，先明确项目为什么成立，再决定视觉方向。",
-  },
-  {
-    step: "02",
-    title: "空间组织",
-    description: "围绕动线、功能、情绪和使用方式整理空间逻辑，让方案不只停留在意向层面。",
-  },
-  {
-    step: "03",
-    title: "图像表达",
-    description: "通过效果图、展板和网页化排版让概念被快速理解，形成可阅读的项目展示结果。",
-  },
-];
-
-const profileStats = [
-  { value: String(portfolioItems.length), label: "作品方向储备" },
-  { value: String(featuredItems.length), label: "精选项目" },
-  { value: "3", label: "核心竞赛成果" },
-  { value: "2026", label: "预计毕业时间" },
-];
-
-const actionLinks = [
-  { label: "查看精选项目", href: "#projects" },
-  { label: "进入总作品集", href: "/portfolio" },
-  { label: "浏览简历页", href: "/resume" },
-  { label: "查看荣誉页", href: "/awards" },
-  { label: "直接联系我", href: "#contact" },
+const dashboardStats = [
+  { label: "Works", value: projects.length.toString(), caption: "空间 / 室内 / 概念" },
+  { label: "Featured", value: featuredProjects.length.toString(), caption: "首页策展项目" },
+  { label: "Now", value: "2026", caption: "作品集第二轮重写" },
 ];
 
 export default function Home() {
+  const heroProject = featuredProjects[0];
+  const secondaryProjects = featuredProjects.slice(1, 3);
+
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
-      <section className="hero-shell relative isolate overflow-hidden text-white">
-        <div className="glow-orb top-[10%] left-[8%] h-40 w-40 opacity-70" />
-        <div className="glow-orb right-[10%] bottom-[14%] h-56 w-56 opacity-60" />
-        <Image
-          src="/projects/chen-ai-zhi-shang/cover.webp"
-          alt="尘埃之上首页首屏主图"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(10,10,10,0.88)_0%,rgba(10,10,10,0.68)_34%,rgba(10,10,10,0.34)_66%,rgba(10,10,10,0.18)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(208,175,118,0.2)_0%,rgba(208,175,118,0)_36%)]" />
+    <main id="main-content" className="portfolio-home min-h-screen text-slate-50 selection:bg-white/10">
+      <Navbar />
+      <FloatingMusicPlayer playlist={homeAboutPlaylist} theme="dark" storageKey="home" />
 
-        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-between px-6 py-8 sm:px-10 lg:px-16">
-          <header className="animate-reveal stagger-1 flex flex-col gap-4 border-b border-white/10 pb-4 text-sm tracking-[0.22em] text-white/72 uppercase sm:flex-row sm:items-center sm:justify-between">
-            <span className="font-medium">安翌</span>
-            <nav className="flex flex-wrap gap-x-4 gap-y-2 text-xs sm:gap-6 sm:text-sm">
-              <a href="#projects" className="transition hover:text-white">
-                作品
-              </a>
-              <a href="#about" className="transition hover:text-white">
-                关于
-              </a>
-              <Link href="/resume" className="transition hover:text-white">
-                简历
-              </Link>
-              <Link href="/awards" className="transition hover:text-white">
-                荣誉
-              </Link>
-              <Link href="/projects" className="transition hover:text-white">
-                总览
-              </Link>
-              <Link href="/portfolio" className="transition hover:text-white">
-                作品集
-              </Link>
-              <a href="#contact" className="transition hover:text-white">
-                联系
-              </a>
-            </nav>
-          </header>
-
-          <div className="grid gap-12 py-14 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:py-20">
-            <div className="max-w-3xl space-y-8">
-              <div className="animate-reveal stagger-2 space-y-4">
-                <p className="text-sm tracking-[0.28em] text-[var(--color-accent)] uppercase">
-                  Environment Design Portfolio
-                </p>
-                <h1 className="font-serif-display max-w-4xl text-5xl leading-[1.08] font-semibold tracking-[0.02em] sm:text-6xl lg:text-7xl">
-                  安翌｜以空间叙事与视觉表达构建可阅读的环境设计作品集
-                </h1>
-                <p className="max-w-2xl text-base leading-8 text-white/82 sm:text-lg">
-                  聚焦文化转译、主题空间、商业体验与概念叙事，用完整图像、结构化文案和逐步展开的项目详情，建立面向环境设计与室内设计岗位的线上作品展示入口。
-                </p>
-              </div>
-
-              <div className="animate-reveal stagger-3 grid gap-4 text-sm text-white/78 sm:grid-cols-3">
-                <div className="rounded-[1.4rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                  <p className="text-[11px] tracking-[0.18em] text-white/50 uppercase">专业方向</p>
-                  <p className="mt-2 text-base text-white">环境设计 / 室内空间</p>
-                </div>
-                <div className="rounded-[1.4rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                  <p className="text-[11px] tracking-[0.18em] text-white/50 uppercase">核心优势</p>
-                  <p className="mt-2 text-base text-white">文化转译 + 视觉表达</p>
-                </div>
-                <div className="rounded-[1.4rem] border border-white/10 bg-white/8 px-4 py-4 backdrop-blur-sm">
-                  <p className="text-[11px] tracking-[0.18em] text-white/50 uppercase">求职目标</p>
-                  <p className="mt-2 text-base text-white">设计实习 / 初级岗位</p>
-                </div>
-              </div>
-
-              <div className="animate-reveal stagger-4 grid gap-4 sm:grid-cols-4">
-                {profileStats.map((item) => (
-                  <div key={item.label} className="rounded-[1.3rem] border border-white/10 bg-black/18 px-4 py-4 text-center backdrop-blur-sm">
-                    <p className="font-serif-display text-3xl font-semibold text-white">{item.value}</p>
-                    <p className="mt-2 text-[11px] tracking-[0.18em] text-white/52 uppercase">{item.label}</p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="animate-reveal stagger-4 flex flex-col gap-4 sm:flex-row">
-                <a href="#projects" className="ui-button-primary">
-                  查看精选作品
-                </a>
-                <Link href="/resume" className="ui-button-secondary text-white">
-                  查看简历页
-                </Link>
-              </div>
-
+      <section className="relative z-10 mx-auto max-w-7xl px-8 pt-32 pb-24 lg:pt-48">
+        <div className="grid gap-16 lg:grid-cols-[1.5fr_0.5fr] lg:items-end">
+          <div className="animate-soft-rise">
+            <div className="mb-10 flex items-center gap-4 text-[10px] mono tracking-[0.4em] text-white/40 uppercase">
+              <span className="h-px w-12 bg-white/20"></span>
+              Spatial Design Portfolio
             </div>
-
-            <div className="animate-reveal stagger-5 ui-panel space-y-6 rounded-[2.2rem] border-white/10 bg-white/8 p-6 backdrop-blur-md">
-              <div className="space-y-2 border-b border-white/10 pb-5">
-                <p className="text-xs tracking-[0.28em] text-white/56 uppercase">首页主打项目</p>
-                <h2 className="font-serif-display text-3xl font-semibold">尘埃之上</h2>
-                <p className="text-sm tracking-[0.18em] text-[var(--color-accent)] uppercase">未来生态 / 概念居住</p>
-              </div>
-              <p className="text-sm leading-7 text-white/82">
-                项目从火星极端环境切入，尝试构建兼具生存技术、生态系统与精神慰藉的未来居住原型，用强叙事性视觉建立首页第一记忆点。
-              </p>
-              <div className="editorial-divider" />
-              <dl className="grid gap-4 text-sm text-white/74 sm:grid-cols-3">
-                <div>
-                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">项目方向</dt>
-                  <dd>未来生态</dd>
-                </div>
-                <div>
-                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">核心关键词</dt>
-                  <dd>四季系统</dd>
-                </div>
-                <div>
-                  <dt className="mb-1 text-xs tracking-[0.2em] text-white/48 uppercase">项目价值</dt>
-                  <dd>概念叙事与系统表达</dd>
-                </div>
-              </dl>
-              <div className="rounded-[1.5rem] border border-white/10 bg-black/22 p-4 text-sm leading-7 text-white/74">
-                它承担首页的第一视觉记忆点，也代表我在概念构建、图像表达与项目叙述三方面的综合能力。
-              </div>
-              <Link href="/projects/chen-ai-zhi-shang" className="ui-button-secondary w-full sm:w-fit text-white">
-                查看项目
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="projects" className="relative mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
-        <div className="glow-orb top-0 right-0 h-96 w-96 opacity-20" />
-        
-        <Reveal>
-          <div className="mb-20 flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-4xl space-y-6">
-              <p className="section-kicker">作品精选</p>
-              <h2 className="section-title">先建立重点项目入口，再逐步扩展为完整作品目录</h2>
-              <p className="section-copy">
-                你可以从项目总览页快速进入详情，也可以先通过总作品集页整体浏览，了解设计关注点与表达方式。
-              </p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="h-[1px] w-12 bg-white/20" />
-              <span className="text-[10px] font-bold tracking-[0.4em] text-white/40 uppercase italic">01 / Projects</span>
-            </div>
-          </div>
-
-          <div className="glass-panel mb-16 overflow-hidden p-10 lg:p-16">
-            <div className="grid gap-12 lg:grid-cols-[1fr_0.8fr] lg:items-center">
-              <div className="space-y-6">
-                <p className="text-xs font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">项目覆盖</p>
-                <h3 className="font-serif-display text-4xl font-semibold text-white sm:text-5xl">呈现能力覆盖面</h3>
-                <p className="text-lg leading-relaxed text-white/60">
-                  项目分别对应文化叙事、未来概念、体验空间与商业逻辑不同任务类型，体现概念、功能、场景和图像表达的综合深度。
-                </p>
-              </div>
-              <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-2">
-                <Image 
-                  src="/projects/dao-yin-wu-ming/cover.webp"
-                  alt="Architecture Logic Illustration"
-                  fill
-                  className="object-cover opacity-60 grayscale hover:grayscale-0 transition-all duration-700"
-                />
-              </div>
-            </div>
-          </div>
-        </Reveal>
-
-        <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
-          {featuredItems.map((project, index) => (
-            <Reveal key={project.title} delay={index * 100}>
-              <Link
-                href={`/projects/${project.slug}`}
-                className="glass-card group flex h-full flex-col overflow-hidden rounded-[2rem] p-4"
-              >
-                <div className="project-preview-frame relative mb-6 overflow-hidden rounded-[1.5rem] bg-black/40">
-                  <Image
-                    src={project.heroImage}
-                    alt={`${project.title} 预览`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
-                    className="object-cover transition duration-700 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
-                </div>
-                
-                <div className="flex flex-1 flex-col px-2 pb-4">
-                  <div className="mb-4 flex items-center justify-between">
-                    <span className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{project.status}</span>
-                    <span className="text-[10px] font-medium tracking-[0.1em] text-white/30 italic">精选项目</span>
-                  </div>
-                  <h3 className="font-serif-display text-2xl font-semibold text-white transition group-hover:text-[var(--color-accent)]">
-                    {project.title}
-                  </h3>
-                  <p className="mt-3 text-xs tracking-[0.15em] text-white/50 uppercase">{project.type}</p>
-                  <p className="mt-6 text-sm leading-relaxed text-white/60 line-clamp-3">
-                    {project.summary}
-                  </p>
-                  
-                  <div className="mt-auto pt-8">
-                    <div className="flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-white/40 uppercase transition group-hover:text-white">
-                      <span>查看项目</span>
-                      <span className="h-[1px] w-8 bg-white/20 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section id="about" className="relative border-y border-white/5 bg-white/[0.02] py-32">
-        <div className="glow-orb bottom-0 left-0 h-96 w-96 opacity-10" />
-        <div className="mx-auto max-w-[1600px] px-6 sm:px-10 lg:px-16">
-          <Reveal>
-            <div className="grid gap-16 rounded-[2.5rem] border border-white/10 bg-white/[0.03] p-10 backdrop-blur-xl lg:grid-cols-[0.92fr_1.08fr] lg:p-16">
-              <div className="space-y-8">
-                <div className="space-y-4">
-                  <p className="section-kicker">设计方法</p>
-                  <h2 className="section-title">让招聘方先看懂方法，再决定深入浏览项目</h2>
-                </div>
-                <p className="section-copy">
-                  快速说明设计方法、表达优势与适配项目类型，帮助浏览者在看图之外理解工作方式。
-                </p>
-                <div className="h-[1px] w-24 bg-[var(--color-accent)]" />
-              </div>
-              <div className="grid gap-6 md:grid-cols-3">
-                {workflowSteps.map((item, index) => (
-                  <div key={item.step} className={`animate-reveal stagger-${index + 1}`}>
-                    <article className="h-full rounded-[1.8rem] border border-white/5 bg-white/[0.02] p-6 transition hover:bg-white/[0.05]">
-                      <p className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">步骤 {item.step}</p>
-                      <h3 className="mt-4 font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
-                      <p className="mt-4 text-sm leading-relaxed text-white/50">{item.description}</p>
-                    </article>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </Reveal>
-
-          <div className="mt-24 grid gap-16 lg:grid-cols-[0.7fr_1.3fr] lg:items-start">
-            <Reveal className="space-y-6 lg:sticky lg:top-32">
-              <p className="section-kicker">核心能力</p>
-              <h2 className="section-title text-4xl lg:text-5xl">核心能力结构</h2>
-              <p className="section-copy">
-                建立能力模型，清晰呈现设计方向与优势。
-              </p>
-            </Reveal>
-            <div className="grid gap-6 md:grid-cols-2">
-              {capabilities.map((item, index) => (
-                <Reveal key={item.title} delay={index * 100}>
-                  <article
-                    className="glass-card flex h-full flex-col rounded-[2.2rem] p-8"
-                  >
-                    <div className="mb-6 flex items-center justify-between">
-                      <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">能力重点</span>
-                      <div className="h-2 w-2 rounded-full bg-[var(--color-accent)] opacity-40" />
-                    </div>
-                    <h3 className="font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
-                    <p className="mt-6 text-sm leading-relaxed text-white/60">{item.description}</p>
-                    <div className="mt-8 mt-auto border-t border-white/5 pt-6 text-xs leading-relaxed text-[var(--color-accent)]/70 italic">
-                      {item.evidence}
-                    </div>
-                  </article>
-                </Reveal>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16">
-        <Reveal>
-          <div className="glass-panel px-8 py-12 lg:px-16 lg:py-20">
-            <div className="grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-              <div className="space-y-6">
-                <p className="section-kicker">求职方向</p>
-                <h2 className="font-serif-display text-4xl font-semibold leading-tight text-white sm:text-5xl">面向环境设计与室内设计相关岗位展示作品与能力</h2>
-              </div>
-              <p className="text-lg leading-relaxed text-white/60">
-                通过精选项目、能力结构、简历摘要与荣誉信息，快速展示我的设计方向、项目类型与求职定位。
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </section>
-
-      <section className="mx-auto max-w-[1600px] px-6 py-32 sm:px-10 lg:px-16">
-        <Reveal>
-          <div className="mb-20 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-            <div className="max-w-4xl space-y-6">
-              <p className="section-kicker">荣誉奖项</p>
-              <h2 className="section-title">奖项与成果建立的可信度支撑</h2>
-              <p className="section-copy">
-                首页展示核心荣誉，证明设计完成度已获竞赛支撑，详情见荣誉页。
-              </p>
-            </div>
-            <Link href="/awards" className="group flex items-center gap-3 text-xs font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase transition hover:text-white">
-              <span>查看全部荣誉</span>
-              <span className="h-[1px] w-8 bg-[var(--color-accent)] transition-all group-hover:w-12" />
-            </Link>
-          </div>
-        </Reveal>
-
-        <div className="grid gap-6 xl:grid-cols-3">
-          {awardItems.map((award, index) => (
-            <Reveal key={award.title} delay={index * 100}>
-              <article
-                className="glass-card flex h-full flex-col rounded-[2.2rem] p-8"
-              >
-                <div className="mb-8 flex items-center justify-between">
-                  <span className="text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">{award.level}</span>
-                  <div className="h-px w-8 bg-white/10" />
-                </div>
-                <h3 className="font-serif-display text-2xl font-semibold text-white leading-snug">
-                  {award.title}
-                </h3>
-                <div className="mt-8 space-y-4 text-sm leading-relaxed text-white/50">
-                  {award.project ? (
-                    <p className="flex items-center gap-3">
-                      <span className="h-1 w-1 rounded-full bg-[var(--color-accent)]" />
-                      <span>项目：{award.project}</span>
-                    </p>
-                  ) : null}
-                  {award.note ? <p className="italic">{award.note}</p> : null}
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section id="resume" className="relative overflow-hidden bg-white/[0.03] py-32">
-        <div className="glow-orb top-1/2 left-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 opacity-10" />
-        <div className="mx-auto grid max-w-[1600px] gap-20 px-6 sm:px-10 lg:grid-cols-[0.8fr_1.2fr] lg:px-16">
-          <Reveal className="space-y-8">
-            <p className="section-kicker">简历摘要</p>
-            <h2 className="font-serif-display text-5xl font-bold leading-tight text-white sm:text-6xl">
-              教育背景、技能与经验提炼
-            </h2>
-            <p className="text-lg leading-relaxed text-white/60">
-              首页呈现求职核心信息，完整版、证书预览及下载入口详见简历页面。
+            
+            <h1 className="home-hero-title text-5xl md:text-7xl lg:text-[8rem] leading-[0.85] text-balance">
+              Anno 的
+              <br />
+              <span className="text-white/90">空间档案馆</span>
+            </h1>
+            
+            <p className="mt-16 max-w-xl text-lg font-light leading-relaxed text-white/50 md:text-xl border-l border-white/20 pl-6">
+              我把空间叙事、文化母题、材质光影和 AIGC 工作流整理成一个可浏览、可投递、可持续更新的个人作品入口。
             </p>
-            <Link
-              href="/resume"
-              className="ui-button-primary"
-            >
-              进入完整简历页
-            </Link>
-          </Reveal>
 
-          <div className="grid gap-6 sm:grid-cols-2">
-            {resumeHighlights.map((item, index) => (
-              <Reveal key={item.label} delay={index * 100}>
-                <div className="glass-card flex h-full flex-col rounded-[2.2rem] p-8">
-                  <p className="mb-6 text-[10px] font-bold tracking-[0.3em] text-[var(--color-accent)] uppercase">{item.label}</p>
-                  <h3 className="font-serif-display text-2xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-6 text-sm leading-relaxed text-white/50">{item.description}</p>
+            <div className="mt-16 flex flex-wrap gap-8">
+              <Link className="btn-primary" href="/projects"><LocalizedText zh="进入作品矩阵" en="Enter works matrix" /></Link>
+              <Link className="btn-secondary" href="/progress"><LocalizedText zh="查看学习进程" en="View progress" /></Link>
+            </div>
+          </div>
+
+          <div className="hidden lg:block animate-soft-rise delay-150">
+            <div className="flex flex-col gap-px bg-white/10 border border-white/10">
+              {dashboardStats.map((stat) => (
+                <div key={stat.label} className="bg-[#060607] p-8 hover:bg-white/[0.02] transition-colors">
+                  <span className="block text-3xl font-serif text-white">{stat.value}</span>
+                  <span className="mt-3 block text-[9px] mono uppercase tracking-widest text-white/30">{stat.label}</span>
+                  <span className="mt-1 block text-[10px] text-white/20">{stat.caption}</span>
                 </div>
-              </Reveal>
+              ))}
+              <div className="bg-[#060607] p-8 flex items-center gap-4">
+                <div className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white/80"></span>
+                </div>
+                <span className="text-[9px] mono uppercase tracking-widest text-white/40">Active Session</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Project - High Impact Editorial Style */}
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24">
+        <Link href={heroProject.route} className="group relative block aspect-[21/9] overflow-hidden bg-zinc-900">
+          <Image 
+            src={heroProject.cover} 
+            alt={heroProject.title} 
+            fill 
+            className="object-cover opacity-80 grayscale transition duration-1000 group-hover:scale-105 group-hover:grayscale-0"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+          <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
+            <div className="max-w-2xl">
+              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/60">Featured Project / {heroProject.year}</span>
+              <h2 className="mt-4 text-4xl md:text-6xl font-serif text-white">{heroProject.title}</h2>
+              <p className="mt-6 text-base text-white/50 leading-relaxed line-clamp-2">{heroProject.summary}</p>
+            </div>
+            <div className="text-white/40 text-xs font-medium uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-black transition duration-300">
+              View Project ↗
+            </div>
+          </div>
+        </Link>
+      </section>
+
+      <section className="relative z-10 mx-auto max-w-7xl px-6 py-12">
+        <div className="grid gap-px bg-white/10 border border-white/10 md:grid-cols-2 xl:grid-cols-4">
+          {quickLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="group bg-[#0a0a0c] p-10 transition-colors hover:bg-white/5">
+              <div className="flex items-start justify-between">
+                <span className="text-2xl text-white/80">{link.icon}</span>
+                <span className="text-[0.6rem] font-bold uppercase tracking-widest text-white/30 transition-colors group-hover:text-white">
+                  Enter →
+                </span>
+              </div>
+              <h2 className="mt-12 text-lg font-medium tracking-tight text-white/90">{link.title}</h2>
+              <p className="mt-4 text-xs leading-relaxed text-white/40">{link.description}</p>
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      {/* 首页交互式作品分类与网格展示 */}
+      <HomeProjectsSection />
+
+      <section className="relative z-10 mx-auto max-w-7xl px-8 pb-48 pt-12">
+        <div className="grid gap-px bg-white/10 border border-white/10 lg:grid-cols-[1fr_1fr]">
+          <div className="bg-[#060607] p-12 md:p-16 border-r border-white/10">
+            <div className="flex items-center gap-4 text-[10px] mono tracking-[0.4em] text-white/40 uppercase mb-12">
+              <span className="h-px w-8 bg-white/20"></span>
+              About Preview
+            </div>
+            <h2 className="text-4xl md:text-5xl font-serif font-light text-white leading-[1.3] tracking-tight">
+              我关注空间为什么成立，<br/>以及人在其中如何被接住。
+            </h2>
+            <div className="mt-16 space-y-6">
+              <p className="text-sm font-light leading-relaxed text-white/50">{aboutProfile.intro}</p>
+              <p className="text-sm font-light leading-relaxed text-white/50 border-l border-white/20 pl-6">{aboutProfile.philosophy}</p>
+            </div>
+            <div className="mt-20 flex flex-wrap gap-8">
+              <Link className="btn-primary" href="/about"><LocalizedText zh="进入关于页" en="Enter About" /></Link>
+              <Link className="btn-secondary" href="/resume"><LocalizedText zh="查看简历" en="View resume" /></Link>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10">
+            {designFocuses.map((focus, index) => (
+              <div key={focus.title} className="bg-[#060607] p-12 transition-colors hover:bg-white/[0.02]">
+                <div className="mb-12 flex justify-between items-start">
+                  <svg className="w-5 h-5 text-white/20" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                  <span className="mono text-[10px] text-white/20">0{index + 1}</span>
+                </div>
+                <h3 className="text-2xl font-serif text-white/90">{focus.title}</h3>
+                <p className="mt-6 text-xs leading-relaxed text-white/40 font-light">{focus.description}</p>
+              </div>
             ))}
           </div>
         </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-24 sm:px-10 lg:px-16">
-        <div className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-          <div className="max-w-3xl space-y-4">
-            <p className="section-kicker">全部项目</p>
-            <h2 className="section-title">完整作品目录</h2>
-            <p className="section-copy">
-              作品已整理为完整线上展示内容，可从总览页进入详情，或通过总作品集页整体浏览。
-            </p>
-          </div>
-          <Link href="/projects" className="ui-button-light">
-            进入项目总览
-          </Link>
-        </div>
-
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-          {allProjects.map((project) =>
-            project.active ? (
-              <Link
-                key={project.title}
-                href={project.href}
-                className="rounded-[1.5rem] border border-[var(--color-line)] bg-white p-5 shadow-[0_8px_18px_rgba(26,24,21,0.04)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_24px_rgba(26,24,21,0.08)]"
-              >
-                <span className="block text-xs tracking-[0.18em] text-[var(--color-accent-deep)] uppercase">{project.status}</span>
-                <span className="mt-3 block font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{project.title}</span>
-              </Link>
-            ) : (
-              <div
-                key={project.title}
-                className="rounded-[1.5rem] border border-dashed border-[var(--color-line)] bg-[var(--color-muted)]/45 p-5"
-              >
-                <span className="block text-xs tracking-[0.18em] text-[var(--color-muted-ink)] uppercase">{project.status}</span>
-                <span className="mt-3 block font-serif-display text-2xl font-semibold text-[var(--color-ink)]">{project.title}</span>
+        <div className="mt-32 grid gap-px bg-white/10 border border-white/10 lg:grid-cols-[1.3fr_0.7fr]">
+          <div className="bg-[#060607] p-10 md:p-14 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-3 mb-8">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400"></span>
+                </span>
+                <p className="mono text-[10px] tracking-widest text-emerald-400/90 uppercase font-medium">
+                  {activeGrowthSnapshot.status} · {activeGrowthSnapshot.period}
+                </p>
               </div>
-            ),
-          )}
-        </div>
-      </section>
 
-      <footer id="contact" className="border-t border-[var(--color-line)] bg-white">
-        <div className="mx-auto max-w-7xl px-6 py-16 sm:px-10 lg:px-16">
-          <div className="grid gap-6 rounded-[2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/22 p-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div className="space-y-4">
-              <p className="section-kicker">快速入口</p>
-              <h2 className="font-serif-display text-3xl font-semibold text-[var(--color-ink)]">如果你已经完成浏览，可以直接继续查看项目、简历或联系信息</h2>
+              <h3 className="text-3xl md:text-4xl font-serif text-white/95 leading-tight">
+                近期生长状态
+              </h3>
+              <p className="mt-4 text-xs text-white/40 font-light leading-relaxed max-w-xl">
+                除了完成态的作品，我也在这里持续同步工具链攻坚、施工图落地推进与阶段目标。
+              </p>
+
+              <div className="mt-10 space-y-6 border-t border-white/5 pt-8">
+                <div>
+                  <span className="mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">
+                    Current Focus / 当前聚焦
+                  </span>
+                  <p className="text-sm text-white/80 font-light leading-relaxed">
+                    {activeGrowthSnapshot.currentFocus}
+                  </p>
+                </div>
+
+                <div>
+                  <span className="mono text-[9px] uppercase tracking-widest text-white/30 block mb-2">
+                    Next Milestone / 下一里程碑
+                  </span>
+                  <p className="text-sm text-white/60 font-light leading-relaxed">
+                    {activeGrowthSnapshot.nextMilestone}
+                  </p>
+                </div>
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-2">
+                {activeGrowthSnapshot.tags.map((tag) => (
+                  <span key={tag} className="mono text-[9px] text-white/30 border border-white/10 px-2.5 py-1 bg-white/[0.01]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
-              {actionLinks.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="inline-flex items-center justify-center rounded-full border border-[var(--color-line)] bg-white px-5 py-3 text-sm tracking-[0.16em] text-[var(--color-copy)] uppercase transition hover:border-[var(--color-accent-deep)] hover:text-[var(--color-accent-deep)]"
-                >
-                  {item.label}
-                </a>
-              ))}
+
+            <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap items-center justify-between gap-4">
+              <Link
+                href="/progress"
+                className="btn-primary text-xs !py-3 !px-6"
+              >
+                <LocalizedText zh="查看完整成长进程 (3大模块) →" en="VIEW FULL PROGRESS ARCHIVE →" />
+              </Link>
+              <span className="mono text-[10px] text-white/30">
+                能力底座 · 动态时间线 · 路线图
+              </span>
             </div>
           </div>
 
-          <div className="mt-10 flex max-w-7xl flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl space-y-4">
-              <p className="section-kicker">联系方式</p>
-              <h2 className="font-serif-display text-4xl font-semibold text-[var(--color-ink)]">联系方式</h2>
-              <p className="max-w-2xl text-sm leading-8 text-[var(--color-copy)] sm:text-base">
-                欢迎通过以下方式与我联系，探讨环境设计、室内空间等相关工作机会。
-              </p>
+          <div className="bg-[#060607] p-10 md:p-14 border-l border-white/10 flex flex-col justify-between">
+            <div>
+              <div className="flex items-center gap-4 mb-12">
+                <span className="h-1.5 w-1.5 bg-white/40 rounded-full"></span>
+                <p className="mono text-[10px] tracking-widest text-white/30 uppercase">Identity & Contact</p>
+              </div>
+              <h3 className="text-4xl font-serif text-white">
+                {aboutProfile.name}
+              </h3>
+              <p className="mt-4 text-sm text-white/40 font-light">{aboutProfile.identity}</p>
+              <p className="mt-8 text-xs leading-relaxed text-white/40 font-light border-l border-white/20 pl-4">{aboutProfile.school} · 空间体验、情绪叙事、材质光影与网页化表达。</p>
             </div>
-            <div className="grid gap-4 text-sm text-[var(--color-copy)] sm:min-w-[20rem]">
-              {contactItems.map((item) => (
-                <div key={item.label} className="rounded-[1.2rem] border border-[var(--color-line)] bg-[var(--color-muted)]/28 px-4 py-4">
-                  <p className="text-[11px] tracking-[0.18em] text-[var(--color-muted-ink)] uppercase">{item.label}</p>
+
+            <div className="mt-12 grid gap-px bg-white/10 border border-white/10">
+              {contactMethods.map((item) => (
+                <div key={item.label} className="bg-[#060607] p-5 flex justify-between items-center group transition-colors hover:bg-white/[0.03]">
+                  <p className="mono text-[9px] uppercase tracking-[0.2em] text-white/30">{item.label}</p>
                   {item.href ? (
-                    <a href={item.href} className="mt-2 block text-base transition hover:text-[var(--color-accent-deep)]">
-                      {item.value}
-                    </a>
+                    <a href={item.href} className="text-[10px] mono text-white/50 group-hover:text-white transition-colors">{item.value}</a>
                   ) : (
-                    <p className="mt-2 text-base text-[var(--color-copy)]">{item.value}</p>
+                    <p className="text-[10px] mono text-white/50">{item.value}</p>
                   )}
                 </div>
               ))}
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      <Footer theme="dark" />
     </main>
   );
 }

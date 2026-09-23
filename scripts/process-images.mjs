@@ -4,8 +4,8 @@ import path from 'path';
 
 const SOURCE_BASE = 'H:/VCP/博客/作品集';
 const AWARDS_BASE = 'H:/VCP/博客/简历和获奖';
-const PUBLIC_BASE = 'H:/VCP/博客/portfolio-site/public/projects';
-const AWARDS_PUBLIC = 'H:/VCP/博客/portfolio-site/public/awards';
+const PUBLIC_BASE = 'H:/VCP/博客/portfolio-site-v2/public/projects';
+const AWARDS_PUBLIC = 'H:/VCP/博客/portfolio-site-v2/public/awards';
 
 const PROJECT_MAP = {
   '娱乐空间': 'yu-le-kong-jian',

@@ -1,13 +1,15 @@
 import Image from "next/image";
 import Link from "next/link";
 import { portfolioItems } from "@/data/portfolio-data";
+import { LocalizedText } from "@/components/LanguageProvider";
 import SubpageNav from "@/components/SubpageNav";
 import SubpageFooter from "@/components/SubpageFooter";
 import Reveal from "@/components/Reveal";
 
 export default function PortfolioIndexPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-[var(--color-paper)] text-[var(--color-ink)]">
+    <main id="main-content" className="page-base min-h-screen text-white selection:bg-white/10">
+      <div className="bg-subtle-glow" />
       <SubpageNav
         links={[
           { label: "项目总览", href: "/projects" },
@@ -16,67 +18,77 @@ export default function PortfolioIndexPage() {
         ]}
       />
 
-      <section className="relative mx-auto max-w-[1600px] px-6 py-24 sm:px-10 lg:px-16 lg:py-32">
-        <div className="glow-orb top-0 right-0 h-96 w-96 opacity-10" />
+      <section className="relative mx-auto max-w-7xl px-8 py-32 lg:py-48">
         <Reveal>
-          <div className="glass-panel grid gap-16 p-10 lg:grid-cols-[1fr_0.8fr] lg:p-16">
-            <div className="space-y-8">
-              <p className="section-kicker">作品集</p>
-              <h1 className="section-title text-5xl sm:text-6xl">总作品集</h1>
-              <p className="section-copy">
+          <div className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-end">
+            <div className="space-y-12">
+              <div className="flex items-center gap-4">
+                <span className="h-px w-12 bg-white/20"></span>
+                <p className="mono text-[10px] text-white/40 tracking-[0.4em] uppercase">Collections</p>
+              </div>
+              <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-serif leading-[0.85] text-white tracking-tighter">
+                总作品集
+              </h1>
+              <p className="max-w-2xl text-xl font-light leading-relaxed text-white/50">
                 这里汇集了 {portfolioItems.length} 个作品方向，涵盖文化叙事、商业体验、概念场景与家具设计等不同类型。
               </p>
             </div>
-            <div className="grid gap-6 sm:grid-cols-2">
-              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">数量</p>
-                <h2 className="mt-4 font-serif-display text-4xl font-semibold">{portfolioItems.length}</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">当前可浏览的作品项目</p>
+            
+            <div className="hidden lg:grid grid-cols-2 gap-px bg-white/10 border border-white/10">
+              <div className="bg-[#080809] p-8">
+                <span className="mono text-[10px] text-white/20 block mb-4">Total Files</span>
+                <span className="text-4xl font-serif">{portfolioItems.length}</span>
               </div>
-              <div className="rounded-2xl border border-white/5 bg-white/[0.02] p-6">
-                <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">方向</p>
-                <h2 className="mt-4 font-serif-display text-4xl font-semibold">多类型覆盖</h2>
-                <p className="mt-4 text-xs leading-relaxed text-white/40">文化主题、商业空间、未来概念与单体设计</p>
+              <div className="bg-[#080809] p-8">
+                <span className="mono text-[10px] text-white/20 block mb-4">System</span>
+                <span className="text-4xl font-serif">V2.1</span>
               </div>
             </div>
           </div>
         </Reveal>
       </section>
 
-      <section className="border-t border-white/5 bg-white/[0.01]">
-        <div className="mx-auto max-w-[1800px] px-6 py-32 sm:px-10 lg:px-16">
-          <Reveal className="mb-20 max-w-4xl space-y-6">
-            <p className="section-kicker">全部作品</p>
-            <h2 className="section-title">作品集目录</h2>
-            <p className="section-copy">
-              可根据感兴趣的项目类型进入详情页，查看项目概念、图像表达与设计说明。
-            </p>
+      <section className="border-t border-white/10">
+        <div className="mx-auto max-w-7xl px-8 py-32">
+          <Reveal className="mb-24">
+            <p className="mono text-[10px] text-white/20 tracking-[0.4em] uppercase mb-4">Archive Index</p>
+            <h2 className="text-4xl font-serif text-white">作品目录</h2>
           </Reveal>
-          <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-4">
+          
+          <div className="grid gap-px bg-white/10 border border-white/10 md:grid-cols-2">
             {portfolioItems.map((item, index) => (
               <Reveal key={item.slug} delay={index * 50}>
                 <Link
                   href={`/portfolio/${item.slug}`}
-                  className="glass-card group block h-full overflow-hidden rounded-[2.5rem] p-5"
+                  className="group relative block bg-[#080809] p-12 transition-colors hover:bg-white/5"
                 >
-                  <div className="project-preview-frame relative mb-8 overflow-hidden rounded-[1.8rem] bg-black/40">
-                    <Image
-                      src={item.heroImage}
-                      alt={`${item.title}缩略图`}
-                      fill
-                      sizes="(max-width: 768px) 100vw, 25vw"
-                      className="object-cover transition duration-700 group-hover:scale-110 group-hover:rotate-1"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 transition-opacity group-hover:opacity-40" />
-                  </div>
-                  <div className="px-2 pb-4">
-                    <p className="text-[10px] font-bold tracking-[0.2em] text-[var(--color-accent)] uppercase">{item.status}</p>
-                    <h3 className="mt-4 font-serif-display text-3xl font-semibold text-white transition-colors group-hover:text-[var(--color-accent)]">{item.title}</h3>
-                    <p className="mt-4 text-[11px] font-bold tracking-[0.1em] text-white/30 uppercase italic">{item.type}</p>
-                    <p className="mt-6 text-sm leading-relaxed text-white/50 line-clamp-2">{item.summary}</p>
-                    <div className="mt-10 flex items-center gap-3 text-[10px] font-bold tracking-[0.2em] text-white/20 uppercase transition group-hover:text-white">
-                      <span>查看作品</span>
-                      <span className="h-px w-8 bg-white/10 transition-all group-hover:w-12 group-hover:bg-[var(--color-accent)]" />
+                  <div className="flex flex-col gap-10">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-zinc-900 border border-white/5">
+                      <Image
+                        src={item.heroImage}
+                        alt={item.title}
+                        fill
+                        className="object-cover opacity-60 grayscale transition duration-[1.5s] group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-100"
+                      />
+                    </div>
+                    
+                    <div className="space-y-6">
+                      <div className="flex justify-between items-start">
+                        <div>
+                          <p className="mono text-[9px] text-white/20 mb-2">{item.type}</p>
+                          <h3 className="text-3xl font-serif text-white/90 group-hover:text-white transition-colors">{item.title}</h3>
+                        </div>
+                        <span className="mono text-[10px] text-white/40 border border-white/10 px-3 py-1">
+                          {item.status}
+                        </span>
+                      </div>
+                      <p className="text-sm leading-relaxed text-white/40 line-clamp-2 font-light">{item.summary}</p>
+                      
+                      <div className="pt-6 flex items-center gap-4">
+                        <span className="mono text-[10px] text-white/30 group-hover:text-white transition-colors">EXPLORE ARCHIVE</span>
+                        <div className="h-px flex-1 bg-white/5 group-hover:bg-white/20 transition-colors"></div>
+                        <span className="mono text-[12px] text-white/40 group-hover:translate-x-1 transition-transform">→</span>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -87,11 +99,11 @@ export default function PortfolioIndexPage() {
       </section>
 
       <SubpageFooter
-        heading="继续查看简历、荣誉或返回首页"
+        heading="Archive Closure"
         links={[
-          { label: "查看简历页", href: "/resume" },
-          { label: "查看荣誉页", href: "/awards" },
-          { label: "返回首页", href: "/", primary: true },
+          { label: { zh: "查看简历页", en: "View resume" }, href: "/resume" },
+          { label: { zh: "查看荣誉页", en: "View awards" }, href: "/awards" },
+          { label: { zh: "返回首页", en: "Back home" }, href: "/", primary: true },
         ]}
       />
     </main>
