@@ -34,73 +34,108 @@ export default function Home() {
       <Navbar />
       <FloatingMusicPlayer playlist={homeAboutPlaylist} theme="dark" storageKey="home" />
 
-      <section className="relative z-10 mx-auto max-w-7xl px-8 pt-32 pb-24 lg:pt-48">
-        <div className="grid gap-16 lg:grid-cols-[1.5fr_0.5fr] lg:items-end">
-          <div className="animate-soft-rise">
-            <div className="mb-10 flex items-center gap-4 text-[10px] mono tracking-[0.4em] text-white/40 uppercase">
-              <span className="h-px w-12 bg-white/20"></span>
-              Spatial Design Portfolio
-            </div>
-            
-            <h1 className="home-hero-title text-5xl md:text-7xl lg:text-[8rem] leading-[0.85] text-balance">
-              Anno 的
-              <br />
-              <span className="text-white/90">空间档案馆</span>
-            </h1>
-            
-            <p className="mt-16 max-w-xl text-lg font-light leading-relaxed text-white/50 md:text-xl border-l border-white/20 pl-6">
-              我把空间叙事、文化母题、材质光影和 AIGC 工作流整理成一个可浏览、可投递、可持续更新的个人作品入口。
-            </p>
+      {/* 沉浸式通栏首屏 Hero - 还原大图视觉冲击，同时融合统计与主打项目卡片 */}
+      <section className="relative isolate min-h-[92vh] lg:min-h-screen overflow-hidden flex flex-col justify-between pt-28 pb-12 px-6 sm:px-10 lg:px-16 border-b border-white/10">
+        {/* 通栏项目主图大背景 */}
+        <Image
+          src={heroProject.cover}
+          alt={`${heroProject.title} 视觉主图`}
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center scale-[1.01] opacity-70"
+        />
 
-            <div className="mt-16 flex flex-wrap gap-8">
-              <Link className="btn-primary" href="/projects"><LocalizedText zh="进入作品矩阵" en="Enter works matrix" /></Link>
-              <Link className="btn-secondary" href="/progress"><LocalizedText zh="查看学习进程" en="View progress" /></Link>
-            </div>
-          </div>
+        {/* 电影质感分层渐变：确保文字与仪表盘极高可读性，同时边缘柔和融入全站深黑背景 */}
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(6,6,7,0.92)_0%,rgba(6,6,7,0.78)_40%,rgba(6,6,7,0.36)_72%,rgba(6,6,7,0.18)_100%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(212,163,115,0.16)_0%,rgba(212,163,115,0)_42%)] pointer-events-none" />
+        <div className="absolute inset-x-0 top-0 h-36 bg-gradient-to-b from-[#060607]/90 via-[#060607]/40 to-transparent pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-[#060607] via-[#060607]/60 to-transparent pointer-events-none" />
 
-          <div className="hidden lg:block animate-soft-rise delay-150">
-            <div className="flex flex-col gap-px bg-white/10 border border-white/10">
-              {dashboardStats.map((stat) => (
-                <div key={stat.label} className="bg-[#060607] p-8 hover:bg-white/[0.02] transition-colors">
-                  <span className="block text-3xl font-serif text-white">{stat.value}</span>
-                  <span className="mt-3 block text-[9px] mono uppercase tracking-widest text-white/30">{stat.label}</span>
-                  <span className="mt-1 block text-[10px] text-white/20">{stat.caption}</span>
+        {/* 首屏核心内容区 */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl my-auto py-8">
+          <div className="grid gap-14 lg:grid-cols-[1.28fr_0.72fr] lg:items-end">
+            <div className="animate-soft-rise">
+              <div className="mb-8 flex items-center gap-4 text-[10px] mono tracking-[0.4em] text-white/50 uppercase">
+                <span className="h-px w-12 bg-white/30"></span>
+                Spatial Design Portfolio
+              </div>
+              
+              <h1 className="home-hero-title text-5xl md:text-7xl lg:text-[7.5rem] leading-[0.88] text-balance">
+                Anno 的
+                <br />
+                <span className="text-white/95">空间档案馆</span>
+              </h1>
+              
+              <p className="mt-10 max-w-xl text-base sm:text-lg font-light leading-relaxed text-white/65 md:text-xl border-l border-white/20 pl-6 backdrop-blur-[2px]">
+                我把空间叙事、文化母题、材质光影和 AIGC 工作流整理成一个可浏览、可投递、可持续更新的个人作品入口。
+              </p>
+
+              <div className="mt-12 flex flex-wrap gap-6 sm:gap-8">
+                <Link className="btn-primary" href="/projects">
+                  <LocalizedText zh="进入作品矩阵" en="Enter works matrix" />
+                </Link>
+                <Link className="btn-secondary" href="/progress">
+                  <LocalizedText zh="查看学习进程" en="View progress" />
+                </Link>
+              </div>
+            </div>
+
+            {/* 右侧微光卡片：展示当前精选作品与状态仪表盘 */}
+            <div className="hidden lg:block animate-soft-rise delay-150">
+              <div className="glass-surface p-8 space-y-6 backdrop-blur-xl bg-[#060607]/60 border border-white/10">
+                <div className="flex items-start justify-between border-b border-white/10 pb-5">
+                  <div>
+                    <span className="text-[10px] mono uppercase tracking-[0.25em] text-[#d4a373] block">
+                      Featured / {heroProject.year}
+                    </span>
+                    <h2 className="mt-1.5 text-2xl font-serif text-white tracking-wide">{heroProject.title}</h2>
+                    <p className="mt-1 text-[11px] text-white/40 mono">{heroProject.type}</p>
+                  </div>
+                  <Link 
+                    href={heroProject.route}
+                    className="text-[10px] mono uppercase tracking-wider text-white/80 hover:text-white border border-white/20 hover:border-white/60 px-3.5 py-1.5 transition-colors"
+                  >
+                    View ↗
+                  </Link>
                 </div>
-              ))}
-              <div className="bg-[#060607] p-8 flex items-center gap-4">
-                <div className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-white/80"></span>
+
+                <p className="text-xs text-white/60 font-light leading-relaxed line-clamp-3">
+                  {heroProject.summary}
+                </p>
+
+                <div className="grid grid-cols-3 gap-px bg-white/10 border border-white/10">
+                  {dashboardStats.map((stat) => (
+                    <div key={stat.label} className="bg-[#060607]/80 p-4 text-center">
+                      <span className="block text-2xl font-serif text-white">{stat.value}</span>
+                      <span className="mt-1 block text-[9px] mono uppercase tracking-widest text-white/40">{stat.label}</span>
+                    </div>
+                  ))}
                 </div>
-                <span className="text-[9px] mono uppercase tracking-widest text-white/40">Active Session</span>
+
+                <div className="flex items-center justify-between pt-1 text-[10px] mono text-white/40">
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-40"></span>
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-white/80"></span>
+                    </span>
+                    <span>Active Session</span>
+                  </div>
+                  <span>{heroProject.category}</span>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </section>
 
-      {/* Featured Project - High Impact Editorial Style */}
-      <section className="relative z-10 mx-auto max-w-7xl px-6 py-24">
-        <Link href={heroProject.route} className="group relative block aspect-[21/9] overflow-hidden bg-zinc-900">
-          <Image 
-            src={heroProject.cover} 
-            alt={heroProject.title} 
-            fill 
-            className="object-cover opacity-80 grayscale transition duration-1000 group-hover:scale-105 group-hover:grayscale-0"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-          <div className="absolute bottom-12 left-12 right-12 flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-2xl">
-              <span className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-white/60">Featured Project / {heroProject.year}</span>
-              <h2 className="mt-4 text-4xl md:text-6xl font-serif text-white">{heroProject.title}</h2>
-              <p className="mt-6 text-base text-white/50 leading-relaxed line-clamp-2">{heroProject.summary}</p>
-            </div>
-            <div className="text-white/40 text-xs font-medium uppercase tracking-widest border border-white/20 px-6 py-3 hover:bg-white hover:text-black transition duration-300">
-              View Project ↗
-            </div>
+        {/* 底部细微指示栏 */}
+        <div className="relative z-10 mx-auto w-full max-w-7xl flex items-center justify-between pt-4 border-t border-white/10 text-[10px] mono text-white/30 uppercase tracking-widest">
+          <span>Curated Works & Archives</span>
+          <div className="flex items-center gap-2">
+            <span>Scroll to Explore</span>
+            <span>↓</span>
           </div>
-        </Link>
+        </div>
       </section>
 
       <section className="relative z-10 mx-auto max-w-7xl px-6 py-12">
